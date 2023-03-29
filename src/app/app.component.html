@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav fixedInViewport="true" mode="side" opened>
+    <side-nav></side-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content-container">
+      <toolbar [sidenav]="sidenav"></toolbar>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
