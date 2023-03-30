@@ -4,13 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pages',
+    redirectTo: 'authentication',
     pathMatch: 'full',
   },
   {
     path: 'pages',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
+  },
+  {
+    path: 'authentication',
+    loadChildren: () =>
+      import('./authentication/authentication.module').then(
+        (m) => m.AuthenticationModule
+      ),
   },
 ];
 

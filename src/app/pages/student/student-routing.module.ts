@@ -4,18 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'student',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
-    path: 'student',
+    path: 'dashboard',
     loadChildren: () =>
-      import('./student/student.module').then((m) => m.StudentModule),
-  },
-  {
-    path: 'admin',
-    loadChildren: () =>
-      import('./admin/admin.module').then((m) => m.AdminModule),
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
 ];
 
@@ -23,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PagesRoutingModule {}
+export class StudentRoutingModule {}

@@ -1,1 +1,18 @@
-<p>side-nav works!</p>
+<section [class.sidenav]="isExpanded">
+  <mat-list class="nav" *ngFor="let route of routeLinks">
+    <mat-list-item
+      routerLinkActive="active-link"
+      class="hover"
+      routerLink="{{ route.link }}"
+    >
+      <mat-icon
+        mat-list-icon
+        [matTooltip]="!isExpanded ? route.name : ''"
+        matTooltipPosition="right"
+      >
+        {{ route.icon }}</mat-icon
+      >
+      <p *ngIf="isExpanded">{{ route.name }}</p>
+    </mat-list-item>
+  </mat-list>
+</section>
