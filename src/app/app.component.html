@@ -3,6 +3,7 @@
 
   <mat-sidenav-container autosize>
     <mat-sidenav
+      class="box-shadow margin-top-150"
       (mouseenter)="toggleMenu()"
       (mouseleave)="toggleMenu()"
       #sidenav
@@ -12,7 +13,7 @@
       <side-nav [isExpanded]="isExpanded"></side-nav>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="content-container">
+      <div class="content-container margin-top-150">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>

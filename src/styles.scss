@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import "app/theme/global.scss";
 
 html,
 body {
@@ -6,7 +6,8 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+  background: #f5f9fc;
 }
 
 mat-sidenav[style] {
@@ -14,4 +15,11 @@ mat-sidenav[style] {
 }
 .mat-drawer {
   transform: none !important;
+}
+
+.profile-icon {
+  .mat-grid-tile-content {
+    justify-content: start !important;
+    padding-left: 16px;
+  }
 }

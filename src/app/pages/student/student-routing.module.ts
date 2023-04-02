@@ -12,6 +12,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
+  {
+    path: 'profile-completion',
+    loadChildren: () =>
+      import('./profile-completion/profile-completion.module').then(
+        (m) => m.ProfileCompletionModule
+      ),
+  },
 ];
 
 @NgModule({
