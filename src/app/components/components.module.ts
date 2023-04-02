@@ -11,9 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { TopBannerComponent } from './top-banner/top-banner.component';
 
 @NgModule({
-  declarations: [SideNavComponent, ToolbarComponent],
+  declarations: [SideNavComponent, ToolbarComponent, TopBannerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,8 +23,8 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
-  exports: [SideNavComponent, ToolbarComponent],
+  exports: [SideNavComponent, ToolbarComponent, TopBannerComponent],
 })
 export class ComponentsModule {}

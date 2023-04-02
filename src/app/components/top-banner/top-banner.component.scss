@@ -1,0 +1,18 @@
+.top-banner {
+  display: flex;
+  height: 155px;
+  background: linear-gradient(89.82deg, #1bb55e 31.36%, #4863f6 119.51%);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12),
+    0px 3px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  width: 100%;
+  align-items: start;
+
+  .text {
+    margin-left: 34px;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 36px;
+    color: #ffffff;
+  }
+}
