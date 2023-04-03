@@ -1,0 +1,64 @@
+.background-image{
+  object-fit: cover;
+  position: fixed;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+}
+
+.mainbox{
+background-color: #ffffff;
+position: fixed;
+width: 896px;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+font-family: 'Roboto';
+  .login-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0 60px;
+    
+    .login-title{
+      font-size: 34px;
+      margin-bottom: 5px;
+    }
+    .login-subtitle{
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+      margin-top: 5px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    .login-text{
+      font-size: 16px;
+      letter-spacing: 0.15px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    mat-label{
+      color: #000;
+    }
+
+    .signin-btn{
+      background-color: #1BB55E;
+      color: white;
+    }
+    .ineed-help{
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    caption{
+      margin-top: 10px;
+      font-weight: 500;
+      a{
+        color: #3F51B5;
+      }
+    }
+  }
+  
+
+}
