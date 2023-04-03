@@ -1,0 +1,47 @@
+.scholarship-card {
+  background: #ffffff;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 20px 32px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+
+  .scholarship-content {
+    margin: 20px 68px;
+
+    .scholarship-name {
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 36px;
+      color: #1bb55e;
+      margin-bottom: 10px;
+    }
+    .scholarship-desc {
+      margin-top: 10px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 25px;
+      color: #000000;
+    }
+  }
+
+  .apply-now-btn {
+    background: #1bb55e;
+    width: 520px;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 36px;
+    color: #ffffff;
+    border-top-right-radius: 40px;
+    height: 100%;
+    transition: width 1s;
+  }
+
+  .apply-now-btn:hover {
+    width: 700px;
+  }
+}

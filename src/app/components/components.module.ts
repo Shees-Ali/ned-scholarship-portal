@@ -12,9 +12,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { TopBannerComponent } from './top-banner/top-banner.component';
+import { ScholarshipCardComponent } from './scholarship-card/scholarship-card.component';
 
 @NgModule({
-  declarations: [SideNavComponent, ToolbarComponent, TopBannerComponent],
+  declarations: [
+    SideNavComponent,
+    ToolbarComponent,
+    TopBannerComponent,
+    ScholarshipCardComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,6 +31,11 @@ import { TopBannerComponent } from './top-banner/top-banner.component';
     MatListModule,
     MatTooltipModule,
   ],
-  exports: [SideNavComponent, ToolbarComponent, TopBannerComponent],
+  exports: [
+    SideNavComponent,
+    ToolbarComponent,
+    TopBannerComponent,
+    ScholarshipCardComponent,
+  ],
 })
 export class ComponentsModule {}
