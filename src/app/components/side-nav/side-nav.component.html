@@ -2,6 +2,7 @@
   <mat-nav-list>
     <mat-list-item (click)="goTo(link.link)" *ngFor="let link of routeLinks">
       <button
+        class="nav-button"
         [class]="!isExpanded ? 'margin-left-none' : ''"
         mat-icon-button
         matListItemMeta
@@ -14,7 +15,9 @@
           {{ link.icon }}</mat-icon
         >
       </button>
-      <a *ngIf="isExpanded" matListItemTitle>{{ link.name }}</a>
+      <a class="nav-button" *ngIf="isExpanded" matListItemTitle>{{
+        link.name
+      }}</a>
     </mat-list-item>
   </mat-nav-list>
 </section>
