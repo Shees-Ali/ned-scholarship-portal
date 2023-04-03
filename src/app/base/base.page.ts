@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { NavService } from '../services/nav.service';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
+import { UtilityService } from '../services/utility.service';
 
 export abstract class BasePage {
   public formBuilder: FormBuilder;
@@ -13,6 +14,7 @@ export abstract class BasePage {
   public domSanitizer: DomSanitizer;
   public authService: AuthService;
   public storage: StorageService;
+  public utiltiy: UtilityService;
 
   constructor(injector: Injector) {
     this.formBuilder = injector.get(FormBuilder);
@@ -21,5 +23,6 @@ export abstract class BasePage {
     this.domSanitizer = injector.get(DomSanitizer);
     this.authService = injector.get(AuthService);
     this.storage = injector.get(StorageService);
+    this.utiltiy = injector.get(UtilityService);
   }
 }
