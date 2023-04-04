@@ -12,6 +12,6 @@ export class HomePage extends BasePage implements OnInit {
   }
 
   ngOnInit() {
-    this.utiltiy.isSideNavVisible.next(false);
+    this.utiltiy.isHome.next(true);
   }
 }

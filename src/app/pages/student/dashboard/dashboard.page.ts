@@ -11,5 +11,7 @@ export class DashboardPage extends BasePage implements OnInit {
     super(injector);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.utiltiy.isPages.next(true);
+  }
 }

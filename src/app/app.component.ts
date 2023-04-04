@@ -10,25 +10,28 @@ import { UtilityService } from './services/utility.service';
 export class AppComponent implements OnInit {
   title = 'ned-scholarship-portal';
   isExpanded: boolean = false;
-  isSideNavVisible: boolean = true;
-  isTabberVisible: boolean = true;
-  isAuthenticationPage: boolean = false;
-
+  isAuthenticationPage: boolean = true;
+  isPages: boolean = false;
+  isHome: boolean = false;
   constructor(authService: AuthService, utilityService: UtilityService) {
-    utilityService.isSideNavVisible.subscribe((res: boolean) => {
-      this.isSideNavVisible = res;
+    utilityService.isPages.subscribe((res: boolean) => {
+      this.isPages = res;
+      this.isHome = false;
+      this.isAuthenticationPage = false;
     });
-    utilityService.isTabberVisible.subscribe((res: boolean) => {
-      this.isTabberVisible = res;
+    utilityService.isHome.subscribe((res: boolean) => {
+      this.isHome = res;
+      this.isPages = false;
+      this.isAuthenticationPage = false;
     });
     utilityService.isAuthenticationPage.subscribe((res: boolean) => {
       this.isAuthenticationPage = res;
+      this.isPages = false;
+      this.isHome = false;
     });
   }
 
-  ngOnInit(): void {
-    this.isSideNavVisible = true;
-  }
+  ngOnInit(): void {}
 
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;

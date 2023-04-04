@@ -23,3 +23,7 @@ mat-sidenav[style] {
     padding-left: 16px;
   }
 }
+
+.mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+  color: #ff0000;
+}

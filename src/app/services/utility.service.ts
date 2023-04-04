@@ -5,8 +5,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class UtilityService {
-  isTabberVisible = new Subject<boolean>();
-  isSideNavVisible = new Subject<boolean>();
+  isPages = new Subject<boolean>();
+  isHome = new Subject<boolean>();
   isAuthenticationPage = new Subject<boolean>();
 
   constructor() {}
