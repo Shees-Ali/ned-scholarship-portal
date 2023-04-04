@@ -1,4 +1,4 @@
-.background-image{
+.background-image {
   object-fit: cover;
   position: fixed;
   overflow: hidden;
@@ -7,69 +7,119 @@
   z-index: -10;
 }
 
-.mainbox{
-background-color: #ffffff;
-position: fixed;
-width: 896px;
-top: 50%;
-left: 50%;
-border-radius: 10px;
-transform: translate(-50%,-50%);
-font-family: 'Roboto';
-  .login-card{
+.mainbox {
+  background-color: #ffffff;
+  position: fixed;
+  width: 896px;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  font-family: "Roboto";
+  .login-card,
+  .signup-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
     width: 100%;
-    margin: 0 60px;
-    
-    .login-title{
+    margin-right: 54px;
+    margin-left: 54px;
+    .login-title,
+    .signup-title {
       font-size: 34px;
+      margin-top: 0px;
       margin-bottom: 5px;
     }
-    .login-subtitle{
+    .login-subtitle,
+    .signup-subtitle {
       font-weight: 500;
       font-size: 14px;
       letter-spacing: 0.1px;
-      margin-top: 5px;
       color: rgba(0, 0, 0, 0.6);
+      margin-top: 5px;
     }
-    .login-text{
+    .login-text {
       font-size: 16px;
       letter-spacing: 0.15px;
       color: rgba(0, 0, 0, 0.6);
     }
-    mat-form-field{
-      margin: 6px 0px;
-      input{
-        height: 20px;
+    mat-form-field {
+      input {
+        height: 14px;
       }
-      input:active{
-        border-color: #1BB55E ;
+      input:active {
+        border-color: #1bb55e;
       }
-      mat-label{
+      mat-label {
         color: #000;
       }
-      mat-hint{
+      mat-hint {
         color: rgba(0, 0, 0, 0.6);
       }
     }
-    .signin-btn{
-      background-color: #1BB55E;
+    .signin-btn,
+    .signup-btn {
+      background-color: #1bb55e;
       color: white;
+      margin: 5px 0px;
     }
-    .ineed-help{
+    .ineed-help {
       margin-top: 5px;
       font-size: 14px;
     }
-    caption{
+    caption {
       font-size: 10px;
       margin-top: 16px;
       font-weight: 500;
-      a{
-        color: #3F51B5;
+      a {
+        color: #3f51b5;
       }
     }
   }
+  
+  .moving-slide {
+    background-color: white;
+    position: fixed;
+    height: inherit;
+    width: 50%;
+    border-radius: 10px;
+    transform: translate(100%, -100%);
+    z-index: 5;
+    height: 100%;
+    background-color: #1bb55e;
+    z-index: 6;
+    transition: transform 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fira Sans';
+    img{
+      object-fit: cover;
+      height: 200px;
+    }
+    .moving-text{
+      margin: 0;
+
+      font-weight: 700;
+      font-size: 40px;
+      text-align: center;
+      letter-spacing: -0.337115px;
+      color: #FFFFFF;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    }
+    .changeto-signup-btn{
+      color: #1bb55e;
+      width: 340px;
+    }
+    .moving-question{
+      color: #ffffff;
+    }
+  }
+  .moving-slide.active{
+    transform: translate(0,-100%);
+  }
 }
+
+
