@@ -10,7 +10,7 @@ import { FormGroup, Validators } from '@angular/forms';
 export class AuthenticationPage extends BasePage implements OnInit {
   isSignUp: boolean = false;
   signInForm: FormGroup<any>;
-  signUpForm?: any;
+  signUpForm: FormGroup<any>;
   constructor(injector: Injector) {
     super(injector);
     this.signInForm = this.formBuilder.group({
@@ -23,6 +23,7 @@ export class AuthenticationPage extends BasePage implements OnInit {
       ],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
+    this.signUpForm = this.formBuilder.group({});
   }
 
   ngOnInit() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { UtilityService } from './services/utility.service';
+import { NavService } from './services/nav.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,11 @@ export class AppComponent implements OnInit {
   isAuthenticationPage: boolean = true;
   isPages: boolean = false;
   isHome: boolean = false;
-  constructor(authService: AuthService, utilityService: UtilityService) {
+  constructor(
+    authService: AuthService,
+    utilityService: UtilityService,
+    private nav: NavService
+  ) {
     utilityService.isPages.subscribe((res: boolean) => {
       this.isPages = res;
       this.isHome = false;
@@ -35,5 +40,9 @@ export class AppComponent implements OnInit {
 
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  goToAuth() {
+    this.nav.navigateTo('');
   }
 }

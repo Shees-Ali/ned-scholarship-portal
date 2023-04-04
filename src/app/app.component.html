@@ -21,8 +21,11 @@
 </ng-container>
 
 <ng-container *ngIf="isHome">
-  <toolbar></toolbar>
-
+  <toolbar
+    [btnText]="'Jump to Portal'"
+    [showProfileIcon]="false"
+    (btnClicked)="goToAuth()"
+  ></toolbar>
   <div class="content-container">
     <router-outlet></router-outlet>
   </div>

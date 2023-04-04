@@ -3,8 +3,14 @@
   <span class="main-heading">NED UNIVERSITY PAKISTAN</span>
   <span class="example-spacer"></span>
 
-  <button class="btn-text" mat-button>Download Application</button>
-  <button mat-icon-button class="example-icon favorite-icon">
+  <button (click)="btnClicked.emit()" class="btn-text" mat-button>
+    {{ btnText }}
+  </button>
+  <button
+    *ngIf="showProfileIcon"
+    mat-icon-button
+    class="example-icon favorite-icon"
+  >
     <mat-icon>group</mat-icon>
   </button>
 </mat-toolbar>
