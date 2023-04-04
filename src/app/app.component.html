@@ -1,8 +1,9 @@
-<ng-container *ngIf="isLoggedIn">
-  <toolbar [sidenav]="sidenav"></toolbar>
+<ng-container *ngIf="!isAuthenticationPage">
+  <toolbar *ngIf="isTabberVisible"></toolbar>
 
   <mat-sidenav-container autosize>
     <mat-sidenav
+      *ngIf="isSideNavVisible"
       class="box-shadow margin-top-150"
       (mouseenter)="toggleMenu()"
       (mouseleave)="toggleMenu()"
@@ -20,4 +21,4 @@
   </mat-sidenav-container>
 </ng-container>
 
-<router-outlet *ngIf="!isLoggedIn"></router-outlet>
+<router-outlet *ngIf="isAuthenticationPage"></router-outlet>

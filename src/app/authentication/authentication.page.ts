@@ -12,11 +12,11 @@ export class AuthenticationPage extends BasePage implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.isLoggedIn.next(false);
+    this.utiltiy.isAuthenticationPage.next(true);
   }
 
   navigate() {
-    this.authService.isLoggedIn.next(true);
+    this.utiltiy.isAuthenticationPage.next(false);
     this.nav.navigateTo('');
   }
 }
