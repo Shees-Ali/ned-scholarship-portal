@@ -45,7 +45,7 @@ export class AuthenticationPage extends BasePage implements OnInit {
     this.authService.signIn(formValue.email, formValue.password).then((res) => {
       console.log(res);
       if (res) {
-        this.nav.navigateTo('dashboard');
+        this.nav.navigateTo('student');
       }
     });
   }
