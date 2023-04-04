@@ -7,6 +7,7 @@ import { BasePage } from '../base/base.page';
   styleUrls: ['./authentication.page.scss'],
 })
 export class AuthenticationPage extends BasePage implements OnInit {
+  isSignUp: boolean = false;
   constructor(injector: Injector) {
     super(injector);
   }
@@ -18,5 +19,9 @@ export class AuthenticationPage extends BasePage implements OnInit {
   navigate() {
     this.utiltiy.isAuthenticationPage.next(false);
     this.nav.navigateTo('');
+  }
+
+  changeTo() {
+    this.isSignUp = !this.isSignUp;
   }
 }

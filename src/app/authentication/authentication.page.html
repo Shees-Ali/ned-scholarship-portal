@@ -1,81 +1,84 @@
 <img src="assets/images/LoginPage-Background.jpg" class="background-image" />
 
 <div class="mainbox">
-    <!-- <mat-card> -->
-        <mat-grid-list cols="2" rowHeight="70vh">
-            <mat-grid-tile>
-                <div class="login-card">
-                    <p class="login-title">Sign In</p>
-                    <p class="login-subtitle">NED University’s Scholarship Portal</p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Email<span style="color:red">*</span></mat-label>
-                        <input matInput placeholder="Enter Email">
-                        <mat-hint>Enter your Cloud Email address</mat-hint>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Password<span style="color:red">*</span></mat-label>
-                        <input matInput placeholder="Enter Password">
-                        <mat-hint>Enter Password</mat-hint>
-                    </mat-form-field>
-                    <p class="login-text">Forgot Password?</p>
-                    <button class="signin-btn" mat-raised-button (click)="navigate()">
-                        Sign In
-                    </button>
-                    <caption class="ineed-help">Need help?<a> Go to online help </a></caption>
-                </div>
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-                <div class="signup-card">
-                    <p class="signup-title">Sign Up</p>
-                    <p class="signup-subtitle">NED University’s Scholarship Portal</p>
-                    <mat-grid-list cols="2" rowHeight="85px" [gutterSize]="'8px'">
-                        <mat-grid-tile>
-                            <mat-form-field appearance="outline">
-                                <mat-label>First Name<span style="color:red">*</span></mat-label>
-                                <input matInput placeholder="Enter First Name">
-                                <mat-hint>Enter First Name</mat-hint>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                        <mat-grid-tile>
-                            <mat-form-field appearance="outline">
-                                <mat-label>Last Name<span style="color:red">*</span></mat-label>
-                                <input matInput placeholder="Enter Last Name">
-                                <mat-hint>Enter Last Name</mat-hint>
-                            </mat-form-field>
-                        </mat-grid-tile>
-                    </mat-grid-list>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Email<span style="color:red">*</span></mat-label>
-                        <input matInput placeholder="Enter Email">
-                        <mat-hint>Enter your Cloud Email address</mat-hint>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Password<span style="color:red">*</span></mat-label>
-                        <input matInput placeholder="Enter Password">
-                        <mat-hint>Enter Password</mat-hint>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Confirm Password<span style="color:red">*</span></mat-label>
-                        <input matInput placeholder="Confirm Password">
-                        <mat-hint>Enter Password again to continue</mat-hint>
-                    </mat-form-field>
-                    <button class="signup-btn" mat-raised-button>
-                        Submit
-                    </button>
-                    <caption class="ineed-help">Need help?<a> Go to online help </a></caption>
-                </div>
-            </mat-grid-tile>
-        </mat-grid-list>
-    <!-- </mat-card> -->
-    <div class="moving-slide">
-        <img src="assets/images/NED-Logo-white.png">
-        <p class="moving-text"> Welcome To </p>
-        <p class="moving-text"> NED Scholarship Portal </p>
-        <p class="moving-question">Dont have an account yet?</p>
-        <button class="changeto-signup-btn" mat-raised-button
-        onclick="changeto()">
-            Sign Up
+  <!-- <mat-card> -->
+  <mat-grid-list cols="2" rowHeight="70vh">
+    <mat-grid-tile>
+      <div class="login-card">
+        <p class="login-title">Sign In</p>
+        <p class="login-subtitle">NED University’s Scholarship Portal</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Email<span style="color: red">*</span></mat-label>
+          <input matInput placeholder="Enter Email" />
+          <mat-hint>Enter your Cloud Email address</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password<span style="color: red">*</span></mat-label>
+          <input matInput placeholder="Enter Password" />
+          <mat-hint>Enter Password</mat-hint>
+        </mat-form-field>
+        <p class="login-text">Forgot Password?</p>
+        <button class="signin-btn" mat-raised-button (click)="navigate()">
+          Sign In
         </button>
-    </div>
+        <caption class="ineed-help">
+          Need help?<a> Go to online help </a>
+        </caption>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="signup-card">
+        <p class="signup-title">Sign Up</p>
+        <p class="signup-subtitle">NED University’s Scholarship Portal</p>
+        <mat-grid-list cols="2" rowHeight="85px" [gutterSize]="'8px'">
+          <mat-grid-tile>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name<span style="color: red">*</span></mat-label>
+              <input matInput placeholder="Enter First Name" />
+              <mat-hint>Enter First Name</mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name<span style="color: red">*</span></mat-label>
+              <input matInput placeholder="Enter Last Name" />
+              <mat-hint>Enter Last Name</mat-hint>
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <mat-form-field appearance="outline">
+          <mat-label>Email<span style="color: red">*</span></mat-label>
+          <input matInput placeholder="Enter Email" />
+          <mat-hint>Enter your Cloud Email address</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password<span style="color: red">*</span></mat-label>
+          <input matInput placeholder="Enter Password" />
+          <mat-hint>Enter Password</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label
+            >Confirm Password<span style="color: red">*</span></mat-label
+          >
+          <input matInput placeholder="Confirm Password" />
+          <mat-hint>Enter Password again to continue</mat-hint>
+        </mat-form-field>
+        <button class="signup-btn" mat-raised-button>Submit</button>
+        <caption class="ineed-help">
+          Need help?<a> Go to online help </a>
+        </caption>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <!-- </mat-card> -->
+  <div class="moving-slide" [class.active]="isSignUp">
+    <img src="assets/images/NED-Logo-white.png" />
+    <p class="moving-text">Welcome To</p>
+    <p class="moving-text">NED Scholarship Portal</p>
+    <p class="moving-question">Dont have an account yet?</p>
+    <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
+      Sign Up
+    </button>
+  </div>
 </div>
