@@ -24,12 +24,16 @@
   padding: 24px 62px;
 }
 
-.form-heading {
+.form-heading, .form-subheading {
   font-size: 24px;
   font-weight: 400;
   border-bottom: 1px solid #000;
   padding-bottom: 12px;
   margin-bottom: 36px;
+}
+
+.form-subheading{
+  font-size: 16px;
 }
 
 .form-field {

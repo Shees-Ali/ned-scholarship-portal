@@ -1,3 +1,77 @@
 <div class="form-content">
   <p class="form-heading">Guardian info</p>
+
+  <form [formGroup]="secondFormGroup">
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="guardian_name" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Relation with Applicant</mat-label>
+          <input matInput formControlName="guardian_relation" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Occupation</mat-label>
+          <input matInput formControlName="guardian_occupation" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Gross Salary/Income</mat-label>
+          <input matInput formControlName="gross_income" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Number of Earners</mat-label>
+          <input matInput formControlName="number_of_earners" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Total Family Income</mat-label>
+          <input matInput formControlName="total_income" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Contact Number</mat-label>
+          <input matInput formControlName="guardian_contact" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Contact Number (Office)</mat-label>
+          <input matInput formControlName="guardian_contact_office" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Monetary Assistance by Guardian</mat-label>
+          <input matInput formControlName="guardian_monetry_assistance" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Residential Address</mat-label>
+          <input matInput formControlName="guardian_residential_address" required />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <p class="form-subheading">List of Dependents on Guardian</p>
+    <!-- <div class="prev-btn">
+      <button (click)="prev.emit()" class="green-btn" mat-button>Previous</button>
+    </div> -->
+    <div class="next-btn">
+      <button (click)="next.emit()" class="green-btn" mat-button>Next</button>
+    </div>
+  </form>  
 </div>
+
+
