@@ -11,6 +11,8 @@ import { SecondFormPageComponent } from './second-form-page/second-form-page.com
 import { ThirdFormPageComponent } from './third-form-page/third-form-page.component';
 import { VerifyComponent } from './verify/verify.component';
 import { FourthFormPageComponent } from './fourth-form-page/fourth-form-page.component';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { FourthFormPageComponent } from './fourth-form-page/fourth-form-page.com
     MatInputModule,
     MatButtonModule,
     MatGridListModule,
+    MatTableModule,
+    FormsModule
   ],
 })
 export class ProfileCompletionModule {}
