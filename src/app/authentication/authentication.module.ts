@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AuthenticationPage],
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatGridListModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     ReactiveFormsModule
   ],
 })

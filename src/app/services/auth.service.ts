@@ -29,7 +29,9 @@ export class AuthService {
     });
   }
 
-  signUp(email: string, password: string) {
+  signUp(obj: any) {
+    const email = obj.email;
+    const password = obj.password;
     return new Promise<any>((resolve) => {
       createUserWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
