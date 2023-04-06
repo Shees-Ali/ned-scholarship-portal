@@ -27,6 +27,7 @@ export class AuthService {
   ) {
     this.auth.onAuthStateChanged((user) => {
       if (user != null) {
+        this.storage.set('user', JSON.stringify(user));
         this.user = user;
       }
     });
@@ -66,7 +67,7 @@ export class AuthService {
   }
 
   updateUserDetails(user: any, obj: any) {
-    return new Promise<any>((resolve) => {
+    return new Promise<any>(async (resolve) => {
       let db_obj = {
         last_name: obj['last_name'],
         first_name: obj['first_name'],
@@ -74,7 +75,10 @@ export class AuthService {
         user_id: user.uid,
         email: user.email,
         emailVerified: user.emailVerified,
+        photoURL: user.photoURL,
       };
+      user.displayName = obj['first_name'] + ' ' + obj['last_name'];
+      await this.auth.updateCurrentUser(user);
       this.userService.setUserData(user.uid, db_obj).then(() => {
         console.log('Success !!!');
       });

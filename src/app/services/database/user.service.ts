@@ -11,7 +11,7 @@ export class UserService {
     return this.firebase.setData('users/' + user_id, user);
   }
 
-  getUserData(user_id: string) {
+  getUserData(user_id: string | undefined) {
     return this.firebase.getDataOnValue('users/' + user_id);
   }
 }
