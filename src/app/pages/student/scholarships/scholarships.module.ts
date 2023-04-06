@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScholarshipsPage } from './scholarships.page';
 import { ScholarshipsRoutingModule } from './scholarships-routing.module';
-
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -11,7 +11,8 @@ import { ScholarshipsRoutingModule } from './scholarships-routing.module';
   ],
   imports: [
     CommonModule,
-    ScholarshipsRoutingModule
+    ScholarshipsRoutingModule,
+    ComponentsModule
   ]
 })
 export class ScholarshipsModule { }

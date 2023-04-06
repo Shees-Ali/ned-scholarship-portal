@@ -1,0 +1,20 @@
+<mat-table [dataSource]="dataSource">
+    <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+      <mat-header-cell *matHeaderCellDef>
+        {{ col.label }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div [ngSwitch]="col.type">
+          <span *ngSwitchDefault>
+            {{ element[col.key] }}
+          </span>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page">
+</mat-paginator>

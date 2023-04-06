@@ -1,0 +1,15 @@
+mat-table{
+  border-bottom: 0.75px solid rgba(#000, 0.38);
+  mat-header-cell, mat-cell{
+    border-top: 0.75x solid rgba(#000, 0.38);
+    border-bottom: 0.75px solid rgba(#000, 0.38);
+  }
+  mat-header-cell{
+    color: #1bb55e;
+    font-size: 18px;
+  }
+  mat-cell{
+    width: 200px;
+    font-size: 16px;
+  }
+}

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +12,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { TopBannerComponent } from './top-banner/top-banner.component';
 import { ScholarshipCardComponent } from './scholarship-card/scholarship-card.component';
+import { MyApplicationsListComponent } from './my-applications-list/my-applications-list.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { ScholarshipCardComponent } from './scholarship-card/scholarship-card.co
     ToolbarComponent,
     TopBannerComponent,
     ScholarshipCardComponent,
+    MyApplicationsListComponent,
   ],
   imports: [
     CommonModule,
@@ -30,12 +34,16 @@ import { ScholarshipCardComponent } from './scholarship-card/scholarship-card.co
     MatButtonModule,
     MatListModule,
     MatTooltipModule,
+    MatTableModule,
+    MatGridListModule,
+    MatPaginatorModule
   ],
   exports: [
     SideNavComponent,
     ToolbarComponent,
     TopBannerComponent,
     ScholarshipCardComponent,
+    MyApplicationsListComponent
   ],
 })
 export class ComponentsModule {}

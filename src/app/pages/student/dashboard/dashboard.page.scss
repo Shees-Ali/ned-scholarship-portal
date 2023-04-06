@@ -9,15 +9,21 @@
   align-items: start;
   flex-direction: column;
 
+  .my-application-list{
+    align-self: center;
+  }
   .card-title {
-    margin-left: 34px;
+    width: 90%;
+    margin-left: 82px;
     font-weight: 700;
     font-size: 34px;
     line-height: 36px;
     color: #000;
+    border-bottom: 0.75px solid rgba(#000, 0.40);
   }
 }
 
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
+
