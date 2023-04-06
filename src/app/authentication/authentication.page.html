@@ -38,40 +38,60 @@
       <div class="signup-card">
         <p class="signup-title">Sign Up</p>
         <p class="signup-subtitle">NED University’s Scholarship Portal</p>
-        <mat-grid-list cols="2" rowHeight="85px" [gutterSize]="'8px'">
-          <mat-grid-tile>
-            <mat-form-field appearance="outline">
-              <mat-label>First Name<span style="color: red">*</span></mat-label>
-              <input matInput placeholder="Enter First Name" />
-              <mat-hint>Enter First Name</mat-hint>
-            </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile>
-            <mat-form-field appearance="outline">
-              <mat-label>Last Name<span style="color: red">*</span></mat-label>
-              <input matInput placeholder="Enter Last Name" />
-              <mat-hint>Enter Last Name</mat-hint>
-            </mat-form-field>
-          </mat-grid-tile>
-        </mat-grid-list>
-        <mat-form-field appearance="outline">
-          <mat-label>Email<span style="color: red">*</span></mat-label>
-          <input matInput placeholder="Enter Email" />
-          <mat-hint>Enter your Cloud Email address</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Password<span style="color: red">*</span></mat-label>
-          <input matInput placeholder="Enter Password" />
-          <mat-hint>Enter Password</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label
-            >Confirm Password<span style="color: red">*</span></mat-label
-          >
-          <input matInput placeholder="Confirm Password" />
-          <mat-hint>Enter Password again to continue</mat-hint>
-        </mat-form-field>
-        <button (click)="signUp()" class="signup-btn" mat-raised-button>Submit</button>
+        <form class="form" [formGroup]="signUpForm">
+          <mat-grid-list cols="2" rowHeight="85px" [gutterSize]="'8px'">
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input
+                  formControlName="first_name"
+                  matInput
+                  placeholder="Enter First Name"
+                />
+                <mat-hint>Enter First Name</mat-hint>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input
+                  formControlName="last_name"
+                  matInput
+                  placeholder="Enter Last Name"
+                />
+                <mat-hint>Enter Last Name</mat-hint>
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Enter Email" />
+            <mat-hint>Enter your Cloud Email address</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              formControlName="password"
+              type="password"
+              matInput
+              placeholder="Enter Password"
+            />
+            <mat-hint>Enter Password</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              formControlName="confirm_password"
+              matInput
+              type="password"
+              placeholder="Confirm Password"
+            />
+            <mat-hint>Enter Password again to continue</mat-hint>
+          </mat-form-field>
+        </form>
+        <button (click)="signUp()" class="signup-btn" mat-raised-button>
+          Submit
+        </button>
         <caption class="ineed-help">
           Need help?<a> Go to online help </a>
         </caption>

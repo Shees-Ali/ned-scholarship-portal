@@ -28,10 +28,10 @@ export class AuthenticationPage extends BasePage implements OnInit {
     });
     this.signUpForm = this.formBuilder.group(
       {
-        first_name: ['', Validators.required],
-        last_name: ['', Validators.required],
+        first_name: ['Shees', Validators.required],
+        last_name: ['Ali', Validators.required],
         email: [
-          'test@cloud.neduet.edu.pk',
+          'sheesali088@cloud.neduet.edu.pk',
           [
             Validators.required,
             Validators.pattern('^[a-z0-9._%+-]+@cloud.neduet.edu.pk'),
@@ -79,17 +79,18 @@ export class AuthenticationPage extends BasePage implements OnInit {
       return this.openSnackBar('Sign Up Form InValid !', 'Okay');
     }
 
-    this.authService.signUp(this.signUpForm).then((res) => {
+    this.authService.signUp(this.signUpForm.value).then((res) => {
       if (res) {
+        this.openSnackBar('Account Creation Success', 'Okay !', 'success');
         this.nav.navigateTo('student');
       }
     });
   }
 
-  openSnackBar(message: string, action: string) {
+  openSnackBar(message: string, action: string, className: string = 'error') {
     this._snackBar.open(message, action, {
       verticalPosition: 'top',
-      panelClass: 'error',
+      panelClass: className,
     });
   }
 }

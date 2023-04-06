@@ -37,3 +37,11 @@ mat-sidenav[style] {
     --mdc-snackbar-supporting-text-color: #fff;
   }
 }
+
+.mat-mdc-snack-bar-container {
+  &.success {
+    --mdc-snackbar-container-color: green;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}

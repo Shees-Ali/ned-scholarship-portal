@@ -17,12 +17,24 @@ export class SideNavComponent extends BasePage {
     {
       link: 'profile-completion',
       name: 'Profile Completion',
-      icon: 'account_balance',
+      icon: 'verified_user',
+    },
+    {
+      link: 'scholarships',
+      name: 'Scholarships',
+      icon: 'school',
+    },
+    {
+      link: 'logout',
+      name: 'Log out',
+      icon: 'exit_to_app',
     },
   ];
 
   goTo(link: string) {
-    console.log(link);
+    if (link == 'logout') {
+      return this.authService.logOut();
+    }
     this.nav.navigateTo('student/' + link);
   }
 }

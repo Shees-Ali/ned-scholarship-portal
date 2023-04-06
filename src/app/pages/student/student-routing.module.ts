@@ -19,6 +19,13 @@ const routes: Routes = [
         (m) => m.ProfileCompletionModule
       ),
   },
+  {
+    path: 'scholarships',
+    loadChildren: () =>
+      import('./scholarships/scholarships.module').then(
+        (m) => m.ScholarshipsModule
+      ),
+  },
 ];
 
 @NgModule({

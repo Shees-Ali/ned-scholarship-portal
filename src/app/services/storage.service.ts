@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class StorageService {
   constructor() {}
 
-  set(key: string, data: string): Promise<boolean> {
+  set(key: string, data: any): Promise<boolean> {
     return new Promise((resolve) => {
       localStorage.setItem(key, data);
       resolve(true);
