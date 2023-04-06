@@ -1,0 +1,23 @@
+.my-app-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  p{
+    margin: 0;
+  }
+  button{
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    width: 200px;
+  }
+
+  .refresh-button{
+    width: 28px;
+  }
+
+
+}
+
