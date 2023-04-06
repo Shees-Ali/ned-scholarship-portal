@@ -26,6 +26,20 @@ const routes: Routes = [
         (m) => m.ScholarshipsModule
       ),
   },
+  {
+    path: 'my-applications',
+    loadChildren: () =>
+      import('./my-applications/my-applications.module').then(
+        (m) => m.MyApplicationsModule
+      ),
+  },
+  {
+    path: 'scholarship-details',
+    loadChildren: () =>
+      import('./scholarship-details/scholarship-details.module').then(
+        (m) => m.ScholarshipDetailsModule
+      ),
+  },
 ];
 
 @NgModule({
