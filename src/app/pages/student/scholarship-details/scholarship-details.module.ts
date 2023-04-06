@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ScholarshipDetailsComponent } from './scholarship-details.page';
+import { ScholarshipDetailsPage } from './scholarship-details.page';
 import { ScholarshipDetailsRoutingModule } from './scholarship-details-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    ScholarshipDetailsComponent
+    ScholarshipDetailsPage
   ],
   imports: [
     CommonModule,

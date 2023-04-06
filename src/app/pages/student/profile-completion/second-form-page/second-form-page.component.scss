@@ -1,1 +1,20 @@
 @import "../profile-completion.page.scss";
+
+mat-table{
+  flex-direction: row;
+  .dependents-input{
+    height: 30px;
+    width: 250px;
+  }
+  mat-header-cell{
+    color: white;
+    font-size: 18px;
+  }
+  mat-cell{
+    width: 200px;
+    font-size: 16px;
+  }
+  mat-header-row{
+    background-color: #1bb55e;
+  }
+}
