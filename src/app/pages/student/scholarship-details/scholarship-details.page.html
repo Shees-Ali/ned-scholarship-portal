@@ -1,1 +1,60 @@
-<p>scholarship-details works!</p>
+<div class="steps-div">
+  <button
+    (click)="changeTab(1)"
+    class="step-btn"
+    [class.step-btn-active]="selectedTab == 1"
+    mat-button
+  >
+    Scholarship Summary
+  </button>
+  <button
+    (click)="changeTab(2)"
+    class="step-btn"
+    [class.step-btn-active]="selectedTab == 2"
+    mat-button
+  >
+    Eligibility Criteria
+  </button>
+  <button
+    (click)="changeTab(3)"
+    class="step-btn"
+    [class.step-btn-active]="selectedTab == 3"
+    mat-button
+  >
+    How to Apply
+  </button>
+  <button
+    (click)="changeTab(4)"
+    class="step-btn"
+    [class.step-btn-active]="selectedTab == 4"
+    mat-button
+  >
+    Terms and Conditions
+  </button>
+  <button
+    (click)="changeTab(5)"
+    class="step-btn"
+    [class.step-btn-active]="selectedTab == 5"
+    mat-button
+  >
+    Submit Application
+  </button>
+</div>
+
+<div class="content">
+  <ng-container *ngIf="selectedTab == 1">
+    <first-scholarship-page></first-scholarship-page>
+  </ng-container>
+  <ng-container *ngIf="selectedTab == 2">
+    <second-scholarship-page></second-scholarship-page>
+  </ng-container>
+  <ng-container *ngIf="selectedTab == 3">
+    <third-scholarship-page></third-scholarship-page>
+  </ng-container>
+  <ng-container *ngIf="selectedTab == 4">
+    <fourth-scholarship-page></fourth-scholarship-page>
+  </ng-container>
+  <ng-container *ngIf="selectedTab == 5">
+    <submit-application-page></submit-application-page>
+  </ng-container>
+</div>
