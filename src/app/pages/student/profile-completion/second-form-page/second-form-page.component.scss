@@ -1,20 +1,69 @@
 @import "../profile-completion.page.scss";
 
-mat-table{
+mat-table {
   flex-direction: row;
-  .dependents-input{
+  .dependents-input {
     height: 30px;
     width: 250px;
   }
-  mat-header-cell{
+  mat-header-cell {
     color: white;
     font-size: 18px;
   }
-  mat-cell{
+  mat-cell {
     width: 200px;
     font-size: 16px;
   }
-  mat-header-row{
+  mat-header-row {
     background-color: #1bb55e;
+  }
+}
+
+.add-btn-div {
+  display: flex;
+  justify-content: end;
+  margin: 16px 0;
+
+  button {
+    background: #1bb55e;
+    color: #fff;
+  }
+}
+
+.header-row {
+  display: flex;
+  background: #1bb55e;
+  color: #fff;
+  font-weight: 500;
+  padding: 16px;
+  font-size: 18px;
+
+  .header-col {
+    width: calc(100% / 6);
+    display: flex;
+    justify-content: center;
+
+    p {
+      margin: 0 !important;
+    }
+  }
+}
+
+.content-row {
+  display: flex;
+  color: #000;
+  font-weight: 500;
+  padding: 16px;
+  font-size: 14px;
+
+  .content-col {
+    display: flex;
+    justify-content: center;
+    width: calc(100% / 6);
+
+    mat-form-field {
+      width: 100%;
+      margin: 0px 12px;
+    }
   }
 }

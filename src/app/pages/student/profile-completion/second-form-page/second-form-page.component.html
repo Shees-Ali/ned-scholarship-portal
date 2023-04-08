@@ -54,63 +54,130 @@
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Monetary Assistance by Guardian</mat-label>
-          <input matInput formControlName="guardian_monetry_assistance" required />
+          <input
+            matInput
+            formControlName="guardian_monetry_assistance"
+            required
+          />
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Residential Address</mat-label>
-          <input matInput formControlName="guardian_residential_address" required />
+          <input
+            matInput
+            formControlName="guardian_residential_address"
+            required
+          />
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
     <p class="form-subheading">List of Dependents on Guardian</p>
+  </form>
 
+  <div class="add-btn-div">
+    <button mat-icon-button (click)="addDependent()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
-    <mat-grid-list cols="1" rowHeight="8:1">
-    <!-- <article> -->
-      <mat-grid-tile>
-      <mat-table [dataSource]="dataSource">
-        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-          <mat-header-cell *matHeaderCellDef>
-            {{ col.label }}
-          </mat-header-cell>
-          <mat-cell *matCellDef="let element">
-            <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
-              <div class="btn-edit" *ngSwitchCase="'isEdit'">
-                <button mat-button (click)="element.isEdit = !element.isEdit">Edit</button>
-              </div>
-              <span *ngSwitchDefault>
-                {{ element[col.key] }}
-              </span>
-            </div>
-            <div *ngIf="element.isEdit">
-              <div class="btn-edit" *ngIf="col.key === 'isEdit'; else dataField">
-                <button mat-button (click)="element.isEdit = !element.isEdit">Done</button>
-              </div>
-              <ng-template #dataField>
-                <mat-form-field>
-                  <input
-                    class="dependents-input"
-                    name
-                    matInput
-                    [(ngModel)]="element[col.key]"
-                  />
-                </mat-form-field>
-              </ng-template>
-            </div>
-          </mat-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-        </mat-table>
-        </mat-grid-tile>
-      </mat-grid-list>
-    <!-- </article> -->
-    <div class="next-btn">
-      <button (click)="next.emit()" class="green-btn" mat-button>Next</button>
+  <mat-grid-list cols="1" rowHeight="8:1">
+    <div class="header-row">
+      <div class="header-col">
+        <p>Serial No.</p>
+      </div>
+      <div class="header-col">
+        <p>Full Name</p>
+      </div>
+      <div class="header-col">
+        <p>Relation</p>
+      </div>
+      <div class="header-col">
+        <p>Age</p>
+      </div>
+      <div class="header-col">
+        <p>Studying, Class/Job</p>
+      </div>
+      <div class="header-col">
+        <p>Actions</p>
+      </div>
     </div>
-  </form>  
+    <div
+      *ngFor="let item of dependents_data; let i = index"
+      class="content-row"
+    >
+      <ng-container *ngIf="!item.isEdit">
+        <div class="content-col">
+          <p>{{ i + 1 }}</p>
+        </div>
+        <div class="content-col">
+          <p>{{ item.name }}</p>
+        </div>
+        <div class="content-col">
+          <p>{{ item.relation }}</p>
+        </div>
+        <div class="content-col">
+          <p>{{ item.age }}</p>
+        </div>
+        <div class="content-col">
+          <p>{{ item.occupation }}</p>
+        </div>
+        <div class="content-col">
+          <button mat-icon-button (click)="item.isEdit = !item.isEdit">
+            <mat-icon>create_outline</mat-icon>
+          </button>
+          <button mat-icon-button (click)="removeDependent(i)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="item.isEdit">
+        <div class="content-col">
+          <p>{{ i + 1 }}</p>
+        </div>
+        <div class="content-col">
+          <mat-form-field>
+            <input class="dependents-input" matInput [(ngModel)]="item.name" />
+          </mat-form-field>
+        </div>
+        <div class="content-col">
+          <mat-form-field>
+            <input
+              class="dependents-input"
+              matInput
+              [(ngModel)]="item.relation"
+            />
+          </mat-form-field>
+        </div>
+        <div class="content-col">
+          <mat-form-field>
+            <input class="dependents-input" matInput [(ngModel)]="item.age" />
+          </mat-form-field>
+        </div>
+        <div class="content-col">
+          <mat-form-field>
+            <input
+              class="dependents-input"
+              matInput
+              [(ngModel)]="item.occupation"
+            />
+          </mat-form-field>
+        </div>
+        <div class="content-col">
+          <button mat-icon-button (click)="item.isEdit = !item.isEdit">
+            <mat-icon>check</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </mat-grid-list>
+  <!-- </article> -->
+  <div class="buttons-div">
+    <div class="next-btn">
+      <button (click)="prevPage()" class="green-btn" mat-button>Back</button>
+    </div>
+    <div class="next-btn">
+      <button (click)="nextPage()" class="green-btn" mat-button>Next</button>
+    </div>
+  </div>
 </div>
-
-

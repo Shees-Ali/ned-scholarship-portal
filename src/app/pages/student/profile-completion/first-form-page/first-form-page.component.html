@@ -82,13 +82,29 @@
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Phone Number</mat-label>
-          <input matInput formControlName="phone_number" required />
+          <span matPrefix>+92 &nbsp;</span>
+          <input
+            type="tel"
+            matInput
+            placeholder="123-456-7891"
+            formControlName="phone_number"
+            maxlength="10"
+            minlength="10"
+          />
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Alt Phone Number</mat-label>
-          <input matInput formControlName="alt_phone_number" required />
+          <span matPrefix>+92 &nbsp;</span>
+          <input
+            type="tel"
+            matInput
+            placeholder="123-456-7891"
+            formControlName="alt_phone_number"
+            maxlength="10"
+            minlength="10"
+          />
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
@@ -115,7 +131,7 @@
       </mat-grid-tile>
     </mat-grid-list>
     <div class="next-btn">
-      <button (click)="next.emit()" class="green-btn" mat-button>Next</button>
+      <button (click)="goToNext()" class="green-btn" mat-button>Next</button>
     </div>
   </form>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector  } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
 
 @Component({
@@ -10,11 +10,11 @@ export class ScholarshipDetailsPage extends BasePage implements OnInit {
   selectedTab: number = 1;
   constructor(injector: Injector) {
     super(injector);
-    // this.setupForms();
+    this.utiltiy.isPages.next(true);
   }
 
   ngOnInit(): void {}
-  
+
   changeTab(index: number) {
     this.selectedTab = index;
   }

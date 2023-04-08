@@ -88,9 +88,6 @@ export class AuthenticationPage extends BasePage implements OnInit {
   }
 
   openSnackBar(message: string, action: string, className: string = 'error') {
-    this._snackBar.open(message, action, {
-      verticalPosition: 'top',
-      panelClass: className,
-    });
+    this.utiltiy.openSnackBar(message, action, className);
   }
 }

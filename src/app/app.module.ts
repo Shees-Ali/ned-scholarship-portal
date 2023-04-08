@@ -10,6 +10,8 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environments';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,8 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
     BrowserAnimationsModule,
     ComponentsModule,
     MatSidenavModule,
+    MatSnackBarModule,
+    MatDialogModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
