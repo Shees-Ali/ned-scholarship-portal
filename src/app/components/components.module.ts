@@ -16,7 +16,7 @@ import { MyApplicationsListComponent } from './my-applications-list/my-applicati
 import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
 @NgModule({
   declarations: [
     SideNavComponent,
@@ -24,6 +24,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     TopBannerComponent,
     ScholarshipCardComponent,
     MyApplicationsListComponent,
+    ScreenLoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -36,14 +37,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTooltipModule,
     MatTableModule,
     MatGridListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   exports: [
     SideNavComponent,
     ToolbarComponent,
     TopBannerComponent,
     ScholarshipCardComponent,
-    MyApplicationsListComponent
+    MyApplicationsListComponent,
+    ScreenLoaderComponent
   ],
 })
 export class ComponentsModule {}

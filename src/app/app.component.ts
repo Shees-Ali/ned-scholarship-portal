@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   isAuthenticationPage: boolean = true;
   isPages: boolean = false;
   isHome: boolean = false;
+  isLoading: boolean = false;
   constructor(
     authService: AuthService,
     utilityService: UtilityService,
@@ -33,6 +34,9 @@ export class AppComponent implements OnInit {
       this.isAuthenticationPage = res;
       this.isPages = false;
       this.isHome = false;
+    });
+    utilityService.isloading.subscribe((res: boolean) => {
+      this.isLoading = res;
     });
   }
 

@@ -14,7 +14,9 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="content-container margin-top-150">
-        <router-outlet></router-outlet>
+        <router-outlet>
+            <screen-loader></screen-loader>
+        </router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
@@ -27,8 +29,8 @@
     (btnClicked)="goToAuth()"
   ></toolbar>
   <div class="content-container">
-    <router-outlet></router-outlet>
+    <router-outlet><screen-loader></screen-loader></router-outlet>
   </div>
 </ng-container>
 
-<router-outlet *ngIf="isAuthenticationPage"></router-outlet>
+<router-outlet *ngIf="isAuthenticationPage"><screen-loader></screen-loader></router-outlet>

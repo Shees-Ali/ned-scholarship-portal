@@ -19,6 +19,7 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
     BrowserAnimationsModule,
     ComponentsModule,
     MatSidenavModule,
+    ComponentsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

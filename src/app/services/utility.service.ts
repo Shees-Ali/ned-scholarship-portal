@@ -8,6 +8,11 @@ export class UtilityService {
   isPages = new Subject<boolean>();
   isHome = new Subject<boolean>();
   isAuthenticationPage = new Subject<boolean>();
+  isloading = new Subject<boolean>
 
   constructor() {}
+  
+  setLoading(loading: boolean) {
+    loading = false
+  }
 }
