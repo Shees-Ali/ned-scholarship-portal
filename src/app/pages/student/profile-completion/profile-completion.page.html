@@ -43,13 +43,13 @@
 
 <div class="content">
   <ng-container *ngIf="selectedTab == 1">
-    <app-first-form-page
-      (next)="next()"
-      [firstFormGroup]="firstForm"
-    ></app-first-form-page>
+    <app-first-form-page (next)="next()"></app-first-form-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 2">
-    <app-second-form-page></app-second-form-page>
+    <app-second-form-page
+      (next)="next()"
+      (back)="back()"
+    ></app-second-form-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 3">
     <app-third-form-page></app-third-form-page>

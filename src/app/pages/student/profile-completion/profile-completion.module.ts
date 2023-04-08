@@ -13,6 +13,7 @@ import { VerifyComponent } from './verify/verify.component';
 import { FourthFormPageComponent } from './fourth-form-page/fourth-form-page.component';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatGridListModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
 })
 export class ProfileCompletionModule {}

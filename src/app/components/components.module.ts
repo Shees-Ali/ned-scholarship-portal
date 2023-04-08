@@ -13,9 +13,11 @@ import { RouterModule } from '@angular/router';
 import { TopBannerComponent } from './top-banner/top-banner.component';
 import { ScholarshipCardComponent } from './scholarship-card/scholarship-card.component';
 import { MyApplicationsListComponent } from './my-applications-list/my-applications-list.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
     TopBannerComponent,
     ScholarshipCardComponent,
     MyApplicationsListComponent,
+    ConfirmationDialogComponent,
     ScreenLoaderComponent,
   ],
   imports: [
@@ -38,6 +41,7 @@ import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
     MatTableModule,
     MatGridListModule,
     MatPaginatorModule,
+    MatDialogModule,
   ],
   exports: [
     SideNavComponent,
