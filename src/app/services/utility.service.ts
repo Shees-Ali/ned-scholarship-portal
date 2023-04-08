@@ -11,9 +11,17 @@ export class UtilityService {
   isPages = new Subject<boolean>();
   isHome = new Subject<boolean>();
   isAuthenticationPage = new Subject<boolean>();
-  isloading = new Subject<boolean>
+  isLoading = new Subject<boolean>();
 
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) {}
+
+  showLoader() {
+    this.isLoading.next(true);
+  }
+
+  hideLoader() {
+    this.isLoading.next(false);
+  }
 
   openSnackBar(message: string, action: string, className: string = 'error') {
     this._snackBar.open(message, action, {

@@ -61,7 +61,7 @@ export class AuthenticationPage extends BasePage implements OnInit {
 
   signIn() {
     console.log(this.signInForm.value);
-    this.utiltiy.isloading.next(true)
+    this.utiltiy.showLoader();
     if (this.signInForm.invalid) {
       return this.openSnackBar('Sign In Form InValid !', 'Okay');
     }
@@ -69,6 +69,7 @@ export class AuthenticationPage extends BasePage implements OnInit {
     this.authService.signIn(formValue.email, formValue.password).then((res) => {
       console.log(res);
       if (res) {
+        this.utiltiy.hideLoader();
         this.nav.navigateTo('student');
       }
     });

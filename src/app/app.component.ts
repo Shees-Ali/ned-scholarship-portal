@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
       this.isPages = false;
       this.isHome = false;
     });
-    utilityService.isloading.subscribe((res: boolean) => {
+    utilityService.isLoading.subscribe((res: boolean) => {
       this.isLoading = res;
     });
   }

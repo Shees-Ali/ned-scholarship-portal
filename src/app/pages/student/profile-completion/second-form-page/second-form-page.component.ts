@@ -1,6 +1,5 @@
 import {
   Component,
-  Input,
   OnInit,
   Injector,
   Output,
@@ -52,15 +51,40 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
       gross_income: ['', [Validators.required]],
       number_of_earners: ['', [Validators.required]],
       total_income: ['', [Validators.required]],
-      guardian_contact: ['', [Validators.required]],
-      guardian_contact_office: ['', [Validators.required]],
+      guardian_contact: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
+      guardian_contact_office: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
       guardian_monetry_assistance: [''],
       guardian_residential_address: ['', [Validators.required]],
     });
+    this.setValues();
   }
 
-  ngOnInit(): void {
-    console.log(this.secondFormGroup);
+  ngOnInit(): void {}
+
+  async setValues() {
+    const string = await this.storage.get('profileCompletion:second');
+    if (string) {
+      const form = JSON.parse(string);
+      console.log(form);
+      this.dependents_data = form['dependents'];
+      delete form['dependents'];
+      console.log(form);
+      this.secondFormGroup.setValue(form);
+    }
   }
 
   addDependent(): void {
@@ -77,7 +101,21 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
     this.dependents_data.splice(index, 1);
   }
 
-  async nextPage() {}
+  async nextPage() {
+    console.log(this.secondFormGroup.valid);
+    console.log(this.secondFormGroup);
+    console.log(this.secondFormGroup.value);
+    if (this.dependents_data.length == 0) {
+      return this.utiltiy.openSnackBar('Please Enter Dependents Data', 'OK');
+    }
+    if (!this.secondFormGroup.valid) {
+      return this.utiltiy.openSnackBar('Please Fill All the Fields !', 'OK');
+    }
+    const _form = this.secondFormGroup.value;
+    _form['dependents'] = this.dependents_data;
+    const form: string = JSON.stringify(_form);
+    this.storage.set('profileCompletion:second', form);
+  }
 
   async prevPage() {
     if (this.secondFormGroup.dirty) {
