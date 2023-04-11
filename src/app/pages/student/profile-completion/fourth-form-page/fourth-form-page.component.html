@@ -1,3 +1,21 @@
 <div class="form-content">
   <p class="form-heading">Documents</p>
+
+  <input id="fileUpload" hidden type="file" />
+
+  <div class="file-upload">
+    <button mat-button (click)="openFileUpload()">
+      Choose File
+    </button>
+  </div>
+
+
+  <div class="buttons-div">
+    <div class="next-btn">
+      <button (click)="prevPage()" class="green-btn" mat-button>Back</button>
+    </div>
+    <div class="next-btn">
+      <button (click)="nextPage()" class="green-btn" mat-button>Next</button>
+    </div>
+  </div>
 </div>

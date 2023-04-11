@@ -1,1 +1,8 @@
 @import "../profile-completion.page.scss";
+
+.content-col {
+  width: calc(100% / 8) !important;
+}
+.header-col {
+  width: calc(100% / 8) !important;
+}
