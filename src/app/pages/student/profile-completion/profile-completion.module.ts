@@ -14,6 +14,7 @@ import { FourthFormPageComponent } from './fourth-form-page/fourth-form-page.com
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatGridListModule,
     MatTableModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
 })
 export class ProfileCompletionModule {}
