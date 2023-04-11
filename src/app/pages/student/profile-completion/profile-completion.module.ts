@@ -14,6 +14,7 @@ import { FourthFormPageComponent } from './fourth-form-page/fourth-form-page.com
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatTableModule,
     FormsModule,
     MatIconModule,
+    MatRippleModule,
     MatCheckboxModule
   ],
 })

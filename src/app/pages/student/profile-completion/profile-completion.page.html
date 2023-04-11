@@ -52,10 +52,13 @@
     ></app-second-form-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 3">
-    <app-third-form-page></app-third-form-page>
+    <app-third-form-page (next)="next()" (back)="back()"></app-third-form-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 4">
-    <app-fourth-form-page></app-fourth-form-page>
+    <app-fourth-form-page
+      (next)="next()"
+      (back)="back()"
+    ></app-fourth-form-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 5">
     <app-verify></app-verify>

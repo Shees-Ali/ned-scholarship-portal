@@ -1,2 +1,8 @@
 @import "../profile-completion.page.scss";
-@import "../second-form-page/second-form-page.component.scss"
+
+.content-col {
+  width: calc(100% / 8) !important;
+}
+.header-col {
+  width: calc(100% / 8) !important;
+}

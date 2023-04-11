@@ -8,7 +8,7 @@ import {
 import { FormGroup, Validators } from '@angular/forms';
 import { BasePage } from 'src/app/base/base.page';
 
-export interface GuardianDependents {
+interface GuardianDependents {
   name: string;
   relation: string;
   age: number;
@@ -25,13 +25,6 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
   secondFormGroup: FormGroup<any>;
   @Output('next') next: EventEmitter<any> = new EventEmitter<any>();
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
-  displayedColumns: string[] = [
-    'name',
-    'relation',
-    'age',
-    'occupation',
-    'isEdit',
-  ];
   dependents_data: GuardianDependents[] = [
     {
       name: '',
@@ -115,6 +108,7 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
     _form['dependents'] = this.dependents_data;
     const form: string = JSON.stringify(_form);
     this.storage.set('profileCompletion:second', form);
+    this.next.emit();
   }
 
   async prevPage() {
