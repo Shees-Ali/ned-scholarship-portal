@@ -13,6 +13,30 @@ export class FourthFormPageComponent extends BasePage {
     super(injector);
   }
 
+  selected_files: {
+    file: any,
+    is_upload_in_progress: boolean,
+    upload_result: any
+  }[] = [];
+  
+  uploadFile(index: number){
+
+  }
+  inititateFileCancel(index: number){
+    
+  }
+
+  openFileSelector(){
+
+  }
+
+  uploadAll(){
+
+  }
+  initiateCancelAll(){
+
+  }
+
   openFileUpload() {
     let element: HTMLElement = document.getElementById(
       'fileUpload'

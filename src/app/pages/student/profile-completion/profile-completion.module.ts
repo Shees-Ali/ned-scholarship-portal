@@ -17,6 +17,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 @NgModule({
   declarations: [
     ProfileCompletionPage,
@@ -37,7 +40,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormsModule,
     MatIconModule,
     MatRippleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressBarModule,
+    MatExpansionModule
   ],
 })
 export class ProfileCompletionModule {}

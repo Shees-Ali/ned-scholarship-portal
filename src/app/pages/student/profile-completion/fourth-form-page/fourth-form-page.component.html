@@ -1,14 +1,123 @@
 <div class="form-content">
   <p class="form-heading">Documents</p>
-
-  <input id="fileUpload" hidden type="file" />
-
-  <div class="file-upload">
-    <button mat-button (click)="openFileUpload()">
+  <ul>
+    <li class="file-upload-text">
+      Upload scanned pdf files of following Documents:
+    </li>
+    <li class="file-upload-text">
+      a&#41; Mark Certificate(s) of all engineering examinations/ S.Sc & H.Sc/ B.Sc
+      marks Certificate for student of first year engineering.
+    </li>
+    <li class="file-upload-text">
+      b&#41; i&#41; Salary certificate of father (if employed)
+    </li>
+    <li class="file-upload-text">
+      b&#41; ii&#41; Updated Pension Book (if retired)
+    </li>
+    <li class="file-upload-text">
+      b&#41; iii&#41; Affidavit of Income Verification (if business owner)
+    </li>
+    <li>
+      c&#41; University ID Card
+    </li>
+  </ul>
+  <div class="file-uploader">
+    <div class="file-uploader__instructions">
+      Drag and drop the file(s) here or click on "Browse Files".
+    </div>
+    <div class="files-for-upload">
+      <mat-expansion-panel 
+          *ngFor="let selected_file of selected_files; index as i"
+          class="selected-file" hideToggle disabled
+          expanded="{{!!selected_file.upload_result}}">
+          <mat-expansion-panel-header>
+              <div class="selected-file__header">
+                  <div class="selected-file__name">
+                      {{selected_file.file.name}}
+                  </div>
+                  <div class="selected-file__actions">
+                      <button 
+                          matRipple
+                          class="selected_file__upload primary-button"
+                          matTooltip="Upload"
+                          matTooltipPosition="left"
+                          aria-label="Upload File"
+                          (click)="uploadFile(i)"
+                          [disabled]="selected_file.is_upload_in_progress || selected_file.upload_result=='success'">
+                          <span *ngIf="selected_file.upload_result!='success'"
+                              aria-hidden="true" class="material-icons">file_upload</span>
+                          <span *ngIf="selected_file.upload_result=='success'"
+                              aria-hidden="true" class="material-icons">check</span>
+                      </button>
+                      <button 
+                          matRipple
+                          class="selected_file__cancel secondary-button"
+                          matTooltip="Cancel"
+                          matTooltipPosition="left"
+                          aria-label="Cancel File"
+                          (click)="inititateFileCancel(i)">
+                          <span aria-hidden="true" class="material-icons">clear</span>
+                      </button>
+                  </div>
+              </div>
+              <mat-progress-bar *ngIf="selected_file.is_upload_in_progress" mode="indeterminate"></mat-progress-bar>
+          </mat-expansion-panel-header>
+          <div *ngIf="selected_file.upload_result=='success'"
+              class="selected-file__upload-result">
+              The file was uploaded successfully.
+          </div>
+          <div *ngIf="!!selected_file.upload_result && selected_file.upload_result!='success'"
+              class="selected-file__upload--error">
+              {{selected_file.upload_result}}
+          </div>
+      </mat-expansion-panel>
+    </div>
+    <div class="file-upload__options">
+      <form 
+            class="file-upload__native-selection"
+            >
+            <input type="file" #fileSelector
+                formControlName="file_selection"
+                >
+      </form>
+      <button 
+          mat-button
+          matRipple
+          class="file-upload__browse"
+          (click)="openFileUpload()">
+              Browse Files
+      </button>
+      <ng-container *ngIf="selected_files.length>1">
+        <button 
+            mat-button
+            matRipple
+            class="all_file__upload primary-button"
+            matTooltip="Upload All"
+            matTooltipPosition="above"
+            aria-label="Upload All Files"
+            (click)="uploadAll()"
+            [disabled]="">
+            <mat-icon aria-hidden="true">file_upload</mat-icon>
+        </button>
+        <button 
+            mat-button
+            matRipple
+            class="all_file__cancel"
+            matTooltip="Cancel All"
+            matTooltipPosition="above"
+            aria-label="Cancel All Files"
+            (click)="initiateCancelAll()">
+            <mat-icon aria-hidden="true">clear</mat-icon>
+        </button>
+    </ng-container>
+    </div>
+  
+    <!-- <button mat-button (click)="openFileUpload()">
       Choose File
-    </button>
+    </button> -->
   </div>
 
+  
 
   <div class="buttons-div">
     <div class="next-btn">
