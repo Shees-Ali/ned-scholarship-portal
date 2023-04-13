@@ -1,6 +1,14 @@
 @import "../profile-completion.page.scss";
 
-
+.file-upload-text{
+    font-size: 16px;
+}
+.font-weight-500{
+    font-weight: 500;
+}
+::ng-deep .mat-checkbox-layout {
+    background-color: #1bb55e;
+}
 input {
     margin-top: 1rem;
 }

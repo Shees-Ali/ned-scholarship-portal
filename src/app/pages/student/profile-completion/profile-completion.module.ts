@@ -19,6 +19,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatRippleModule,
     MatCheckboxModule,
     MatProgressBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule
   ],
 })
 export class ProfileCompletionModule {}

@@ -1,26 +1,25 @@
 <div class="form-content">
   <p class="form-heading">Documents</p>
-  <ul>
-    <li class="file-upload-text">
-      Upload scanned pdf files of following Documents:
-    </li>
-    <li class="file-upload-text">
+  <p class="file-upload-text font-weight-500">
+    Upload scanned PDF files of following Documents:
+  </p>
+  <mat-selection-list>
+    <mat-list-option class="file-upload-text">
       a&#41; Mark Certificate(s) of all engineering examinations/ S.Sc & H.Sc/ B.Sc
       marks Certificate for student of first year engineering.
-    </li>
-    <li class="file-upload-text">
-      b&#41; i&#41; Salary certificate of father (if employed)
-    </li>
-    <li class="file-upload-text">
-      b&#41; ii&#41; Updated Pension Book (if retired)
-    </li>
-    <li class="file-upload-text">
-      b&#41; iii&#41; Affidavit of Income Verification (if business owner)
-    </li>
-    <li>
+    </mat-list-option>
+    <mat-list-option class="file-upload-text">
+      b&#41; Evidence of Income
+    </mat-list-option>
+    <mat-list>
+      <mat-list-item class="file-upload-text">Salary certificate of father (if employed)</mat-list-item>
+      <mat-list-item class="file-upload-text">Updated Pension Book (if retired)</mat-list-item>
+      <mat-list-item class="file-upload-text">Affidavit of Income Verification (if business owner)</mat-list-item>
+    </mat-list>
+    <mat-list-option>
       c&#41; University ID Card
-    </li>
-  </ul>
+    </mat-list-option>
+  </mat-selection-list>
   <div class="file-uploader">
     <div class="file-uploader__instructions">
       Drag and drop the file(s) here or click on "Browse Files".
@@ -82,15 +81,13 @@
       </form>
       <button 
           mat-button
-          matRipple
           class="file-upload__browse"
-          (click)="openFileUpload()">
+          (click)="openFileSelector()">
               Browse Files
       </button>
       <ng-container *ngIf="selected_files.length>1">
         <button 
             mat-button
-            matRipple
             class="all_file__upload primary-button"
             matTooltip="Upload All"
             matTooltipPosition="above"
@@ -101,7 +98,6 @@
         </button>
         <button 
             mat-button
-            matRipple
             class="all_file__cancel"
             matTooltip="Cancel All"
             matTooltipPosition="above"
@@ -111,10 +107,6 @@
         </button>
     </ng-container>
     </div>
-  
-    <!-- <button mat-button (click)="openFileUpload()">
-      Choose File
-    </button> -->
   </div>
 
   
