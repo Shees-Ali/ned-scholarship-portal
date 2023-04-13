@@ -7,6 +7,7 @@ import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { UtilityService } from '../services/utility.service';
 import { UserService } from '../services/database/user.service';
+import { FirebaseService } from '../services/database/firebase.service';
 
 export abstract class BasePage {
   public formBuilder: FormBuilder;
@@ -17,6 +18,7 @@ export abstract class BasePage {
   public storage: StorageService;
   public utiltiy: UtilityService;
   public userService: UserService;
+  public firebase: FirebaseService;
 
   constructor(injector: Injector) {
     this.formBuilder = injector.get(FormBuilder);
@@ -27,5 +29,6 @@ export abstract class BasePage {
     this.storage = injector.get(StorageService);
     this.utiltiy = injector.get(UtilityService);
     this.userService = injector.get(UserService);
+    this.firebase = injector.get(FirebaseService);
   }
 }

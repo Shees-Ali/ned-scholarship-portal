@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { ConfirmationDialogComponent } from '../components/confirmation-dialog/confirmation-dialog.component';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class UtilityService {
   isHome = new Subject<boolean>();
   isAuthenticationPage = new Subject<boolean>();
   isLoading = new Subject<boolean>();
-
+  error_messages = "";
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   showLoader() {
@@ -52,4 +52,7 @@ export class UtilityService {
       });
     });
   }
+
+
+  
 }

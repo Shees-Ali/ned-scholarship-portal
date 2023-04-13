@@ -19,6 +19,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
+import { DragDropDirective } from '../directives/drag-drop.directive';
+
 @NgModule({
   declarations: [
     SideNavComponent,
@@ -28,6 +30,7 @@ import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
     MyApplicationsListComponent,
     ConfirmationDialogComponent,
     ScreenLoaderComponent,
+    DragDropDirective,
   ],
   imports: [
     CommonModule,
@@ -49,7 +52,8 @@ import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
     TopBannerComponent,
     ScholarshipCardComponent,
     MyApplicationsListComponent,
-    ScreenLoaderComponent
+    ScreenLoaderComponent,
+    DragDropDirective,
   ],
 })
 export class ComponentsModule {}

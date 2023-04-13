@@ -33,9 +33,19 @@ export class ThirdFormPageComponent extends BasePage {
 
   constructor(injector: Injector) {
     super(injector);
+    this.setValues();
   }
 
   ngOnInit(): void {}
+
+  async setValues(): Promise<any> {
+    const string = await this.storage.get('profileCompletion:third');
+    if (string) {
+      const data = JSON.parse(string);
+      console.log(data);
+      this.academic_records = data;
+    }
+  }
 
   addRecord(): void {
     this.academic_records.push({
@@ -55,11 +65,12 @@ export class ThirdFormPageComponent extends BasePage {
 
   async nextPage() {
     if (this.academic_records.length == 0) {
-      return this.utiltiy.openSnackBar('Please Enter Dependents Data', 'OK');
+      return this.utiltiy.openSnackBar('Please Enter Academic Data', 'OK');
     }
 
-    const string = '';
+    const string = JSON.stringify(this.academic_records);
     this.storage.set('profileCompletion:third', string);
+    this.next.emit();
   }
 
   async prevPage() {
