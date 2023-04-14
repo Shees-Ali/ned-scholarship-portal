@@ -1,0 +1,56 @@
+<div class="form-content">
+  <p class="form-heading">Scholarship Details</p>
+  <form [formGroup]="scholarshipDetailsFormGroup">
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Scholarship Name</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Scholarship Type(Merit or Need)</mat-label>
+          <input matInput formControlName="type" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Sponsor Name</mat-label>
+          <input matInput formControlName="sponsor_name" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Scholarship Description</mat-label>
+          <input matInput formControlName="description" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Eligibility Criteria</mat-label>
+          <input matInput formControlName="criteria" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Last Date to Apply</mat-label>
+          <input matInput formControlName="due_date" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <!-- <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Input Image (if any)</mat-label>
+          <input type="file" 
+          (change)="onImage($event)" 
+          
+          formControlName="img"/>
+        </mat-form-field>
+      </mat-grid-tile> -->
+
+      </mat-grid-list>
+    </form>
+    <div class="submit-btn">
+      <button (click)="submit()" class="green-btn" mat-button>Save and Post</button>
+    </div>
+</div>
