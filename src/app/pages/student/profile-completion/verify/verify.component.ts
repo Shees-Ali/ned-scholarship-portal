@@ -7,7 +7,6 @@ import { BasePage } from 'src/app/base/base.page';
   styleUrls: ['./verify.component.scss'],
 })
 export class VerifyComponent extends BasePage {
-  @Output('next') next: EventEmitter<any> = new EventEmitter<any>();
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
   personal_info: any;
   guardian_info: any;
@@ -18,7 +17,6 @@ export class VerifyComponent extends BasePage {
 
   constructor(injector: Injector) {
     super(injector);
-    this.setValues();
     this.userService.getCurrentUser().then((res: any) => {
       this.user = res;
       this.setValues();
@@ -34,15 +32,36 @@ export class VerifyComponent extends BasePage {
       form['email'] = this.user.email;
       this.personal_info = form;
     }
+    console.log(this.personal_info);
     const second_string = await this.storage.get('profileCompletion:second');
     if (second_string) {
       const form = JSON.parse(second_string);
       this.guardian_info = form;
     }
+    console.log(this.guardian_info);
     const third_string = await this.storage.get('profileCompletion:third');
     if (first_string) {
       const form = JSON.parse(third_string);
       this.academic_record = form;
     }
+    console.log(this.academic_record);
+  }
+
+  async prevPage() {
+    const flag = await this.utiltiy.openConfirmationDialog(
+      'Go Back?',
+      'Are you sure you want to go back?',
+      'No',
+      'Yes'
+    );
+    if (flag) {
+      this.back.emit();
+    } else {
+      return;
+    }
+  }
+
+  async submit() {
+    
   }
 }

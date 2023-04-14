@@ -1,4 +1,21 @@
 <div class="form-content">
+
+
+  <div class="form-review-box">
+    <p class="form-heading">Review</p>
+
+    <p class="form-subheading">Particulars of Applicant</p>
+    <div class="personal_info">
+
+    </div>
+
+    <p class="form-subheading">Guardian info</p>
+
+    <p class="form-subheading">Academic Records</p>
+
+  </div>
+
+
   <p class="form-heading">Verify</p>
   <div class="form-declaration">
     <p>
@@ -11,7 +28,13 @@
     <mat-checkbox color="primary"></mat-checkbox>
   </div>
 
-  <div class="form-review-box">
-    <p class="form-heading">Particulars of Applicant</p>
+
+  <div class="buttons-div">
+    <div class="next-btn">
+      <button (click)="prevPage()" class="green-btn" mat-button>Back</button>
+    </div>
+    <div class="next-btn">
+      <button (click)="submit()" class="green-btn" mat-button>Submit</button>
+    </div>
   </div>
 </div>
