@@ -10,5 +10,14 @@
         </p>
     </div>
 
-  <button mat-button class="apply-now-btn">Apply Now -></button>
+  <button 
+  mat-button class="apply-now-btn" 
+  *ngIf="user?.role === 'student'"
+  (click)="to_apply()"
+  > Apply Now -></button>
+  <button 
+  mat-button class="apply-now-btn" 
+  *ngIf="user?.role === 'admin'"
+  (click)="to_edit()"
+  > View/Edit -></button>
 </div>

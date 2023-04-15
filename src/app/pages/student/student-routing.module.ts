@@ -40,6 +40,13 @@ const routes: Routes = [
         (m) => m.ScholarshipDetailsModule
       ),
   },
+  {
+    path: 'scholarship-details',
+    loadChildren: () =>
+      import('./scholarship-details/scholarship-details.module').then(
+        (m) => m.ScholarshipDetailsModule
+      ),
+  },
 ];
 
 @NgModule({

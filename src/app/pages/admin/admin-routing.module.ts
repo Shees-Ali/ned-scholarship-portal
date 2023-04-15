@@ -29,6 +29,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./allstudents/allstudents.module').then((m) => m.AllstudentsModule),
   },
+  {
+    path: 'applicant-list',
+    loadChildren: () =>
+      import('./applicant-list/applicant-list.module').then((m) => m.ApplicantListModule),
+  },
+  {
+    path: 'application',
+    loadChildren: () =>
+      import('./application/application.module').then((m) => m.ApplicationModule),
+  },
 ];
 
 @NgModule({

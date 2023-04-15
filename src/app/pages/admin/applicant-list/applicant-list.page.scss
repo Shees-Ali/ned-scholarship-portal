@@ -1,0 +1,21 @@
+@import url(/src/app/pages/student/profile-completion/profile-completion.page.scss);
+
+
+.content {
+  background: #fff;
+  padding: 24px 62px;
+  .content-col {
+    width: calc(100% / 6) !important;
+  }
+  .header-col {
+    width: calc(100% / 6) !important;
+  }
+  .archive-btn{
+    padding: 0 16px;
+    display: flex;
+    justify-content: end;
+    button{
+      color: #F44336;
+    }
+  }
+}
