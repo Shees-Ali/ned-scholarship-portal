@@ -7,11 +7,7 @@ import { BasePage } from 'src/app/base/base.page';
   styleUrls: ['./side-nav.component.scss'],
 })
 export class SideNavComponent extends BasePage {
-  constructor(injector: Injector) {
-    super(injector);
-  }
   @Input() isExpanded?: boolean;
-
   public routeLinks = [
     { link: 'dashboard', name: 'Dashboard', icon: 'dashboard' },
     {
@@ -30,6 +26,16 @@ export class SideNavComponent extends BasePage {
       icon: 'exit_to_app',
     },
   ];
+  user: any;
+  constructor(injector: Injector) {
+    super(injector);
+    this.userService.getCurrentUser().then((res: any) => {
+      this.user = res;
+      if (this.user.isProfileComplete) {
+        this.routeLinks[1].name = "Update Profile"
+      }
+    });
+  }
 
   goTo(link: string) {
     if (link == 'logout') {

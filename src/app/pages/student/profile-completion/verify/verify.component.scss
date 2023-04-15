@@ -1,13 +1,38 @@
 @import "../profile-completion.page.scss";
 
-.form-declaration{
+.form-declaration {
   display: flex;
   width: 98%;
   align-items: baseline;
-  p{
+  p {
     font-size: 16px;
   }
-  mat-checkbox{
+  mat-checkbox {
     transform: translateY(60%);
-  } 
+  }
+}
+
+.records-row {
+  display: flex;
+
+  .sub-row {
+    flex: 0.5;
+  }
+
+  .sub-row:nth-child(1) {
+    margin-right: 16px;
+  }
+}
+
+.data-view-table-row {
+  display: flex;
+  flex-wrap: wrap;
+
+  .data-view-table-subrow {
+    flex: 1;
+    border-inline-end: 1px solid;
+    border-bottom: 1px solid;
+    padding: 8px;
+    min-width: 25%;
+  }
 }

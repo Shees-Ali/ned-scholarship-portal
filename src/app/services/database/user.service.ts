@@ -20,6 +20,10 @@ export class UserService {
     return this.firebase.getDataOnValue('users/' + user_id);
   }
 
+  updateUser(user_id: string | undefined, update: any) {
+    return this.firebase.updateData('users/' + user_id, update);
+  }
+
   getCurrentUser() {
     return new Promise<any>(async (resolve) => {
       const string = await this.storage.get('user');

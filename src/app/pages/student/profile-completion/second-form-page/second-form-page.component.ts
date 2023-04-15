@@ -25,6 +25,7 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
   secondFormGroup: FormGroup<any>;
   @Output('next') next: EventEmitter<any> = new EventEmitter<any>();
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
+  user: any;
   dependents_data: GuardianDependents[] = [
     {
       name: '',
@@ -63,12 +64,27 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
       guardian_monetry_assistance: [''],
       guardian_residential_address: ['', [Validators.required]],
     });
-    this.setValues();
+    this.userService.getCurrentUser().then((res: any) => {
+      this.user = res;
+      this.setValues();
+    });
   }
 
   ngOnInit(): void {}
 
   async setValues() {
+    if (this.user.isProfileComplete) {
+      const student = await this.studentService.getStudentData(
+        this.user.user_id
+      );
+      if (student) {
+        const form = student.guardian_info;
+        this.dependents_data = student.guardian_info.dependents;
+        delete form['dependents'];
+        this.secondFormGroup.setValue(form);
+      }
+      return;
+    }
     const string = await this.storage.get('profileCompletion:second');
     if (string) {
       const form = JSON.parse(string);

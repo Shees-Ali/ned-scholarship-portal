@@ -14,22 +14,27 @@ input {
       box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.73);
       border-radius: 6px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       margin: 16px 0;
-      mat-icon {
-        margin: 0 16px;
-      }
 
-      h3 {
-        font-weight: 500;
-        color: #1bb55e;
-      }
-      
-      .btn-container {
+      .file-content {
+        align-items: center;
         display: flex;
-        flex: 1;
-        justify-content: end;
-        margin-right: 16px;
+        mat-icon {
+          margin: 0 16px;
+        }
+
+        h3 {
+          font-weight: 500;
+          color: #1bb55e;
+        }
+
+        .btn-container {
+          display: flex;
+          flex: 1;
+          justify-content: end;
+          margin-right: 16px;
+        }
       }
     }
   }
@@ -60,4 +65,8 @@ input {
       display: none;
     }
   }
+}
+
+.progress-bar {
+  --mdc-linear-progress-active-indicator-color: #1bb55e;
 }

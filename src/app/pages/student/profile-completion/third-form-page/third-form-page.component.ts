@@ -19,6 +19,7 @@ interface AcadmicRecords {
 export class ThirdFormPageComponent extends BasePage {
   @Output('next') next: EventEmitter<any> = new EventEmitter<any>();
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
+  user: any;
   academic_records: AcadmicRecords[] = [
     {
       class_year: '',
@@ -33,12 +34,25 @@ export class ThirdFormPageComponent extends BasePage {
 
   constructor(injector: Injector) {
     super(injector);
-    this.setValues();
+    this.authService.getUser().then(async (res: any) => {
+      this.user = await this.userService.getUserData(res?.uid);
+      this.setValues();
+    });
   }
 
   ngOnInit(): void {}
 
   async setValues(): Promise<any> {
+    if (this.user.isProfileComplete) {
+      const student = await this.studentService.getStudentData(
+        this.user.user_id
+      );
+      if (student) {
+        this.academic_records = student.academic_records;
+      }
+      return;
+    }
+
     const string = await this.storage.get('profileCompletion:third');
     if (string) {
       const data = JSON.parse(string);

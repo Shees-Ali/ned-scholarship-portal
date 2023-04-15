@@ -20,6 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
 import { DragDropDirective } from '../directives/drag-drop.directive';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { DragDropDirective } from '../directives/drag-drop.directive';
     ConfirmationDialogComponent,
     ScreenLoaderComponent,
     DragDropDirective,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -45,6 +48,7 @@ import { DragDropDirective } from '../directives/drag-drop.directive';
     MatGridListModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatProgressBarModule
   ],
   exports: [
     SideNavComponent,
@@ -54,6 +58,7 @@ import { DragDropDirective } from '../directives/drag-drop.directive';
     MyApplicationsListComponent,
     ScreenLoaderComponent,
     DragDropDirective,
+    SpinnerComponent
   ],
 })
 export class ComponentsModule {}

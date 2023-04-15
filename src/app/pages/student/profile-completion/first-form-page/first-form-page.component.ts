@@ -63,6 +63,20 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
   ngOnInit(): void {}
 
   async setValues() {
+    if (this.user.isProfileComplete) {
+      const student = await this.studentService.getStudentData(
+        this.user.user_id
+      );
+      if (student) {
+        const form = student.particulars_of_applicant;
+        this.firstFormGroup.setValue(form);
+      }
+      this.firstFormGroup.controls['first_name'].disable();
+      this.firstFormGroup.controls['last_name'].disable();
+      this.firstFormGroup.controls['email'].disable();
+      return;
+    }
+
     const string = await this.storage.get('profileCompletion:first');
     if (string) {
       const form = JSON.parse(string);
@@ -79,9 +93,7 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
         this.firstFormGroup.controls['email'].setValue(this.user.email);
       }
     }
-    this.firstFormGroup.controls['first_name'].disable();
-    this.firstFormGroup.controls['last_name'].disable();
-    this.firstFormGroup.controls['email'].disable();
+
   }
 
   onProfilePic($event: any) {

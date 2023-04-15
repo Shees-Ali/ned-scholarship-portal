@@ -8,6 +8,7 @@ import { StorageService } from '../services/storage.service';
 import { UtilityService } from '../services/utility.service';
 import { UserService } from '../services/database/user.service';
 import { FirebaseService } from '../services/database/firebase.service';
+import { StudentService } from '../services/database/student.service';
 
 export abstract class BasePage {
   public formBuilder: FormBuilder;
@@ -18,6 +19,7 @@ export abstract class BasePage {
   public storage: StorageService;
   public utiltiy: UtilityService;
   public userService: UserService;
+  public studentService: StudentService;
   public firebase: FirebaseService;
 
   constructor(injector: Injector) {
@@ -29,6 +31,7 @@ export abstract class BasePage {
     this.storage = injector.get(StorageService);
     this.utiltiy = injector.get(UtilityService);
     this.userService = injector.get(UserService);
+    this.studentService = injector.get(StudentService);
     this.firebase = injector.get(FirebaseService);
   }
 }

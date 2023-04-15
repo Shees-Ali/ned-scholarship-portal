@@ -21,7 +21,7 @@
   </ul>
   <div class="file-uploader" dragAndDrop (onFileDropped)="selectFile($event)">
     <div *ngIf="selectedFiles.length == 0" class="file-uploader__instructions">
-      Drag and drop the file(s) here or click on "Browse Files".
+      Click on "Browse Files" to submit the required documents.
     </div>
     <div class="files-for-upload">
       <ng-container *ngIf="selectedFiles.length > 0">
@@ -29,14 +29,39 @@
           class="file-item"
           *ngFor="let item of selectedFiles; let i = index"
         >
-          <mat-icon>insert_drive_file</mat-icon>
-          <h3>
-            {{ item.name }}
-          </h3>
-          <div class="btn-container">
-            <button mat-icon-button (click)="cancelSelected(i)">
-              <mat-icon>clear</mat-icon>
-            </button>
+          <div class="file-content">
+            <mat-icon>insert_drive_file</mat-icon>
+            <h3>
+              {{ item.name }}
+            </h3>
+            <div class="btn-container">
+              <button mat-icon-button (click)="cancelSelected(i)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </div>
+          </div>
+          <mat-progress-bar
+            class="progress-bar"
+            *ngIf="item.progress"
+            mode="indeterminate"
+          ></mat-progress-bar>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="uploadedFiles.length > 0">
+        <div
+          class="file-item"
+          *ngFor="let item of uploadedFiles; let i = index"
+        >
+          <div class="file-content">
+            <mat-icon>insert_drive_file</mat-icon>
+            <h3>
+              {{ item.file_name }}
+            </h3>
+            <div class="btn-container">
+              <button mat-icon-button (click)="deleteSelected(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
       </ng-container>
@@ -68,6 +93,8 @@
           matTooltipPosition="above"
           aria-label="Upload"
           (click)="upload()"
+          [disabled]="selectedFiles.length == 0"
+          [ngClass]="selectedFiles.length == 0 ? 'disabled' : ''"
         >
           <mat-icon aria-hidden="true">file_upload</mat-icon>
         </button>
@@ -78,6 +105,8 @@
           matTooltip="Cancel"
           matTooltipPosition="above"
           aria-label="Cancel"
+          [disabled]="selectedFiles.length == 0"
+          [ngClass]="selectedFiles.length == 0 ? 'disabled' : ''"
           (click)="cancel()"
         >
           <mat-icon aria-hidden="true">clear</mat-icon>
@@ -91,7 +120,15 @@
       <button (click)="prevPage()" class="green-btn" mat-button>Back</button>
     </div>
     <div class="next-btn">
-      <button (click)="nextPage()" class="green-btn" mat-button>Next</button>
+      <button
+        (click)="nextPage()"
+        [disabled]="uploadedFiles.length === 0"
+        class="green-btn"
+        [ngClass]="uploadedFiles.length === 0 ? 'disabled' : ''"
+        mat-button
+      >
+        Next
+      </button>
     </div>
   </div>
 </div>

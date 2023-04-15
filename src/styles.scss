@@ -62,3 +62,7 @@ mat-sidenav[style] {
   .mdc-line-ripple::after {
   border-color: green;
 }
+
+.disabled {
+  opacity: 0.5 !important;
+}

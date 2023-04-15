@@ -1,20 +1,127 @@
 <div class="form-content">
-
-
   <div class="form-review-box">
     <p class="form-heading">Review</p>
 
-    <p class="form-subheading">Particulars of Applicant</p>
-    <div class="personal_info">
+    <div class="records-row">
+      <div class="sub-row">
+        <p class="form-subheading">Particulars of Applicant</p>
+        <p *ngFor="let item of particulars_of_applicant | keyvalue">
+          {{ getFormattedKey(item.key) }} - {{ item.value }}
+        </p>
+      </div>
 
+      <div class="sub-row">
+        <p class="form-subheading">Guardian info</p>
+        <p *ngFor="let item of guardian_info | keyvalue">
+          <span *ngIf="item.key !== 'dependents'">
+            {{ getFormattedKey(item.key) }} - {{ item.value }}
+          </span>
+        </p>
+      </div>
     </div>
 
-    <p class="form-subheading">Guardian info</p>
-
-    <p class="form-subheading">Academic Records</p>
-
+    <div class="dependents-row">
+      <p class="form-subheading">Dependents</p>
+      <mat-grid-list cols="1" rowHeight="8:1">
+        <div class="header-row">
+          <div class="header-col">
+            <p>Full Name</p>
+          </div>
+          <div class="header-col">
+            <p>Relation</p>
+          </div>
+          <div class="header-col">
+            <p>Age</p>
+          </div>
+          <div class="header-col">
+            <p>Studying, Class/Job</p>
+          </div>
+          <div class="header-col">
+            <p>Occupation/p>
+          </div>
+        </div>
+        <div
+          *ngFor="let item of guardian_info?.dependents; let i = index"
+          class="content-row"
+        >
+          <div class="content-col">
+            <p>{{ i + 1 }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.name }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.relation }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.age }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.occupation }}</p>
+          </div>
+        </div>
+      </mat-grid-list>
+    </div>
+    <div class="academic-row">
+      <p class="form-subheading">Academic Records</p>
+      <mat-grid-list cols="1" rowHeight="8:1">
+        <div class="header-row">
+          <div class="header-col width-academic">
+            <p>Class/Year</p>
+          </div>
+          <div class="header-col width-academic">
+            <p>Seat No.</p>
+          </div>
+          <div class="header-col width-academic">
+            <p>Total Marks - CGPA</p>
+          </div>
+          <div class="header-col width-academic">
+            <p>Marks Obtained - GPA/CGPA</p>
+          </div>
+          <div class="header-col width-academic">
+            <p>Percentage</p>
+          </div>
+          <div class="header-col width-academic">
+            <p>Merit Position If Any</p>
+          </div>
+        </div>
+        <div
+          *ngFor="let item of academic_records; let i = index"
+          class="content-row"
+        >
+          <div class="content-col width-academic">
+            <p>{{ item.class_year }}</p>
+          </div>
+          <div class="content-col width-academic">
+            <p>{{ item.seat_no }}</p>
+          </div>
+          <div class="content-col width-academic">
+            <p>{{ item.totalmarks_cgpa }}</p>
+          </div>
+          <div class="content-col width-academic">
+            <p>{{ item.marks_gpa }}</p>
+          </div>
+          <div class="content-col width-academic">
+            <p>{{ item.percentage }}</p>
+          </div>
+          <div class="content-col width-academic">
+            <p>{{ item.merit_postion }}</p>
+          </div>
+        </div>
+      </mat-grid-list>
+    </div>
   </div>
 
+  <div class="files-div">
+    <p class="form-heading">Documents</p>
+
+    <p *ngFor="let item of documents">
+      <mat-icon>insert_drive_file</mat-icon>
+      <span class="file-name">
+        {{item.file_name}}
+      </span>
+    </p>
+  </div>
 
   <p class="form-heading">Verify</p>
   <div class="form-declaration">
@@ -25,9 +132,8 @@
       University can take any action against me if any of the entry in the
       application is found wrong and fake.
     </p>
-    <mat-checkbox color="primary"></mat-checkbox>
+    <mat-checkbox [(ngModel)]="declaration" color="primary"></mat-checkbox>
   </div>
-
 
   <div class="buttons-div">
     <div class="next-btn">
