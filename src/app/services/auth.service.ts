@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   signIn(email: string, password: string) {
-    return new Promise<any>((resolve) => {
+    return new Promise<any>((resolve, reject) => {
       signInWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
           this.user = userCredential.user;
@@ -43,6 +43,7 @@ export class AuthService {
         })
         .catch((error) => {
           console.error(error);
+          reject(error);
         });
     });
   }
@@ -52,7 +53,7 @@ export class AuthService {
     const password = obj.password;
     console.log(email);
     console.log(password);
-    return new Promise<any>((resolve) => {
+    return new Promise<any>((resolve, reject) => {
       createUserWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
           this.user = userCredential.user;
@@ -62,6 +63,7 @@ export class AuthService {
         })
         .catch((error) => {
           console.error(error);
+          reject(error);
         });
     });
   }

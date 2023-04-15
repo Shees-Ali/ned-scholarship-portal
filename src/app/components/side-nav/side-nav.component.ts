@@ -26,13 +26,21 @@ export class SideNavComponent extends BasePage {
       icon: 'exit_to_app',
     },
   ];
+  public routeLinksAdmin = [
+    { link: 'dashboard', name: 'Dashboard', icon: 'dashboard' },
+    {
+      link: 'scholarships',
+      name: 'Scholarships',
+      icon: 'school',
+    },
+  ];
   user: any;
   constructor(injector: Injector) {
     super(injector);
     this.userService.getCurrentUser().then((res: any) => {
       this.user = res;
       if (this.user.isProfileComplete) {
-        this.routeLinks[1].name = "Update Profile"
+        this.routeLinks[1].name = 'Update Profile';
       }
     });
   }
@@ -41,6 +49,6 @@ export class SideNavComponent extends BasePage {
     if (link == 'logout') {
       return this.authService.logOut();
     }
-    this.nav.navigateTo('student/' + link);
+    this.nav.navigateTo(this.user.role + '/' + link);
   }
 }

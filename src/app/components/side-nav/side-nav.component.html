@@ -1,6 +1,27 @@
 <section [class.sidenav]="isExpanded">
-  <mat-nav-list>
+  <mat-nav-list *ngIf="user?.role === 'student'">
     <mat-list-item (click)="goTo(link.link)" *ngFor="let link of routeLinks">
+      <button
+        class="nav-button"
+        [class]="!isExpanded ? 'margin-left-none' : ''"
+        mat-icon-button
+        matListItemMeta
+      >
+        <mat-icon
+          matListItemIcon
+          [matTooltip]="!isExpanded ? link.name : ''"
+          matTooltipPosition="right"
+        >
+          {{ link.icon }}</mat-icon
+        >
+      </button>
+      <a class="nav-button" *ngIf="isExpanded" matListItemTitle>{{
+        link.name
+      }}</a>
+    </mat-list-item>
+  </mat-nav-list>
+  <mat-nav-list *ngIf="user?.role === 'admin'">
+    <mat-list-item (click)="goTo(link.link)" *ngFor="let link of routeLinksAdmin">
       <button
         class="nav-button"
         [class]="!isExpanded ? 'margin-left-none' : ''"

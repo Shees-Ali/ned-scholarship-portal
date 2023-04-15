@@ -63,30 +63,47 @@ export class AuthenticationPage extends BasePage implements OnInit {
     console.log(this.signInForm.value);
     this.utiltiy.showLoader();
     if (this.signInForm.invalid) {
+      this.utiltiy.hideLoader();
       return this.openSnackBar('Sign In Form InValid !', 'Okay');
     }
     const formValue = this.signInForm.value;
-    this.authService.signIn(formValue.email, formValue.password).then((res) => {
-      console.log(res);
-      if (res) {
+    this.authService
+      .signIn(formValue.email, formValue.password)
+      .then(async (res) => {
+        const user = await this.userService.getUserData(res?.uid);
+        if (res && user) {
+          this.utiltiy.hideLoader();
+          if (user.role == 'student') {
+            this.nav.navigateTo('student');
+          } else if (user.role == 'admin') {
+            console.log(user);
+            this.nav.navigateTo('admin');
+          }
+        }
+      })
+      .catch((err) => {
         this.utiltiy.hideLoader();
-        this.nav.navigateTo('student');
-      }
-    });
+      });
   }
 
   signUp() {
     console.log(this.signUpForm.value);
     if (this.signUpForm.invalid) {
+      this.utiltiy.hideLoader();
       return this.openSnackBar('Sign Up Form InValid !', 'Okay');
     }
 
-    this.authService.signUp(this.signUpForm.value).then((res) => {
-      if (res) {
-        this.openSnackBar('Account Creation Success', 'Okay !', 'success');
-        this.nav.navigateTo('student');
-      }
-    });
+    this.authService
+      .signUp(this.signUpForm.value)
+      .then((res) => {
+        if (res) {
+          this.openSnackBar('Account Creation Success', 'Okay !', 'success');
+          this.nav.navigateTo('student');
+        }
+      })
+      .catch((err) => {
+        this.utiltiy.hideLoader();
+      });
   }
 
   openSnackBar(message: string, action: string, className: string = 'error') {

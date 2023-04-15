@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Database, onValue, ref, set, update } from '@angular/fire/database';
+import {
+  Database,
+  onValue,
+  push,
+  ref,
+  set,
+  update,
+} from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import {
   Storage,
@@ -33,6 +40,10 @@ export class FirebaseService {
 
   setData(route: string, data: any) {
     return set(ref(this.database, route), data);
+  }
+
+  pushData(route: string, data: any) {
+    return push(ref(this.database, route), data);
   }
 
   pushFileToStorage(fileUpload: any, user_id: any) {
