@@ -1,22 +1,27 @@
 <div class="form-content">
   <p class="form-heading">Documents</p>
+  <p class="file-upload-heading">
+    Upload scanned pdf files of following Documents:
+  </p>
   <ul>
-    <li class="file-upload-text">
-      Upload scanned pdf files of following Documents:
-    </li>
     <li class="file-upload-text">
       a&#41; Mark Certificate(s) of all engineering examinations/ S.Sc & H.Sc/
       B.Sc marks Certificate for student of first year engineering.
     </li>
-    <li class="file-upload-text">
-      b&#41; i&#41; Salary certificate of father (if employed)
+    <li class="file-upload-text"> 
+      b&#41;Evidence of Income:
     </li>
-    <li class="file-upload-text">
-      b&#41; ii&#41; Updated Pension Book (if retired)
-    </li>
-    <li class="file-upload-text">
-      b&#41; iii&#41; Affidavit of Income Verification (if business owner)
-    </li>
+    <ul>
+      <li class="file-upload-text">
+        i&#41; Salary certificate of father (if employed)
+      </li>
+      <li class="file-upload-text">
+        ii&#41; Updated Pension Book (if retired)
+      </li>
+      <li class="file-upload-text">
+        iii&#41; Affidavit of Income Verification (if business owner)
+      </li>
+    </ul>
     <li>c&#41; University ID Card</li>
   </ul>
   <div class="file-uploader" dragAndDrop (onFileDropped)="selectFile($event)">

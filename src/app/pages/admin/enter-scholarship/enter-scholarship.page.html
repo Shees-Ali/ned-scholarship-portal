@@ -1,7 +1,14 @@
 <div class="form-content">
   <p class="form-heading">Scholarship Details</p>
+  <p class="upload-img-text">Upload Banner/Promotion Image:</p>
+  <input type="file" (change)="onBannerImg($event)" hidden id="bannerfile" />
   <form [formGroup]="scholarshipDetailsFormGroup">
     <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile [colspan]="3" [rowspan]="4" class="banner-icon">
+        <button (click)="changePicture()" mat-button>
+          <img [src]="bannerImg == '' ? 'assets/images/bannerupload.png' : bannerImg" class="banner-img" />
+        </button>
+      </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Scholarship Name</mat-label>
@@ -38,6 +45,9 @@
           <input matInput formControlName="due_date" required />
         </mat-form-field>
       </mat-grid-tile>
+
+      
+      
       <!-- <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Input Image (if any)</mat-label>
