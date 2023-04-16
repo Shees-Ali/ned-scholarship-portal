@@ -33,6 +33,11 @@ export class SideNavComponent extends BasePage {
       name: 'Scholarships',
       icon: 'school',
     },
+    {
+      link: 'logout',
+      name: 'Log out',
+      icon: 'exit_to_app',
+    },
   ];
   user: any;
   constructor(injector: Injector) {
