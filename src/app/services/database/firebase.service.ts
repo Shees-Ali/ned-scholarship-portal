@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import {
   Database,
+  limitToFirst,
+  off,
+  onChildAdded,
   onValue,
+  orderByKey,
   push,
+  query,
   ref,
   set,
+  startAfter,
   update,
 } from '@angular/fire/database';
 import { Observable } from 'rxjs';
@@ -46,6 +52,50 @@ export class FirebaseService {
     return push(ref(this.database, route), data);
   }
 
+  listData(route: string, limit: number = 5, last_item: any = undefined) {
+    return new Promise<any>((resolve) => {
+      let listQuery;
+      let array: any[] = [];
+      if (last_item) {
+        listQuery = query(
+          ref(this.database, route),
+          limitToFirst(limit),
+          orderByKey(),
+          startAfter(last_item)
+        );
+      } else {
+        listQuery = query(
+          ref(this.database, route),
+          limitToFirst(limit),
+          orderByKey()
+        );
+      }
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          childData['key'] = childSnapshot.key;
+          array.push(childData);
+        });
+        resolve(array);
+      });
+    });
+  }
+
+  countData(route: string) {
+    return new Promise<number>((resolve) => {
+      let count = 0;
+      let listQuery = query(ref(this.database, route), orderByKey());
+
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        snapshot.forEach(() => {
+          count++;
+        });
+        resolve(count);
+      });
+    });
+  }
   pushFileToStorage(fileUpload: any, user_id: any) {
     return new Promise<any>((resolve) => {
       const filePath = `${this.basePath}/${user_id}/${fileUpload.file.name}`;

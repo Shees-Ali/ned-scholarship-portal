@@ -16,7 +16,11 @@ export class ScholarshipService {
     return this.firebase.getDataOnValue('scholarships/' + scholarship_id);
   }
 
-  getScholarShipList() {
+  getScholarShipList(limit: number, last_item = undefined) {
+    return this.firebase.listData('scholarships', limit, last_item);
+  }
 
+  getScholarShipCount() {
+    return this.firebase.countData('scholarships');
   }
 }

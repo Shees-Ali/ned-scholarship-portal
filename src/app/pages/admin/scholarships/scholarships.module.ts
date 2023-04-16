@@ -3,17 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ScholarshipsPage } from './scholarships.page';
 import { ScholarshipsRoutingModule } from './scholarships-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
-
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [
-    ScholarshipsPage
-  ],
+  declarations: [ScholarshipsPage],
   imports: [
     CommonModule,
     ScholarshipsRoutingModule,
-    ComponentsModule  
-  ]
+    ComponentsModule,
+    MatPaginatorModule,
+  ],
 })
-export class ScholarshipsModule { }
+export class ScholarshipsModule {}

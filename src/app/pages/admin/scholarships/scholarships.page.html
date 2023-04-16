@@ -1,6 +1,15 @@
 <p class="heading">Edit/View Scholarships</p>
-<div class="scholarship-listing">
-  <scholarship-card></scholarship-card>
-  <scholarship-card></scholarship-card>
-  <scholarship-card></scholarship-card>
+<div *ngIf="scholarshipList.length > 0" class="scholarship-listing">
+  <ng-container *ngFor="let scholarship of scholarshipList">
+    <scholarship-card [scholarship]="scholarship"></scholarship-card>
+  </ng-container>
+
+  <mat-paginator
+    [length]="scholarshipsCount"
+    [pageSize]="limit"
+    [pageSizeOptions]="[3, 5, 10]"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </div>
