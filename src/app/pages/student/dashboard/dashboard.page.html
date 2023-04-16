@@ -13,10 +13,15 @@
   <div class="card margin-bottom-20">
     <p class="card-title">Apply Now</p>
 
-    <div class="scholarship-listing">
+  <div *ngIf="scholarshipList.length > 0" class="scholarship-listing">
+    <ng-container *ngFor="let scholarship of scholarshipList">
+      <scholarship-card [scholarship]="scholarship"></scholarship-card>
+    </ng-container>
+  </div>
+    <!-- <div class="scholarship-listing">
       <scholarship-card></scholarship-card>
       <scholarship-card></scholarship-card>
       <scholarship-card></scholarship-card>
-    </div>
+    </div> -->
   </div>
 </div>
