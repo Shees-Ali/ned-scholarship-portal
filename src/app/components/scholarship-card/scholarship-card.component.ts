@@ -22,8 +22,14 @@ export class ScholarshipCardComponent extends BasePage implements OnInit {
   }
 
   to_apply() {
-    this.nav.navigateTo('student/scholarship-details');
+    console.log(this.scholarship);
+    this.nav.navigateTo('student/scholarship-details', {
+      queryParams: {
+        key: this.scholarship.key,
+      },
+    });
   }
+
   to_edit() {
     this.nav.navigateTo('admin/applicant-list');
   }

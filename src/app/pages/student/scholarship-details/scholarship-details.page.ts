@@ -8,12 +8,18 @@ import { BasePage } from 'src/app/base/base.page';
 })
 export class ScholarshipDetailsPage extends BasePage implements OnInit {
   selectedTab: number = 1;
+  scholarship: any;
   constructor(injector: Injector) {
     super(injector);
     this.utiltiy.isPages.next(true);
   }
 
-  ngOnInit(): void {}
+  async ngOnInit(): Promise<void> {
+    const id = this.nav.getQueryParams()['key'];
+    console.log(id);
+    this.scholarship = await this.scholarshipService.getScholarshipData(id);
+    console.log(this.scholarship)
+  }
 
   changeTab(index: number) {
     this.selectedTab = index;
