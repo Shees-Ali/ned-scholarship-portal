@@ -1,0 +1,19 @@
+ .about{
+ display: flex;
+    //  background-color: aqua;   
+}
+
+ h5{
+ font-family: 'Roboto';
+ font-style: normal;
+ font-weight: 700;
+ font-size: 25px;
+ line-height: 24px;
+ }
+.image,.contact,.scholarship,.partner,.Made-by{
+    width: auto;
+    // border: solid;
+    padding: 10px;
+    margin: auto;
+    height: auto;
+}

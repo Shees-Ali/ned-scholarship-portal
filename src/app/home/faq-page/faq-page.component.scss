@@ -1,0 +1,72 @@
+.Fflex{
+  display: flex;
+  justify-content: center;
+  ;
+}
+
+.heading-text{
+  
+    width: auto;
+    height: auto;
+    text-align: center;
+    top: 1890px;
+    left: 33%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 36px;
+    
+ }
+
+  .FAQs-text{
+text-align: center;
+font-family: 'Fira Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 24.9657px;
+line-height: 55px;
+align-items: normal;
+
+
+  }
+  
+.Faqs{
+  background-color: #1BB55E;
+  border: hidden;
+  width: 506.66px;
+  height: 257px;
+  padding-top: 30px;
+  color: #FFFFFF;
+    
+}
+@keyframes t1{
+  from {background-color: #1BB55E ;}
+  to {background-color: #FFFFFF;}
+}
+  
+.Faqs-W{
+  
+  background-color:#FFFFFF;
+  border: hidden;
+  width: 506.66px;
+  height: 257px;  
+  padding-top: 30px; 
+  color: #1BB55E;    
+
+}
+ .Faq-grid{
+
+     display: grid;
+     width: auto;
+     margin: auto;
+     padding: auto;
+     grid-template-columns: repeat(2,1fr);
+    padding: 250px;
+     row-gap: 10px;
+     column-gap: 10px;
+     margin-left: 108px;
+     justify-content: center;
+  
+    }
+   

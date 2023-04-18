@@ -1,0 +1,62 @@
+.flexbox{
+    display: flex;
+    //  background-color: aqua;
+    justify-content: center;
+    
+}
+.heading,.Name,.email,.Text-area,.button{
+    text-align: center;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+}
+h2{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 60px;
+line-height: 56px;
+}
+
+#userName,#userEmail,{
+    width: 400px;
+        height: 70px;
+        border: solid;
+        border-color: #1BB55E;
+        border-radius: 10px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 56px;
+    }
+#userFeedback{
+    width: 400px;
+    height: 250px;
+    border: solid;
+    border-color:#1BB55E;
+    border-radius: 10px;
+    font-family: 'Roboto';
+font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 56px;
+
+}
+::placeholder{
+    color: #1BB55E;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 38px;
+        text-align: start;
+}
+#sub{
+    width: 150px;
+    height: 50px;
+    border: solid;
+    border-color:#1BB55E;
+    border-radius: 10px;
+    color: #1BB55E;
+}
