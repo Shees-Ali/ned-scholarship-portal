@@ -21,6 +21,11 @@ export class SideNavComponent extends BasePage {
       icon: 'school',
     },
     {
+      link: 'my-applications',
+      name: 'My Application',
+      icon: 'pages',
+    },
+    {
       link: 'logout',
       name: 'Log out',
       icon: 'exit_to_app',
