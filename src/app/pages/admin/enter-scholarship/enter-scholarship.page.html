@@ -38,18 +38,18 @@
           <input matInput formControlName="sponsor_name" required />
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
+      <!-- <mat-grid-tile [colspan]="3" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Scholarship Description</mat-label>
           <textarea matInput formControlName="description" required></textarea>
         </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
+      </mat-grid-tile> -->
+      <!-- <mat-grid-tile [colspan]="3" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Eligibility Criteria</mat-label>
           <textarea matInput formControlName="criteria" required></textarea>
         </mat-form-field>
-      </mat-grid-tile>
+      </mat-grid-tile> -->
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Choose a date</mat-label>
@@ -73,6 +73,24 @@
         </mat-form-field>
       </mat-grid-tile> -->
     </mat-grid-list>
+
+    <div class="form-field">
+      <p>Scholarship Description:</p>
+      <angular-editor
+        id="editor1"
+        formControlName="description"
+        [config]="editorConfig"
+      ></angular-editor>
+    </div>
+
+    <div class="form-field">
+      <p>Eligibility Criteria:</p>
+      <angular-editor
+        id="editor2"
+        formControlName="criteria"
+        [config]="editorConfig"
+      ></angular-editor>
+    </div>
   </form>
   <div class="submit-btn">
     <button (click)="submit()" class="green-btn" mat-button>

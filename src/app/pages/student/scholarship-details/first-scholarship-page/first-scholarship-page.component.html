@@ -5,9 +5,7 @@
     {{ scholarship?.name }}
   </p>
 
-  <p>
-    {{ scholarship?.description }}
-  </p>
+  <div [innerHTML]="scholarship?.description"></div>
 
   <p class="sponser">
     <span class="sub-text"> Sponsered By :</span>
