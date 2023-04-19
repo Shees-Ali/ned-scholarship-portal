@@ -49,14 +49,13 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
   }
 
   submit() {
-    this.utiltiy.showLoader();
     if (!this.scholarshipDetailsFormGroup.valid) {
       return this.utiltiy.openSnackBar('Please Fill All the Fields !', 'OK');
     }
     if (!this.bannerImg){
       return this.utiltiy.openSnackBar('Please Select a Banner Image', 'OK');
     }
-
+    this.utiltiy.showLoader();
     const formValue = this.scholarshipDetailsFormGroup.value;
     formValue["banner_img"] = this.bannerImg;
     formValue["due_date"] = formValue["due_date"].toLocaleDateString();
