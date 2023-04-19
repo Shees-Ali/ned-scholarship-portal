@@ -49,6 +49,7 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
   }
 
   submit() {
+    console.log(this.scholarshipDetailsFormGroup.value);
     if (!this.scholarshipDetailsFormGroup.valid) {
       return this.utiltiy.openSnackBar('Please Fill All the Fields !', 'OK');
     }
@@ -57,7 +58,8 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
     }
 
     const formValue = this.scholarshipDetailsFormGroup.value;
-    formValue["banner_img"] = this.bannerImg
+    formValue["banner_img"] = this.bannerImg;
+    console.log(formValue);
     this.scholarshipService.setScholarshipData(formValue).then((res) => {
       console.log(res);
       if (res) {
