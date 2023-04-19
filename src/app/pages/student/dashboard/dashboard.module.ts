@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardPage } from './dashboard.page';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -13,7 +14,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MatButtonModule
   ]
 })
 export class DashboardModule { }

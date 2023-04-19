@@ -1,3 +1,4 @@
+<screen-loader *ngIf="isLoading"></screen-loader>
 <ng-container *ngIf="isPages">
   <toolbar></toolbar>
 
@@ -29,12 +30,8 @@
     (btnClicked)="goToAuth()"
   ></toolbar>
   <div class="home-container">
-    <router-outlet
-      ><screen-loader *ngIf="isLoading"></screen-loader
-    ></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </ng-container>
 
-<router-outlet *ngIf="isAuthenticationPage"
-  ><screen-loader *ngIf="isLoading"></screen-loader
-></router-outlet>
+<router-outlet *ngIf="isAuthenticationPage"> </router-outlet>

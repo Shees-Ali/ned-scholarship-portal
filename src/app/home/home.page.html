@@ -1,114 +1,62 @@
 <app-image-carousel></app-image-carousel>
 
-<h1>SCHOLARSHIPS</h1>
+<div class="container">
+  <div class="header">
+    <p class="heading">Scholarships</p>
+    <mat-form-field appearance="outline">
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-label>Search scholarship </mat-label>
+      <input matInput type="text" [(ngModel)]="searchTerm" />
+      <button
+        *ngIf="searchTerm"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="searchTerm=''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
 
-<div class="grid">
-  <div class="item">
-    <div class="card" style="height: 10rem">
-      <h5 class="scholarship-detail">ABC Scholarship</h5>
-      <p class="card-text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi quasi
-        illum harum dignissimos libero dicta error, aspernatur facilis sint
-        quibusdam.
-      </p>
-      <a href="#!">
-        <button class="cta">
-          <i class="fas fa-plus"></i>
-          <span class="button-text"> Read More -> </span>
-        </button>
-      </a>
+    <p>
+      <span class="filters-text"> Filters </span>
+      <mat-radio-group color="primary" [(ngModel)]="filter">
+        <mat-radio-button value="need_based">Need Based</mat-radio-button>
+        <mat-radio-button value="merit_based">Merit Based</mat-radio-button>
+      </mat-radio-group>
+    </p>
+
+    <div *ngIf="scholarshipList.length > 0" style="width: 100%">
+      <mat-grid-list cols="2" rowHeight="360">
+        <mat-grid-tile
+          rowspan="0.9"
+          *ngFor="let scholarship of scholarshipList"
+        >
+          <div class="scholarship-card">
+            <div class="scholarship-content">
+              <p class="scholarship-name">{{ scholarship.name }}</p>
+
+              <p class="scholarship-desc">{{ scholarship.description }}</p>
+            </div>
+            <button mat-button class="apply-now-btn">Apply Now -></button>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-paginator
+        [length]="scholarshipsCount"
+        [pageSize]="limit"
+        [pageSizeOptions]="[4, 6, 8, 10]"
+        (page)="handlePageEvent($event)"
+        aria-label="Select page"
+      >
+      </mat-paginator>
     </div>
   </div>
-  <br />
-  <div class="item">
-    <div class="card" style="height: 10rem">
-      <h5 class="scholarship-detail">ABC Scholarship</h5>
-      <p class="card-text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi quasi
-        illum harum dignissimos libero dicta error, aspernatur facilis sint
-        quibusdam.
-      </p>
-      <a href="#!">
-        <button class="cta">
-          <i class="fas fa-plus"></i>
-          <span class="button-text"> Read More -> </span>
-        </button>
-      </a>
-    </div>
-  </div>
-  <br />
-  <div class="item">
-    <div class="card" style="height: 10rem">
-      <h5 class="scholarship-detail">ABC Scholarship</h5>
-      <p class="card-text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi quasi
-        illum harum dignissimos libero dicta error, aspernatur facilis sint
-        quibusdam.
-      </p>
-      <a href="#!">
-        <button class="cta">
-          <i class="fas fa-plus"></i>
-          <span class="button-text"> Read More -> </span>
-        </button>
-      </a>
-    </div>
-  </div>
-  <br />
-  <div class="item">
-    <div class="card" style="height: 10rem">
-      <h5 class="scholarship-detail">ABC Scholarship</h5>
-      <p class="card-text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi quasi
-        illum harum dignissimos libero dicta error, aspernatur facilis sint
-        quibusdam.
-      </p>
-      <a href="#!">
-        <button class="cta">
-          <i class="fas fa-plus"></i>
-          <span class="button-text"> Read More -> </span>
-        </button>
-      </a>
-    </div>
-  </div>
-  <br />
-  <div class="item">
-    <div class="card" style="height: 10rem">
-      <h5 class="scholarship-detail">ABC Scholarship</h5>
-      <p class="card-text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi quasi
-        illum harum dignissimos libero dicta error, aspernatur facilis sint
-        quibusdam.
-      </p>
-      <a href="#!">
-        <button class="cta">
-          <i class="fas fa-plus"></i>
-          <span class="button-text"> Read More -> </span>
-        </button>
-      </a>
-    </div>
-  </div>
-  <br />
-  <div class="item">
-    <div class="card" style="height: 10rem">
-      <h5 class="scholarship-detail">ABC Scholarship</h5>
-      <p class="card-text">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi quasi
-        illum harum dignissimos libero dicta error, aspernatur facilis sint
-        quibusdam.
-      </p>
-      <a href="#!">
-        <button class="cta">
-          <i class="fas fa-plus"></i>
-          <span class="button-text"> Read More -> </span>
-        </button>
-      </a>
-    </div>
-  </div>
+
+  <app-faq-page></app-faq-page>
+  <app-feedback></app-feedback>
 </div>
-<hr />
-<app-faq-page></app-faq-page>
-<hr />
-<app-feedback></app-feedback>
 
 <footer>
   <app-about-footer></app-about-footer>
