@@ -49,7 +49,7 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
   }
 
   submit() {
-    console.log(this.scholarshipDetailsFormGroup.value);
+    this.utiltiy.showLoader();
     if (!this.scholarshipDetailsFormGroup.valid) {
       return this.utiltiy.openSnackBar('Please Fill All the Fields !', 'OK');
     }
@@ -59,9 +59,9 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
 
     const formValue = this.scholarshipDetailsFormGroup.value;
     formValue["banner_img"] = this.bannerImg;
-    console.log(formValue);
+    formValue["due_date"] = formValue["due_date"].toLocaleDateString();
     this.scholarshipService.setScholarshipData(formValue).then((res) => {
-      console.log(res);
+      this.utiltiy.hideLoader();
       if (res) {
         this.nav.navigateTo('admin/scholarships');
       }

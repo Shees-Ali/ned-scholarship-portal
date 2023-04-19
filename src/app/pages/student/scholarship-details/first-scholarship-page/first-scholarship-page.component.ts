@@ -12,4 +12,12 @@ export class FirstScholarshipPageComponent extends BasePage {
   constructor(injector: Injector) {
     super(injector);
   }
+
+  getFormattedKey(keyName: any) {
+    let words = keyName.split('_');
+    let formattedString = words
+      .map((word: any) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+    return formattedString;
+  }
 }
