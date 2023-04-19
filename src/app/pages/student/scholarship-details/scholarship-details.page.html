@@ -41,7 +41,7 @@
   </button>
 </div>
 
-<div class="content">
+<div class="content" *ngIf="scholarship">
   <ng-container *ngIf="selectedTab == 1">
     <first-scholarship-page
       [scholarship]="scholarship"
