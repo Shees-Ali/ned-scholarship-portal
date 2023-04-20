@@ -5,6 +5,7 @@ import {
   off,
   onChildAdded,
   onValue,
+  orderByChild,
   orderByKey,
   push,
   query,
@@ -60,14 +61,14 @@ export class FirebaseService {
         listQuery = query(
           ref(this.database, route),
           limitToFirst(limit),
-          orderByKey(),
+          orderByChild('name'),
           startAfter(last_item)
         );
       } else {
         listQuery = query(
           ref(this.database, route),
           limitToFirst(limit),
-          orderByKey()
+          orderByChild('name')
         );
       }
       off(listQuery);

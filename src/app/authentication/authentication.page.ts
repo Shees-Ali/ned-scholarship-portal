@@ -82,6 +82,11 @@ export class AuthenticationPage extends BasePage implements OnInit {
         }
       })
       .catch((err) => {
+        if (err.code == "auth/user-not-found") {
+          this.utiltiy.openSnackBar("User Doesn't Exist", "OK");
+        } else if (err.code == "auth/wrong-password") {
+          this.utiltiy.openSnackBar("Wrong Password", "OK");
+        } 
         this.utiltiy.hideLoader();
       });
   }
@@ -102,6 +107,9 @@ export class AuthenticationPage extends BasePage implements OnInit {
         }
       })
       .catch((err) => {
+        if (err.code == "auth/email-already-in-use") {
+          this.utiltiy.openSnackBar("Email Already In Use", "OK");
+        }
         this.utiltiy.hideLoader();
       });
   }

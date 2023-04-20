@@ -2,18 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EnterScholarshipComponent } from './enter-scholarship.page';
 import { EnterScholarshipRoutingRoutingModule } from './enter-scholarship-routing.module';
-import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
-  declarations: [
-    EnterScholarshipComponent
-  ],
+  declarations: [EnterScholarshipComponent],
   imports: [
     CommonModule,
     EnterScholarshipRoutingRoutingModule,
@@ -21,7 +20,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatGridListModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    AngularEditorModule
+  ],
 })
-export class EnterScholarshipModule { }
+export class EnterScholarshipModule {}

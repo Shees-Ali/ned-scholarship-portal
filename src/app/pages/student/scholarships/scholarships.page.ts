@@ -9,7 +9,7 @@ import { BasePage } from 'src/app/base/base.page';
 export class ScholarshipsPage extends BasePage implements OnInit {
   scholarshipList: any[] = [];
   scholarshipsCount: number = 0;
-  limit: number = 3;
+  limit: number = 10;
   lastItem: any = undefined;
   searchTerm: string = '';
   filter: string = '';

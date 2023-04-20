@@ -6,7 +6,10 @@
     <mat-grid-list cols="3" rowHeight="100px">
       <mat-grid-tile [colspan]="3" [rowspan]="4" class="banner-icon">
         <button (click)="changePicture()" mat-button>
-          <img [src]="bannerImg == '' ? 'assets/images/bannerupload.png' : bannerImg" class="banner-img" />
+          <img
+            [src]="bannerImg == '' ? 'assets/images/bannerupload.png' : bannerImg"
+            class="banner-img"
+          />
         </button>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -16,9 +19,17 @@
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-form-field class="form-field">
+        <mat-form-field appearance="fill">
           <mat-label>Scholarship Type(Merit or Need)</mat-label>
-          <input matInput formControlName="type" required />
+          <mat-select formControlName="type" name="type">
+            <mat-option value="merit_based">Merit Based</mat-option>
+            <mat-option value="need_based">Need Based</mat-option>
+            <mat-option value="international">International</mat-option>
+            <mat-option value="national">National</mat-option>
+            <mat-option value="scholarship_for_foreigner"
+              >Scholarship for Foreigners</mat-option
+            >
+          </mat-select>
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -27,27 +38,31 @@
           <input matInput formControlName="sponsor_name" required />
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
+      <!-- <mat-grid-tile [colspan]="3" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Scholarship Description</mat-label>
-          <input matInput formControlName="description" required />
+          <textarea matInput formControlName="description" required></textarea>
         </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
+      </mat-grid-tile> -->
+      <!-- <mat-grid-tile [colspan]="3" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Eligibility Criteria</mat-label>
-          <input matInput formControlName="criteria" required />
+          <textarea matInput formControlName="criteria" required></textarea>
         </mat-form-field>
-      </mat-grid-tile>
+      </mat-grid-tile> -->
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
-          <mat-label>Last Date to Apply</mat-label>
-          <input matInput formControlName="due_date" required />
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="due_date" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </mat-grid-tile>
 
-      
-      
       <!-- <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Input Image (if any)</mat-label>
@@ -57,10 +72,29 @@
           formControlName="img"/>
         </mat-form-field>
       </mat-grid-tile> -->
+    </mat-grid-list>
 
-      </mat-grid-list>
-    </form>
-    <div class="submit-btn">
-      <button (click)="submit()" class="green-btn" mat-button>Save and Post</button>
+    <div class="form-field">
+      <p>Scholarship Description:</p>
+      <angular-editor
+        id="editor1"
+        formControlName="description"
+        [config]="editorConfig"
+      ></angular-editor>
     </div>
+
+    <div class="form-field">
+      <p>Eligibility Criteria:</p>
+      <angular-editor
+        id="editor2"
+        formControlName="criteria"
+        [config]="editorConfig"
+      ></angular-editor>
+    </div>
+  </form>
+  <div class="submit-btn">
+    <button (click)="submit()" class="green-btn" mat-button>
+      Save and Post
+    </button>
+  </div>
 </div>

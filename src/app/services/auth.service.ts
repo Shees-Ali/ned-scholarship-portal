@@ -42,7 +42,6 @@ export class AuthService {
           resolve(this.user);
         })
         .catch((error) => {
-          console.error(error);
           reject(error);
         });
     });

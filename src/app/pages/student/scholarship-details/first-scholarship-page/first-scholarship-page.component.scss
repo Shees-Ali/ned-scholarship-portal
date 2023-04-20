@@ -1,0 +1,22 @@
+.first-page {
+  .banner-img {
+    width: 100%;
+    object-fit: cover;
+    height: 400px;
+  }
+
+  .scholarship-name {
+    font-size: 40px;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+  }
+
+  .sponser {
+    font-size: 20px;
+
+    .sub-text {
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+}

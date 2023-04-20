@@ -1,3 +1,24 @@
-<div>
-  <p>test</p>
+<div class="first-page">
+  <img class="banner-img" [src]="scholarship?.banner_img" />
+
+  <p class="scholarship-name">
+    {{ scholarship?.name }}
+  </p>
+
+  <div [innerHTML]="scholarship?.description"></div>
+
+  <p class="sponser">
+    <span class="sub-text"> Sponsered By :</span>
+    {{ scholarship?.sponsor_name }}
+  </p>
+
+  <p class="sponser">
+    <span class="sub-text"> Type :</span>
+    {{ scholarship ? getFormattedKey(scholarship?.type) : "" }}
+  </p>
+
+  <p class="sponser">
+    <span class="sub-text"> Valid Till :</span>
+    {{ scholarship?.due_date }}
+  </p>
 </div>

@@ -15,10 +15,11 @@ export class ScholarshipDetailsPage extends BasePage implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    this.utiltiy.showLoader();
     const id = this.nav.getQueryParams()['key'];
-    console.log(id);
     this.scholarship = await this.scholarshipService.getScholarshipData(id);
-    console.log(this.scholarship)
+    console.log(this.scholarship);
+    this.utiltiy.hideLoader();
   }
 
   changeTab(index: number) {

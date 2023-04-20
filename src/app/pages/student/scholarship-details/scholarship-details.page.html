@@ -41,18 +41,26 @@
   </button>
 </div>
 
-<div class="content">
+<div class="content" *ngIf="scholarship">
   <ng-container *ngIf="selectedTab == 1">
-    <first-scholarship-page></first-scholarship-page>
+    <first-scholarship-page
+      [scholarship]="scholarship"
+    ></first-scholarship-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 2">
-    <second-scholarship-page></second-scholarship-page>
+    <second-scholarship-page
+      [scholarship]="scholarship"
+    ></second-scholarship-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 3">
-    <third-scholarship-page></third-scholarship-page>
+    <third-scholarship-page
+      [scholarship]="scholarship"
+    ></third-scholarship-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 4">
-    <fourth-scholarship-page></fourth-scholarship-page>
+    <fourth-scholarship-page
+      [scholarship]="scholarship"
+    ></fourth-scholarship-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 5">
     <submit-application-page></submit-application-page>
