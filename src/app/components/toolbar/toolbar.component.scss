@@ -11,7 +11,7 @@
   align-items: center;
   .left-side{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
   }
 }
@@ -31,7 +31,32 @@
   font-weight: 500;
 }
 @media only screen and (max-width: 800px) {
+  .toolbar {
+    height: 125px;
+  }
   .main-heading{
     font-size: 0;
+  }
+  .btn-text {
+    font-size: 17.5px;
+  }
+  .left-side{
+    img{
+      max-width: 80%;
+    }
+  }
+  
+}
+@media only screen and (max-width: 420px) {
+  .toolbar {
+    height: 100px;
+  }
+  .btn-text {
+    font-size: 14px;
+  }
+  .left-side{
+    img{
+      max-width: 60%;
+    }
   }
 }

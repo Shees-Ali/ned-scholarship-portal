@@ -124,7 +124,7 @@ html, body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -25%);
+    transform: translate(-50%, -50%);
     font-family: 'Fira Sans';
     font-weight: 600;
     font-size: 2.6rem;
@@ -136,6 +136,7 @@ html, body {
 .apply-tdy{
     position: absolute;
     width: 30%;
+    height: fit-content;
     background-color: #1BB55E;
     border-top-right-radius: 30px;
     transform: translate(0, -120%);
@@ -147,9 +148,6 @@ html, body {
         font-size: 1.5rem;
         color: #fff;
     }
-}
-.apply-tdy:hover{
-    transform: translate(30%, -120%);
 }
 .margin-10{
     margin: 10px;
@@ -169,12 +167,22 @@ html, body {
     .center-text {
         font-size: 2rem;
     }
+    .apply-tdy{
+        button{
+            font-size: 1rem;
+        }
+    }
 }
 @media only screen and (max-width: 420px) {
     .carousel-item img {
-        height: 36vh;
+        height: 28vh;
     }
     .center-text {
         font-size: 1.25rem;
+    }
+    .apply-tdy{
+        button{
+            font-size: 0.6rem;
+        }
     }
 }

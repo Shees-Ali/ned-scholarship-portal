@@ -20,7 +20,7 @@
 
     .scholarship-name {
       font-weight: 500;
-      font-size: 26px;
+      font-size: 1.5rem;
       color: #1bb55e;
       margin: 10px 30px;
     }
@@ -28,7 +28,7 @@
       margin: 10px 30px;
       height: 50px;
       overflow: hidden;
-      font-size: 14px;
+      font-size: 1rem;
       color: #000000;
     }
   }
@@ -39,7 +39,7 @@
     background: #1bb55e;
     width: 50%;
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #ffffff;
     border-top-right-radius: 30px;
     height: fit-content;
@@ -58,16 +58,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  .heading{
+    font-size: 2.5rem;
+  }
 }
 
-h1 {
-  font-family: "Fira Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 48px;
-  line-height: 56px;
-  margin-left: 100px;
-}
 
 .grid {
   margin-left: 108px;
@@ -88,25 +83,13 @@ h1 {
   border-style: outset;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  padding: auto;
-  margin: auto;
 }
 
 .card-text {
   text-align: center;
   text-align: justify;
-  line-height: 37.65px;
 }
 
-h5 {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 34px;
-  line-height: 36px;
-  text-align: center;
-  color: #1bb55e;
-}
 
 .cta {
   width: 70px;
@@ -154,5 +137,39 @@ h5 {
 }
 
 @media only screen and (max-width: 760px) {
+  .container > .header {
+  align-items: center;
+  .heading{
+    font-size: 2rem;
+    }
+  }
+  .scholarship-card > .scholarship-content {
+    .scholarship-name {
+      margin: 10px 20px;
+      font-size: 1.25rem;
+    }
+    .scholarship-desc {
+      margin: 10px 20px;
+      font-size: 0.85rem;
+    }
+    .apply-now-btn {
+      font-size: 1rem;
+    }
+  }
+}
+@media only screen and (max-width: 420px) {
 
+  .scholarship-card > .scholarship-content {
+    .scholarship-name {
+      margin: 10px 10px;
+      font-size: 1rem;
+    }
+    .scholarship-desc {
+      margin: 10px 10px;
+      font-size: 0.60rem;
+    }
+    .apply-now-btn {
+      font-size: 0.75rem;
+    }
+  }
 }

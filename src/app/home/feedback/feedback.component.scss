@@ -2,49 +2,65 @@
     display: flex;
     //  background-color: aqua;
     justify-content: center;
+    align-items: center;
     
 }
 .heading,.Name,.email,.Text-area,.button{
     text-align: center;
-    height: auto;
-    margin: auto;
-    padding: 10px;
+    padding: 2% 0;
 }
 h2{
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 60px;
-line-height: 56px;
+    font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
 }
 
 #userName, #userEmail, #userFeedback{
-    width: 400px;
-    height: 70px;
-    border: 4px solid #1BB55E;
-    border-radius: 10px;
+    width: calc(40vw - 60px);
+    height: 10vh;
+    border: 2px solid #1BB55E;
+    border-radius: 8px;
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 20px;
     line-height: 56px;
     background-color: transparent;
+    padding: 0 30px;
     }
 #userFeedback{
-    height: 250px;
+    height: 35vh;
 }
 ::placeholder{
     color: #1BB55E;
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 38px;
-        text-align: start;
+    font-family: 'Roboto';
+    font-size: 20px;
+    margin-left: 5px;
+    line-height: 38px;
+    text-align: start;
 }
 #sub{
-    width: 100%;
+    width: 40vw;
     height: 50px;
     background-color: #1BB55E;
     color: #fff;
     border-radius: 8px;
+}
+
+@media only screen and (max-width: 760px) {
+    #userName, #userEmail, #userFeedback{
+        height: 8vh;
+        font-size: 16px;
+    }
+    #userFeedback{
+        height: 26vh;
+    }
+}
+@media only screen and (max-width: 420px) {
+    #userName, #userEmail, #userFeedback{
+        height: 6vh;
+        font-size: 12px;
+    }
+    #userFeedback{
+        height: 20vh;
+    }
 }
