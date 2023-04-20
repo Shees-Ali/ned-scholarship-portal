@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Injector, Output } from '@angular/core';
+import { Component, EventEmitter, Injector, Input, Output } from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
 
 @Component({
@@ -7,6 +7,7 @@ import { BasePage } from 'src/app/base/base.page';
   styleUrls: ['./verify.component.scss'],
 })
 export class VerifyComponent extends BasePage {
+  @Input('isComponent') isComponent: boolean = false; 
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
   particulars_of_applicant: any;
   guardian_info: any;

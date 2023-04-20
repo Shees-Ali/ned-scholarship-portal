@@ -24,12 +24,14 @@
       color: #1bb55e;
       margin: 10px 30px;
     }
-    .scholarship-desc {
+    .sponser {
+      font-size: 20px;
       margin: 10px 30px;
-      height: 50px;
-      overflow: hidden;
-      font-size: 1rem;
-      color: #000000;
+      margin-bottom: 0px;
+      .sub-text {
+        font-size: 24px;
+        font-weight: 500;
+      }
     }
   }
 
@@ -37,7 +39,7 @@
     text-align: end;
     border: none;
     background: #1bb55e;
-    width: 50%;
+    width: 70%;
     font-weight: 500;
     font-size: 1.2rem;
     color: #ffffff;
@@ -58,11 +60,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  .heading{
+  .heading {
     font-size: 2.5rem;
   }
 }
-
 
 .grid {
   margin-left: 108px;
@@ -89,7 +90,6 @@
   text-align: center;
   text-align: justify;
 }
-
 
 .cta {
   width: 70px;
@@ -137,10 +137,14 @@
 }
 
 @media only screen and (max-width: 760px) {
+  .container {
+    margin: 0 32px;
+  }
+
   .container > .header {
-  align-items: center;
-  .heading{
-    font-size: 2rem;
+    align-items: start;
+    .heading {
+      font-size: 2rem;
     }
   }
   .scholarship-card > .scholarship-content {
@@ -148,9 +152,12 @@
       margin: 10px 20px;
       font-size: 1.25rem;
     }
-    .scholarship-desc {
-      margin: 10px 20px;
-      font-size: 0.85rem;
+    .sponser {
+      margin: 10px 10px;
+      font-size: 16px;
+      .sub-text {
+        font-size: 18px;
+      }
     }
     .apply-now-btn {
       font-size: 1rem;
@@ -158,16 +165,30 @@
   }
 }
 @media only screen and (max-width: 420px) {
+  .container {
+    margin: 0 16px;
+  }
+  .container > .header {
+    align-items: start;
+    .heading {
+      font-size: 2rem;
+    }
+  }
 
   .scholarship-card > .scholarship-content {
     .scholarship-name {
       margin: 10px 10px;
       font-size: 1rem;
     }
-    .scholarship-desc {
+
+    .sponser {
       margin: 10px 10px;
-      font-size: 0.60rem;
+      font-size: 14px;
+      .sub-text {
+        font-size: 16px;
+      }
     }
+
     .apply-now-btn {
       font-size: 0.75rem;
     }

@@ -27,15 +27,17 @@
     </p>
 
     <div *ngIf="scholarshipList.length > 0" style="width: 100%">
-        <!-- <div > -->
-          <div class="scholarship-card"
-          *ngFor="let scholarship of scholarshipList">
-            <div class="scholarship-content">
-              <p class="scholarship-name">{{ scholarship.name }}</p>
-              <p class="scholarship-desc">{{ scholarship.description }}</p>
-              <button mat-button class="apply-now-btn">Apply Now -></button>
-            </div>
-            
+      <!-- <div > -->
+      <div class="scholarship-card" *ngFor="let scholarship of scholarshipList">
+        <div class="scholarship-content">
+          <p class="scholarship-name">{{ scholarship.name }}</p>
+          <p class="sponser">
+            <span class="sub-text"> Sponsered By :</span>
+            {{ scholarship?.sponsor_name }}
+          </p>
+        </div>
+        <button mat-button class="apply-now-btn">Apply Now -></button>
+
         <!-- </div> -->
       </div>
 

@@ -46,5 +46,8 @@ import { MatListModule } from '@angular/material/list';
     MatExpansionModule,
     MatListModule,
   ],
+  exports: [
+    VerifyComponent
+  ]
 })
 export class ProfileCompletionModule {}

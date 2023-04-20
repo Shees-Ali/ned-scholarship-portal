@@ -63,6 +63,8 @@
     ></fourth-scholarship-page>
   </ng-container>
   <ng-container *ngIf="selectedTab == 5">
-    <submit-application-page></submit-application-page>
+    <submit-application-page
+      [scholarship]="scholarship"
+    ></submit-application-page>
   </ng-container>
 </div>

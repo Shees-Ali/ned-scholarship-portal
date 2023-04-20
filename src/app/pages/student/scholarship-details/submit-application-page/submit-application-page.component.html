@@ -1,1 +1,30 @@
-<p>submit-application-page works!</p>
+<div class="submit-page">
+  <p class="heading-name">Submit</p>
+
+  <div class="form-field">
+    <p class="input-label">Cover Letter:</p>
+    <angular-editor
+      [(ngModel)]="cover_letter"
+      [config]="editorConfig"
+    ></angular-editor>
+  </div>
+  <p class="heading-name">Verify Info</p>
+
+  <app-verify [isComponent]="true"></app-verify>
+
+  <div class="submit-box">
+    <mat-checkbox
+      [(ngModel)]="acknowledgment"
+      labelPosition="after"
+      color="primary"
+    >
+      I acknowledge the fact that if I apply to this Scholarship I won't be able
+      to apply to any other scholarship until the duration of this application
+      ends or My application is rejected
+    </mat-checkbox>
+
+    <button class="green-btn" mat-button (click)="submit()">
+      Submit Application
+    </button>
+  </div>
+</div>

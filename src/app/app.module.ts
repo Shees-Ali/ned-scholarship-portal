@@ -15,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatNativeDateModule, 
+    MatNativeDateModule,
     ComponentsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -35,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

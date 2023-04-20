@@ -1,0 +1,15 @@
+@import "../scholarship-details.page.scss";
+
+.input-label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.submit-box {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        margin-block: 24px;
+    }
+}
