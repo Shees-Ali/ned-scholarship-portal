@@ -20,14 +20,14 @@
   
 }
  .Faqs, .Faqs-W{
-  height: 257px;
+  height: 36vh;
   width: 100%;
 
   .FAQs-text{
     text-align: center;
     font-family: 'Fira Sans';
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 .Faqs{
@@ -37,7 +37,7 @@
     width: 100%;
     height: 100%;
     .FAQs-text{
-      margin-top: 20%;
+      margin-top: 25%;
     }
   }  
   .flip-card-back {
@@ -56,7 +56,7 @@
     width: 100%;
     height: 100%;
     .FAQs-text{
-      margin-top: 20%;
+      margin-top: 25%;
     }
   }  
   .flip-card-back {
@@ -81,11 +81,19 @@
   -webkit-backface-visibility: hidden; 
   backface-visibility: hidden;
 }
+@media only screen and (max-width: 400px) {
+  .FAQs-text{
+    font-size: 0.4rem;
+  }
+}
 
 @media only screen and (max-width: 850px) {
   .flip-card {
     display: block;
     width: 100%;
+  }
+  .FAQs-text{
+    font-size: 0.6rem;
   }
 }
 

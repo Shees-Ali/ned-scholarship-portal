@@ -33,8 +33,7 @@ html, body {
 .carousel-item img {
     display: flex;
     object-fit: fill;
-    height: auto;
-    height: 450px;
+    height: 66vh;
     width: 100%;
 }
 
@@ -115,8 +114,8 @@ html, body {
     width: 100%;
     position: absolute;
     text-align: center;
-    font-size: 27px;
-    color: rgba(255, 255, 255, 1);
+    font-size: 22px;
+    color: #fff;
     font-family: 'Open Sans', sans-serif;
     z-index: 9999;
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
@@ -127,10 +126,55 @@ html, body {
     left: 50%;
     transform: translate(-50%, -25%);
     font-family: 'Fira Sans';
-    font-weight: 700;
-    font-size: 60px;
+    font-weight: 600;
+    font-size: 2.6rem;
     text-align: center;
     letter-spacing: -0.5px;
     color: #fff;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.25), -1px -1px rgba(0, 0, 0, 0.25) ;
+}
+.apply-tdy{
+    position: absolute;
+    width: 30%;
+    background-color: #1BB55E;
+    border-top-right-radius: 30px;
+    transform: translate(0, -120%);
+    animation: transform 5s ease-in-out;
+    z-index: 2;
+    button{
+        font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+        text-align: end;
+        font-size: 1.5rem;
+        color: #fff;
+    }
+}
+.apply-tdy:hover{
+    transform: translate(30%, -120%);
+}
+.margin-10{
+    margin: 10px;
+}
+
+.green-border{
+    display: block;
+    height: 2vh;
+    width: 100%;
+    background-color: #1BB55E ;
+}
+
+@media only screen and (max-width: 760px) {
+    .carousel-item img {
+        height: 48vh;
+    }
+    .center-text {
+        font-size: 2rem;
+    }
+}
+@media only screen and (max-width: 420px) {
+    .carousel-item img {
+        height: 36vh;
+    }
+    .center-text {
+        font-size: 1.25rem;
+    }
 }
