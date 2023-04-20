@@ -103,9 +103,17 @@
     <img src="assets/images/NED-Logo-white.png" />
     <p class="moving-text">Welcome To</p>
     <p class="moving-text">NED Scholarship Portal</p>
-    <p class="moving-question">Dont have an account yet?</p>
-    <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
-      Sign Up
-    </button>
+    <ng-container *ngIf="!isSignUp">
+      <p class="moving-question">Dont have an account yet?</p>
+      <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
+        Sign Up
+      </button>
+    </ng-container>
+    <ng-container *ngIf="isSignUp">
+      <p class="moving-question">Already have an Account?</p>
+      <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
+        Sign In
+      </button>
+    </ng-container>
   </div>
 </div>
