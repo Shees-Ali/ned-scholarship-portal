@@ -1,43 +1,19 @@
 
 <div class="Fflex">
-  <div class="heading-text">
-
-<h4 class="FAQ-heading">FREQUENTLY ASKED QUESTIONS</h4>
-  </div>
+  <h4 class="heading-text">FREQUENTLY ASKED QUESTIONS</h4>
 </div>
-
-<div class="Faq-grid">
-
- 
-
-
-  <div class="Faqs-W">
-    
-    <p class= "FAQs-text">Can I apply to more than one Scholarship at a time?</p>
-      </div>
-
-  <div class="Faqs">
-    
-    <p class= "FAQs-text">Can I apply to more than one Scholarship at a time?</p>
-    
-  </div>
-
-  <div class="Faqs">
-    <p class= "FAQs-text">Can I apply to more than one Scholarship at a time?</p>
-      </div>
-
-  <div class="Faqs-W">
-    
-    <p class= "FAQs-text">Can I apply to more than one Scholarship at a time?</p>
-    
-  </div>
-  <div class="Faqs-W">
-      <p class= "FAQs-text">Can I apply to more than one Scholarship at a time?</p>
-      </div>
-
-  <div class="Faqs">
-    
-    <p class= "FAQs-text">Can I apply to more than one Scholarship at a time?</p>
-      </div>
+<div class="faq-grid">
+    <div *ngFor="let data of faqdata"
+        class="flip-card">
+        <div class="flip-card-inner"
+        [ngClass]="data.green? 'Faqs' : 'Faqs-W'">
+          <div class="flip-card-front"
+          >
+            <p class= "FAQs-text"> {{data.question}} </p>
+          </div>
+          <div class="flip-card-back">
+            <p class= "FAQs-text"> {{data.answer}} </p>
+          </div>
+        </div>
+    </div>
 </div>
-<div>

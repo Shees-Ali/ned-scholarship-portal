@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { ComponentsModule } from '../components/components.module';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     FormsModule,
     MatRadioModule,
     MatGridListModule,
-    ComponentsModule
+    ComponentsModule,
+    MatButtonModule
   ],
 })
 export class HomeModule {}

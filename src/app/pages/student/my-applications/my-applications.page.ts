@@ -9,6 +9,7 @@ export class MyApplicationsPage extends BasePage implements OnInit {
   
   constructor(injector: Injector) {
     super(injector);
+    this.utiltiy.isPages.next(true);
   }
 
   ngOnInit(): void {}

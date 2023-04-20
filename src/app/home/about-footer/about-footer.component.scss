@@ -1,19 +1,23 @@
- .about{
+.about{
  display: flex;
-    //  background-color: aqua;   
-}
-
+ background-color: #f5f5f5;
  h5{
- font-family: 'Roboto';
- font-style: normal;
- font-weight: 700;
- font-size: 25px;
- line-height: 24px;
- }
-.image,.contact,.scholarship,.partner,.Made-by{
-    width: auto;
-    // border: solid;
-    padding: 10px;
-    margin: auto;
-    height: auto;
+    font-weight: 500;
+    font-size: 22px;
+    }
+    .image,.contact,.scholarship,.partner,.Made-by{
+        // width: auto;
+        padding: 10px;
+        font-size: 16px;
+        margin: auto;
+        // height: auto;
+    }
 }
+@media screen and (max-width: 780px) {
+    h5{
+        font-size: 18px;
+    }
+    .image,.contact,.scholarship,.partner,.Made-by{
+        font-size: 12px;
+    }
+  }

@@ -1,72 +1,94 @@
 .Fflex{
   display: flex;
   justify-content: center;
-  ;
-}
-
-.heading-text{
-  
-    width: auto;
-    height: auto;
+  .heading-text{
     text-align: center;
-    top: 1890px;
-    left: 33%;
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 34px;
-    line-height: 36px;
-    
  }
+}
+
+.Faq-grid{
+  display: grid;
+  grid-template-rows:repeat(2, 1fr);
+  width: 100%;
+ }
+ .flip-card {
+  display: inline-block;
+  width: calc(50% - 30px);
+  margin: 10px;
+  
+}
+ .Faqs, .Faqs-W{
+  height: 257px;
+  width: 100%;
 
   .FAQs-text{
-text-align: center;
-font-family: 'Fira Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 24.9657px;
-line-height: 55px;
-align-items: normal;
-
-
+    text-align: center;
+    font-family: 'Fira Sans';
+    font-weight: 400;
+    font-size: 1.5rem;
   }
-  
+}
 .Faqs{
   background-color: #1BB55E;
-  border: hidden;
-  width: 506.66px;
-  height: 257px;
-  padding-top: 30px;
-  color: #FFFFFF;
-    
-}
-@keyframes t1{
-  from {background-color: #1BB55E ;}
-  to {background-color: #FFFFFF;}
-}
-  
-.Faqs-W{
-  
-  background-color:#FFFFFF;
-  border: hidden;
-  width: 506.66px;
-  height: 257px;  
-  padding-top: 30px; 
-  color: #1BB55E;    
-
-}
- .Faq-grid{
-
-     display: grid;
-     width: auto;
-     margin: auto;
-     padding: auto;
-     grid-template-columns: repeat(2,1fr);
-    padding: 250px;
-     row-gap: 10px;
-     column-gap: 10px;
-     margin-left: 108px;
-     justify-content: center;
-  
+  color: #FFFFFF; 
+  .flip-card-front{
+    width: 100%;
+    height: 100%;
+    .FAQs-text{
+      margin-top: 20%;
     }
+  }  
+  .flip-card-back {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    color: #1BB55E;
+    transform: rotateY(180deg);
+  }
+}
+
+.Faqs-W{  
+  background-color:#FFFFFF;
+  color: #1BB55E;  
+  .flip-card-front{
+    width: 100%;
+    height: 100%;
+    .FAQs-text{
+      margin-top: 20%;
+    }
+  }  
+  .flip-card-back {
+    width: 100%;
+    height: 100%;
+    background-color: #1BB55E;
+    color: white;
+    transform: rotateY(180deg);
+  }  
+}
+
+ .flip-card-inner {
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden;
+}
+
+@media only screen and (max-width: 850px) {
+  .flip-card {
+    display: block;
+    width: 100%;
+  }
+}
+
+
+
    

@@ -1,59 +1,57 @@
 @import "../pages/student/scholarships/scholarships.page.scss";
 
 .container {
-  margin: 0 200px;
+  margin: 0 20%;
 }
-
+.scholarship-grid{
+  display: grid;
+  grid-template-rows:repeat(2, 1fr);
+  width: 100%;
+}
 .scholarship-card {
   background: #ffffff;
+  width: 100%;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12),
     0px 2px 4px rgba(0, 0, 0, 0.2);
-  height: 320px;
-  width: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   border-top-left-radius: 40px;
   border-bottom-right-radius: 40px;
-
+  margin: 15px 0px;
   .scholarship-content {
-    margin: 20px 68px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
 
     .scholarship-name {
-      font-weight: 700;
-      font-size: 34px;
-      line-height: 36px;
+      font-weight: 500;
+      font-size: 26px;
       color: #1bb55e;
-      margin-bottom: 10px;
+      margin: 10px 30px;
     }
     .scholarship-desc {
-      height: 54px;
+      margin: 10px 30px;
+      height: 50px;
       overflow: hidden;
-      margin-top: 10px;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 25px;
+      font-size: 14px;
       color: #000000;
     }
   }
 
   .apply-now-btn {
-    position: absolute;
-    bottom: 5%;
     border: none;
     background: #1bb55e;
-    width: 300px;
+    width: 50%;
     font-weight: 700;
     font-size: 34px;
-    line-height: 36px;
     color: #ffffff;
     border-top-right-radius: 40px;
-    height: 42px;
+    height: fit-content;
     transition: width 1s;
   }
 
   .apply-now-btn:hover {
-    width: 420px;
+    width: 100%;
     border-top-right-radius: 0;
     border-bottom-right-radius: 40px;
   }

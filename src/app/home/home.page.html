@@ -27,21 +27,19 @@
     </p>
 
     <div *ngIf="scholarshipList.length > 0" style="width: 100%">
-      <mat-grid-list cols="2" rowHeight="360">
-        <mat-grid-tile
-          rowspan="0.9"
-          *ngFor="let scholarship of scholarshipList"
-        >
-          <div class="scholarship-card">
+      <div class="scholarship-grid">
+        <!-- <div > -->
+          <div class="scholarship-card"
+          *ngFor="let scholarship of scholarshipList">
             <div class="scholarship-content">
               <p class="scholarship-name">{{ scholarship.name }}</p>
-
               <p class="scholarship-desc">{{ scholarship.description }}</p>
+              <button mat-button class="apply-now-btn">Apply Now -></button>
             </div>
-            <button mat-button class="apply-now-btn">Apply Now -></button>
+            
           </div>
-        </mat-grid-tile>
-      </mat-grid-list>
+        <!-- </div> -->
+      </div>
 
       <mat-paginator
         [length]="scholarshipsCount"
@@ -53,7 +51,6 @@
       </mat-paginator>
     </div>
   </div>
-
   <app-faq-page></app-faq-page>
   <app-feedback></app-feedback>
 </div>
