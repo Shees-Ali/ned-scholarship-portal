@@ -13,11 +13,31 @@
         // height: auto;
     }
 }
+
 @media screen and (max-width: 780px) {
-    h5{
-        font-size: 18px;
-    }
+.about{
     .image,.contact,.scholarship,.partner,.Made-by{
         font-size: 12px;
+        img{
+            max-width: 70%;
+        }
+        h5{
+            font-size: 18px;
+        }
     }
-  }
+}
+}
+
+@media screen and (max-width: 420px) {
+    .about {
+        .image,.contact,.scholarship,.partner,.Made-by{
+            font-size: 8px;
+            h5{
+                font-size: 12px;
+            }
+            img{
+                width: 0;
+            }
+        }
+    }
+}

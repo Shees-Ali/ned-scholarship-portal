@@ -5,14 +5,16 @@
   </div>
   <!-- <span class="example-spacer"></span> -->
 
-  <button (click)="btnClicked.emit()" class="btn-text" mat-button>
-    {{ btnText }}
-  </button>
-  <button
-    *ngIf="showProfileIcon"
-    mat-icon-button
-    class="example-icon favorite-icon"
-  >
-    <mat-icon>account_circle</mat-icon>
-  </button>
+  <div class="right-side">
+    <button (click)="btnClicked.emit()" class="btn-text" mat-button>
+      {{ btnText }}
+    </button>
+    <button
+      *ngIf="showProfileIcon"
+      mat-icon-button
+      class="example-icon favorite-icon"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>

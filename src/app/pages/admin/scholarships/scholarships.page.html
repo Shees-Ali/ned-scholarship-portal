@@ -1,4 +1,6 @@
-<p class="heading">Edit/View Scholarships</p>
+<div class="header">
+  <p class="heading">Edit/View Scholarships</p>
+</div>
 <div *ngIf="scholarshipList.length > 0" class="scholarship-listing">
   <ng-container *ngFor="let scholarship of scholarshipList">
     <scholarship-card [scholarship]="scholarship"></scholarship-card>
