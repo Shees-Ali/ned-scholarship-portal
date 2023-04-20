@@ -14,6 +14,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ComponentsModule } from '../components/components.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatRadioModule,
     MatGridListModule,
     ComponentsModule,
-    MatButtonModule
+    MatButtonModule,
+    Ng2SearchPipeModule
   ],
 })
 export class HomeModule {}
