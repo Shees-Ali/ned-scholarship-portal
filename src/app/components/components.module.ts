@@ -22,7 +22,7 @@ import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
 import { DragDropDirective } from '../directives/drag-drop.directive';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { ChatWidgetComponent } from './chat-widget/chat-widget.component';
 @NgModule({
   declarations: [
     SideNavComponent,
@@ -34,6 +34,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ScreenLoaderComponent,
     DragDropDirective,
     SpinnerComponent,
+    ChatWidgetComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +59,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MyApplicationsListComponent,
     ScreenLoaderComponent,
     DragDropDirective,
-    SpinnerComponent
+    SpinnerComponent,
+    ChatWidgetComponent
   ],
 })
 export class ComponentsModule {}
