@@ -18,7 +18,7 @@ export class ScholarshipDetailsPage extends BasePage implements OnInit {
     this.utiltiy.showLoader();
     const id = this.nav.getQueryParams()['key'];
     this.scholarship = await this.scholarshipService.getScholarshipData(id);
-    console.log(this.scholarship);
+    this.scholarship['key'] = id;
     this.utiltiy.hideLoader();
   }
 

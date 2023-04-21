@@ -1,29 +1,33 @@
 <div class="flexbox">
-    <div class="heading"><h2>Feed Back</h2>
+  <div class="heading">
+    <h2>Feed Back</h2>
     <form action="">
-            <div class="Name">
-                <mat-label for="userName"></mat-label>
-                <input type="text" matInput placeholder="Name" id="userName">
-            </div>
-        <div class="email">
-            <mat-label for="userName"></mat-label>
-            <input type="email"  matInput placeholder="Email" name="userEmail" id="userEmail">
-    
-        </div>
-        <div class="Text-area">
-            <label for="userFeedback">
-                <input type="text"  matInput placeholder="Complains/Suggestions" name="userFeedback" id="userFeedback">
-            </label>
-        </div>
-        <div class="button">
-            <button mat-button id="sub"> Submit </button>
-        </div>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter Name" />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter email" />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Feedback</mat-label>
+        <textarea
+          class="Text-area"
+          matInput
+          placeholder="Enter Feedback"
+        ></textarea>
+      </mat-form-field>
+      <div class="button">
+        <button mat-button id="sub">Submit</button>
+      </div>
     </form>
-</div>
-    <!-- <div> -->
-        <!-- <mat-form-field appearance="outline">
+  </div>
+  <!-- <div> -->
+  <!-- <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" placeholder="Enter Email" />
             <mat-hint>Enter your Cloud Email address</mat-hint>
         </mat-form-field>
     </div> -->
+</div>

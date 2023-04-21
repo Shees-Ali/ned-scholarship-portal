@@ -1,66 +1,89 @@
-.flexbox{
-    display: flex;
-    //  background-color: aqua;
-    justify-content: center;
-    align-items: center;
-    
-}
-.heading,.Name,.email,.Text-area,.button{
-    text-align: center;
-    padding: 2% 0;
-}
-h2{
-    font-family: "Fira Sans", "Helvetica Neue", sans-serif;
-    font-weight: 400;
-    font-size: 2rem;
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
-#userName, #userEmail, #userFeedback{
-    width: calc(40vw - 60px);
-    height: 10vh;
-    border: 2px solid #1BB55E;
-    border-radius: 8px;
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 56px;
-    background-color: transparent;
-    padding: 0 30px;
-    }
-#userFeedback{
-    height: 35vh;
+h2 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 2rem;
 }
-::placeholder{
-    color: #1BB55E;
-    font-family: 'Roboto';
-    font-size: 20px;
-    margin-left: 5px;
-    line-height: 38px;
-    text-align: start;
+
+#userName,
+#userEmail,
+#userFeedback {
+  width: calc(40vw - 60px);
+  height: 10vh;
+  border: 2px solid #1bb55e;
+  border-radius: 8px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 56px;
+  background-color: transparent;
+  padding: 0 30px;
 }
-#sub{
-    width: 40vw;
-    height: 50px;
-    background-color: #1BB55E;
-    color: #fff;
-    border-radius: 8px;
+#userFeedback {
+  height: 35vh;
+}
+::placeholder {
+  color: #1bb55e;
+  font-family: "Roboto";
+  font-size: 20px;
+  margin-left: 5px;
+  line-height: 38px;
+  text-align: start;
+}
+#sub {
+  width: 40vw;
+  height: 50px;
+  background-color: #1bb55e;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.form-field {
+  width: 40vw;
+}
+
+textarea {
+  resize: none;
+  height: 10em !important;
 }
 
 @media only screen and (max-width: 760px) {
-    #userName, #userEmail, #userFeedback{
-        height: 8vh;
-        font-size: 16px;
-    }
-    #userFeedback{
-        height: 26vh;
-    }
+  #userName,
+  #userEmail,
+  #userFeedback {
+    height: 8vh;
+    font-size: 16px;
+  }
+  #userFeedback {
+    height: 26vh;
+  }
+
+  .form-field {
+    width: 100%;
+  }
 }
+
 @media only screen and (max-width: 420px) {
-    #userName, #userEmail, #userFeedback{
-        height: 6vh;
-        font-size: 12px;
-    }
-    #userFeedback{
-        height: 20vh;
-    }
+  #userName,
+  #userEmail,
+  #userFeedback {
+    height: 6vh;
+    font-size: 12px;
+  }
+  #userFeedback {
+    height: 20vh;
+  }
+
+  .form-field {
+    width: 100%;
+  }
+}
+
+.button {
+    margin-bottom: 16px;
 }

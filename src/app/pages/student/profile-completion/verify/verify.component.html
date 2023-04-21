@@ -1,6 +1,6 @@
 <div class="form-content">
   <div class="form-review-box">
-    <p class="form-heading">Review</p>
+    <p  *ngIf="!isComponent" class="form-heading">Review</p>
 
     <div class="records-row">
       <div class="sub-row">
@@ -37,7 +37,7 @@
             <p>Studying, Class/Job</p>
           </div>
           <div class="header-col">
-            <p>Occupation/p>
+            <p>Occupation/p></p>
           </div>
         </div>
         <div
@@ -118,29 +118,31 @@
     <p *ngFor="let item of documents">
       <mat-icon>insert_drive_file</mat-icon>
       <span class="file-name">
-        {{item.file_name}}
+        {{ item.file_name }}
       </span>
     </p>
   </div>
 
-  <p class="form-heading">Verify</p>
-  <div class="form-declaration">
-    <p>
-      I hereby declare that the facts and figures entered in the application are
-      correct to the best of my knowledge and I take full responsibility for
-      correctness of the enteries made herein. The Awarding committee of the
-      University can take any action against me if any of the entry in the
-      application is found wrong and fake.
-    </p>
-    <mat-checkbox [(ngModel)]="declaration" color="primary"></mat-checkbox>
-  </div>
+  <ng-container *ngIf="!isComponent">
+    <p class="form-heading">Verify</p>
+    <div class="form-declaration">
+      <p>
+        I hereby declare that the facts and figures entered in the application
+        are correct to the best of my knowledge and I take full responsibility
+        for correctness of the enteries made herein. The Awarding committee of
+        the University can take any action against me if any of the entry in the
+        application is found wrong and fake.
+      </p>
+      <mat-checkbox [(ngModel)]="declaration" color="primary"></mat-checkbox>
+    </div>
 
-  <div class="buttons-div">
-    <div class="next-btn">
-      <button (click)="prevPage()" class="green-btn" mat-button>Back</button>
+    <div class="buttons-div">
+      <div class="next-btn">
+        <button (click)="prevPage()" class="green-btn" mat-button>Back</button>
+      </div>
+      <div class="next-btn">
+        <button (click)="submit()" class="green-btn" mat-button>Submit</button>
+      </div>
     </div>
-    <div class="next-btn">
-      <button (click)="submit()" class="green-btn" mat-button>Submit</button>
-    </div>
-  </div>
+  </ng-container>
 </div>

@@ -9,7 +9,9 @@
   </div>
 
   <button
+    [disabled]="user.has_applied"
     mat-button
+    [ngClass]="user.has_applied ? 'disabled' : ''"
     class="apply-now-btn"
     *ngIf="user?.role === 'student'"
     (click)="to_apply()"

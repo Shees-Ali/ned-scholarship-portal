@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "scholarship-portal-e69c1": {
+      "hosting": {
+        "ned-scholarship-portal": [
+          "scholarship-portal-e69c1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "scholarship-portal-e69c1"
+  }
+}

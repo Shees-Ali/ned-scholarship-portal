@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   Database,
+  equalTo,
   limitToFirst,
   off,
   onChildAdded,
@@ -83,6 +84,46 @@ export class FirebaseService {
     });
   }
 
+  listApplicationsByScholarship(scholarship_id: string) {
+    return new Promise<any>((resolve) => {
+      let array: any[] = [];
+      let listQuery = query(
+        ref(this.database, 'applications'),
+        orderByChild('"scholarship_id"'),
+        equalTo(scholarship_id)
+      );
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          childData['key'] = childSnapshot.key;
+          array.push(childData);
+        });
+        resolve(array);
+      });
+    });
+  }
+
+  listApplicationsByUserID(user_id: string) {
+    return new Promise<any>((resolve) => {
+      let array: any[] = [];
+      let listQuery = query(
+        ref(this.database, '"student_id"'),
+        orderByChild('name'),
+        equalTo(user_id)
+      );
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          childData['key'] = childSnapshot.key;
+          array.push(childData);
+        });
+        resolve(array);
+      });
+    });
+  }
+
   countData(route: string) {
     return new Promise<number>((resolve) => {
       let count = 0;
@@ -97,6 +138,7 @@ export class FirebaseService {
       });
     });
   }
+
   pushFileToStorage(fileUpload: any, user_id: any) {
     return new Promise<any>((resolve) => {
       const filePath = `${this.basePath}/${user_id}/${fileUpload.file.name}`;
@@ -163,6 +205,4 @@ export class FirebaseService {
   //       // Uh-oh, an error occurred!
   //     });
   // }
-
-  saveFileData(data: any) {}
 }
