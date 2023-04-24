@@ -49,8 +49,17 @@ export class SubmitApplicationPageComponent extends BasePage {
     toolbarHiddenButtons: [['bold', 'italic'], ['fontSize']],
   };
   cover_letter: any = '';
+  canApply: boolean = true;
   constructor(injector: Injector, public dialog: MatDialog) {
     super(injector);
+    this.userService.getCurrentUser().then(async (res: any) => {
+      let user = res;
+      this.canApply = await this.applicationService.checkIfUserApplied(
+        user.user_id,
+        this.scholarship.key
+      );
+      console.log(this.canApply);
+    });
   }
 
   async submit() {
@@ -81,7 +90,7 @@ export class SubmitApplicationPageComponent extends BasePage {
     const user = await this.userService.getCurrentUser();
     const application = {
       student_id: user.user_id,
-      student_name: user.first_name + user.last_name,
+      student_name: user.first_name + ' ' + user.last_name,
       student_email: user.email,
       scholarship_id: this.scholarship.key,
       cover_letter: this.cover_letter,

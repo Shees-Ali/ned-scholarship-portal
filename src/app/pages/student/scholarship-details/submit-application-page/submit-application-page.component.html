@@ -18,12 +18,17 @@
       labelPosition="after"
       color="primary"
     >
-      I acknowledge the fact that if I apply to this Scholarship I won't be able
-      to apply to any other scholarship until the duration of this application
-      ends or My application is rejected
+      Please Acknowledge that you cannot apply to the same scholarship twice.
     </mat-checkbox>
 
-    <button class="green-btn" mat-button (click)="submit()">
+    <button
+      class="green-btn"
+      [disabled]="!canApply"
+      mat-button
+      [ngClass]="!canApply ? 'disabled' : ''"
+      n
+      (click)="submit()"
+    >
       Submit Application
     </button>
   </div>

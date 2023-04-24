@@ -47,6 +47,11 @@ const routes: Routes = [
         (m) => m.ScholarshipDetailsModule
       ),
   },
+  {
+    path: 'application',
+    loadChildren: () =>
+      import('../admin/application/application.module').then((m) => m.ApplicationModule),
+  },
 ];
 
 @NgModule({

@@ -17,12 +17,9 @@ export class ScholarshipCardComponent extends BasePage implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.scholarship);
-  }
+  ngOnInit(): void {}
 
   to_apply() {
-    console.log(this.scholarship);
     this.nav.navigateTo('student/scholarship-details', {
       queryParams: {
         key: this.scholarship.key,
@@ -31,6 +28,10 @@ export class ScholarshipCardComponent extends BasePage implements OnInit {
   }
 
   to_edit() {
-    this.nav.navigateTo('admin/applicant-list');
+    this.nav.navigateTo('admin/applicant-list', {
+      queryParams: {
+        key: this.scholarship.key,
+      },
+    });
   }
 }

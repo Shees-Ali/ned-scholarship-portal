@@ -23,7 +23,7 @@ export class MyApplicationsPage extends BasePage implements OnInit {
     this.utiltiy.showLoader();
     const user = await this.userService.getCurrentUser();
     this.applicationsList =
-      await this.applicationService.getApplicationsByUserID(user.user_id);
+      await this.applicationService.getApplicationsByUserID(user.user_id, 1000);
     this.utiltiy.hideLoader();
   }
 

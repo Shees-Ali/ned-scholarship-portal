@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Injector, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Injector,
+  Input,
+  Output,
+} from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
 
 @Component({
@@ -7,7 +13,9 @@ import { BasePage } from 'src/app/base/base.page';
   styleUrls: ['./verify.component.scss'],
 })
 export class VerifyComponent extends BasePage {
-  @Input('isComponent') isComponent: boolean = false; 
+  @Input('isComponent') isComponent: boolean = false;
+  @Input('isAdmin') isAdmin: boolean = false;
+  @Input('student_id') student_id?: string;
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
   particulars_of_applicant: any;
   guardian_info: any;
@@ -25,41 +33,50 @@ export class VerifyComponent extends BasePage {
   }
 
   async setValues(): Promise<void> {
-    const student = await this.studentService.getStudentData(this.user.user_id);
+    const student = await this.studentService.getStudentData(
+      this.isAdmin ? this.student_id : this.user.user_id
+    );
     const first_string = await this.storage.get('profileCompletion:first');
     const second_string = await this.storage.get('profileCompletion:second');
     const third_string = await this.storage.get('profileCompletion:third');
     const files = await this.storage.get('profileCompletion:fourth');
 
-    this.declaration = student ?? true;
+    if (!this.isAdmin) {
+      this.declaration = student ?? true;
+      if (!first_string || !second_string || !third_string || !files) {
+        if (student) {
+          this.particulars_of_applicant = student.particulars_of_applicant;
+          this.guardian_info = student.guardian_info;
+          this.academic_records = student.academic_records;
+          this.documents = student.documents;
+        }
+      }
 
-
-    if (!first_string || !second_string || !third_string || !files) {
+      if (first_string) {
+        const form = JSON.parse(first_string);
+        form['first_name'] = this.user.first_name;
+        form['last_name'] = this.user.last_name;
+        form['email'] = this.user.email;
+        this.particulars_of_applicant = form;
+      }
+      if (second_string) {
+        const form = JSON.parse(second_string);
+        this.guardian_info = form;
+      }
+      if (first_string) {
+        const form = JSON.parse(third_string);
+        this.academic_records = form;
+      }
+      if (files) {
+        this.documents = JSON.parse(files);
+      }
+    } else {
       if (student) {
         this.particulars_of_applicant = student.particulars_of_applicant;
         this.guardian_info = student.guardian_info;
         this.academic_records = student.academic_records;
         this.documents = student.documents;
       }
-    }
-
-    if (first_string) {
-      const form = JSON.parse(first_string);
-      form['first_name'] = this.user.first_name;
-      form['last_name'] = this.user.last_name;
-      form['email'] = this.user.email;
-      this.particulars_of_applicant = form;
-    }
-    if (second_string) {
-      const form = JSON.parse(second_string);
-      this.guardian_info = form;
-    }
-    if (first_string) {
-      const form = JSON.parse(third_string);
-      this.academic_records = form;
-    }
-    if (files) {
-      this.documents = JSON.parse(files);
     }
   }
 

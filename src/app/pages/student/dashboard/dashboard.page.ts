@@ -24,7 +24,7 @@ export class DashboardPage extends BasePage implements OnInit {
     this.utiltiy.showLoader();
     const user = await this.userService.getCurrentUser();
     this.applicationsList =
-      await this.applicationService.getApplicationsByUserID(user.user_id);
+      await this.applicationService.getApplicationsByUserID(user.user_id, 3);
       console.log(this.applicationsList);
     this.utiltiy.hideLoader();
     this.scholarshipList = await this.scholarshipService.getScholarShipList(

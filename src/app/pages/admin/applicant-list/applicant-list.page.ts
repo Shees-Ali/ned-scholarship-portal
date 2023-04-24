@@ -1,40 +1,39 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
 
-interface ApplicantsList {
-  id?: number;
-  name?: string;
-  guardian_name?: string;
-  batch?: number;
-  application?: boolean;
-  download?: boolean;
-}
 @Component({
   selector: 'app-applicant-list',
   templateUrl: './applicant-list.page.html',
-  styleUrls: ['./applicant-list.page.scss']
+  styleUrls: ['./applicant-list.page.scss'],
 })
 export class ApplicantListComponent extends BasePage implements OnInit {
-  constructor(injector: Injector,) {
+  scholarship_id: string = '';
+  constructor(injector: Injector) {
     super(injector);
   }
 
-  applicants_list: ApplicantsList[] = [
-    {
-      id: 101,
-      name: 'ahmed',
-      guardian_name: 'ali',
-      batch: 2022,
-      application: false,
-      download: false,
-    },
-  ]
-  
+  applicants_list: any[] = [];
+
   ngOnInit() {
     this.utiltiy.isPages.next(true);
+    this.scholarship_id = this.nav.getQueryParams()['key'];
+    this.getData();
   }
 
-  to_application(){
-    this.nav.navigateTo('admin/application');
+  toApplication(application: any) {
+    this.nav.navigateTo('admin/application', {
+      queryParams: {
+        application: JSON.stringify(application),
+      },
+    });
+  }
+
+  async getData() {
+    console.log(this.scholarship_id);
+    this.applicants_list =
+      await this.applicationService.getApplicationsByScholarShipID(
+        this.scholarship_id
+      );
+    console.log(this.applicants_list);
   }
 }

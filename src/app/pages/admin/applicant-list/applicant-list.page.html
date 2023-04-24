@@ -1,54 +1,55 @@
 <div class="content">
   <p class="form-heading">List of Applicants for Scholarship</p>
-  <mat-grid-list cols="1" rowHeight="8:1">
-    <div class="header-row">
-      <div class="header-col">
-        <p>Application ID</p>
-      </div>
-      <div class="header-col">
-        <p>Applicant Name</p>
-      </div>
-      <div class="header-col">
-        <p>Guardian Name<p>
-      </div>
-      <div class="header-col">
-        <p>Batch</p>
-      </div>
-      <div class="header-col">
-        <p>View Application</p>
-      </div>
-      <div class="header-col">
-        <p>Download</p>
-      </div>
-    </div>
-    <div
-      *ngFor="let item of applicants_list; let i = index"
-      class="content-row"
-    >
-      <ng-container>
-        <div class="content-col">
-          <p>{{ item.id }}</p>
+  <div class="table" *ngIf="applicants_list.length > 0">
+    <mat-grid-list cols="1" rowHeight="8:1">
+      <div class="header-row">
+        <div class="header-col">
+          <p>Application ID</p>
         </div>
-        <div class="content-col">
-          <p>{{ item.name }}</p>
+        <div class="header-col">
+          <p>Applicant Name</p>
         </div>
-        <div class="content-col">
-          <p>{{ item.guardian_name }}</p>
+        <div class="header-col">
+          <p>Date of Submission<p>
         </div>
-        <div class="content-col">
-          <p>{{ item.batch }}</p>
+        <div class="header-col">
+          <p>Status</p>
         </div>
-        <div class="content-col">
-          <button mat-button
-          (click)="to_application()"
-          >View</button>
+        <div class="header-col">
+          <p>View Application</p>
         </div>
-        <div class="content-col">
-          <button mat-button>Download</button>
-        </div>
-      </ng-container>
-    </div>
-  </mat-grid-list>
+      </div>
+      <div
+        *ngFor="let item of applicants_list; let i = index"
+        class="content-row"
+      >
+        <ng-container>
+          <div class="content-col">
+            <p>{{ item.key }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.student_name }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.submitted_date }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.status }}</p>
+          </div>
+          <div class="content-col">
+            <button mat-button
+            (click)="toApplication(item)"
+            >View</button>
+          </div>
+        </ng-container>
+      </div>
+    </mat-grid-list>
+  </div>
+  <div *ngIf="applicants_list.length == 0">
+    <p style="text-align: center;">
+      There are no Applicants for this Scholarship.
+    </p>
+  </div>
   <div class="archive-btn">
     <button mat-button>Archive Scholarship</button>
   </div>

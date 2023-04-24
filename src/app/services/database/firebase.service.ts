@@ -86,7 +86,7 @@ export class FirebaseService {
       let array: any[] = [];
       let listQuery = query(
         ref(this.database, 'applications'),
-        orderByChild('"scholarship_id"'),
+        orderByChild('scholarship_id'),
         equalTo(scholarship_id)
       );
       off(listQuery);
@@ -101,11 +101,12 @@ export class FirebaseService {
     });
   }
 
-  listApplicationsByUserID(user_id: string) {
+  listApplicationsByUserID(user_id: string, limit: number) {
     return new Promise<any>((resolve) => {
       let array: any[] = [];
       let listQuery = query(
         ref(this.database, 'applications'),
+        limitToFirst(limit),
         orderByChild('student_id'),
         equalTo(user_id)
       );
@@ -117,6 +118,27 @@ export class FirebaseService {
           array.push(childData);
         });
         resolve(array);
+      });
+    });
+  }
+
+  checkApplication(student_id: string, scholarship_id: string) {
+    return new Promise<boolean>((resolve) => {
+      let listQuery = query(
+        ref(this.database, 'applications'),
+        orderByChild('student_id'),
+        equalTo(student_id)
+      );
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          if (childData.scholarship_id == scholarship_id) {
+            resolve(false);
+          } else {
+            resolve(true);
+          }
+        });
       });
     });
   }
@@ -182,24 +204,4 @@ export class FirebaseService {
 
     return deleteObject(deleteRef);
   }
-
-  // getListofFiles(user_id: any) {
-  //   const filePath = `${this.basePath}/${user_id}`;
-  //   const listRef = storageRef(this.storage, filePath);
-  //   listAll(listRef)
-  //     .then((res) => {
-  //       res.prefixes.forEach((folderRef) => {
-  //         console.log(folderRef);
-  //         // All the prefixes under listRef.
-  //         // You may call listAll() recursively on them.
-  //       });
-  //       res.items.forEach((itemRef) => {
-  //         console.log(itemRef);
-  //         // All the items under listRef.
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       // Uh-oh, an error occurred!
-  //     });
-  // }
 }
