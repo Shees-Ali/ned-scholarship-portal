@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [ScholarshipsPage],
@@ -15,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
     CommonModule,
     ScholarshipsRoutingModule,
     ComponentsModule,
+    MatButtonModule,
     MatPaginatorModule,
     MatInputModule,
     MatIconModule,

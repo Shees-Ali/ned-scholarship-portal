@@ -20,10 +20,21 @@
 
     <p>
       <span class="filters-text"> Filters </span>
-      <mat-radio-group color="primary" [(ngModel)]="filter">
+      <mat-radio-group
+        color="primary"
+        (change)="filterChanged()"
+        [(ngModel)]="filter"
+      >
         <mat-radio-button value="need_based">Need Based</mat-radio-button>
         <mat-radio-button value="merit_based">Merit Based</mat-radio-button>
+        <mat-radio-button value="international">International</mat-radio-button>
+        <mat-radio-button value="scholarship_for_foreigner"
+          >Scholarship For Foreigner</mat-radio-button
+        >
+        <mat-radio-button value="national">Nation</mat-radio-button>
       </mat-radio-group>
+
+      <button mat-button (click)="clearFilter()">Clear</button>
     </p>
 
     <div *ngIf="scholarshipList.length > 0 " style="width: 100%">

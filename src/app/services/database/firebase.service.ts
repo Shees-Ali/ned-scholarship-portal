@@ -51,7 +51,12 @@ export class FirebaseService {
     return push(ref(this.database, route), data);
   }
 
-  listData(route: string, limit: number = 5, last_item: any = undefined) {
+  listData(
+    route: string,
+    limit: number = 5,
+    last_item: any = undefined,
+    filter: string = ''
+  ) {
     return new Promise<any>((resolve) => {
       let listQuery;
       let array: any[] = [];
@@ -76,6 +81,9 @@ export class FirebaseService {
           childData['key'] = childSnapshot.key;
           array.push(childData);
         });
+        if (filter && filter !== '') {
+          array = array.filter((x) => x.type == filter);
+        }
         resolve(array);
       });
     });
@@ -143,15 +151,22 @@ export class FirebaseService {
     });
   }
 
-  countData(route: string) {
+  countData(route: string, filter = '') {
     return new Promise<number>((resolve) => {
       let count = 0;
       let listQuery = query(ref(this.database, route), orderByKey());
 
       off(listQuery);
       onValue(listQuery, (snapshot) => {
-        snapshot.forEach(() => {
-          count++;
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          if (filter && filter !== '') {
+            if (childData.type == filter) {
+              count++;
+            }
+          } else {
+            count++;
+          }
         });
         resolve(count);
       });

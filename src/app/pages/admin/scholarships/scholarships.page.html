@@ -1,6 +1,40 @@
 <div class="header">
   <p class="heading">Edit/View Scholarships</p>
+  <mat-form-field appearance="outline">
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Search scholarship </mat-label>
+    <input matInput type="text" [(ngModel)]="searchTerm" />
+    <button
+      *ngIf="searchTerm"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="searchTerm=''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <p>
+    <span class="filters-text"> Filters </span>
+    <mat-radio-group
+      color="primary"
+      (change)="filterChanged()"
+      [(ngModel)]="filter"
+    >
+      <mat-radio-button value="need_based">Need Based</mat-radio-button>
+      <mat-radio-button value="merit_based">Merit Based</mat-radio-button>
+      <mat-radio-button value="international">International</mat-radio-button>
+      <mat-radio-button value="scholarship_for_foreigner"
+        >Scholarship For Foreigner</mat-radio-button
+      >
+      <mat-radio-button value="national">Nation</mat-radio-button>
+    </mat-radio-group>
+    <button mat-button (click)="clearFilter()">Clear</button>
+
+  </p>
 </div>
+
 <div *ngIf="scholarshipList.length > 0" class="scholarship-listing">
   <ng-container *ngFor="let scholarship of scholarshipList">
     <scholarship-card [scholarship]="scholarship"></scholarship-card>

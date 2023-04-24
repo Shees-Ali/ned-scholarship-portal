@@ -36,10 +36,11 @@ export class HomePage extends BasePage implements OnInit {
     console.log(this.lastItem);
     this.scholarshipList = await this.scholarshipService.getScholarShipList(
       this.limit,
-      this.lastItem ? this.lastItem.key : undefined
+      this.lastItem ? this.lastItem.name : undefined,
+      this.filter
     );
     this.scholarshipsCount =
-      await this.scholarshipService.getScholarShipCount();
+    await this.scholarshipService.getScholarShipCount(this.filter);
     this.lastItem = this.scholarshipList[this.limit - 1];
     console.log(this.scholarshipsCount);
     this.utiltiy.hideLoader();
@@ -55,5 +56,14 @@ export class HomePage extends BasePage implements OnInit {
     } else if ($event.pageIndex > 0) {
       this.getData();
     }
+  }
+
+  filterChanged() {
+    this.getData();
+  }
+
+  clearFilter() {
+    this.filter = '';
+    this.getData();
   }
 }
