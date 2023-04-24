@@ -5,7 +5,10 @@
 
   <div class="card margin-bottom-20">
     <p class="card-title">My Application Status</p>
-    <my-applications-list class="my-application-list"></my-applications-list>
+    <my-applications-list
+    *ngIf="applicationsList"
+    [application_list]="applicationsList"
+  ></my-applications-list>
   </div>
 
   <div class="card margin-bottom-20">

@@ -1,4 +1,44 @@
-<mat-table [dataSource]="dataSource">
+<div class="header-row">
+  <div class="header-col">
+    <p>S.no</p>
+  </div>
+  <div class="header-col">
+    <p>Application ID</p>
+  </div>
+  <div class="header-col">
+    <p>Submission Date</p>
+  </div>
+  <div class="header-col">
+    <p>Application Status</p>
+  </div>
+  <div class="header-col">
+    <p>View</p>
+  </div>
+</div>
+<div
+  *ngFor="let item of application_list; let i = index"
+  class="content-row"
+>
+  <ng-container>
+    <div class="content-col">
+      <p>{{ i+1 }}</p>
+    </div>
+    <div class="content-col">
+      <p>{{ item.scholarship_id }}</p>
+    </div>
+    <div class="content-col">
+      <p>{{ item.submitted_date }}</p>
+    </div>
+    <div class="content-col">
+      <p class="highlight">{{ item.status }}</p>
+    </div>
+    <div class="content-col">
+      <button mat-button>View</button>
+    </div>
+
+  </ng-container>
+
+<!-- <mat-table [dataSource]="dataSource">
   <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
     <mat-header-cell *matHeaderCellDef>
       {{ col.label }}
@@ -13,7 +53,7 @@
   </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
+</mat-table> -->
 <!-- <mat-paginator
   [pageSizeOptions]="[5, 10, 20]"
   showFirstLastButtons
