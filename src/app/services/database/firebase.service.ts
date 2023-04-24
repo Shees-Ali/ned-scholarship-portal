@@ -4,7 +4,6 @@ import {
   equalTo,
   limitToFirst,
   off,
-  onChildAdded,
   onValue,
   orderByChild,
   orderByKey,
@@ -15,12 +14,10 @@ import {
   startAfter,
   update,
 } from '@angular/fire/database';
-import { Observable } from 'rxjs';
 import {
   Storage,
   deleteObject,
   getDownloadURL,
-  listAll,
   ref as storageRef,
   uploadBytesResumable,
 } from '@angular/fire/storage';
@@ -108,8 +105,8 @@ export class FirebaseService {
     return new Promise<any>((resolve) => {
       let array: any[] = [];
       let listQuery = query(
-        ref(this.database, '"student_id"'),
-        orderByChild('name'),
+        ref(this.database, 'applications'),
+        orderByChild('student_id'),
         equalTo(user_id)
       );
       off(listQuery);

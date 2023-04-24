@@ -21,11 +21,19 @@ export class DashboardPage extends BasePage implements OnInit {
   }
 
   async getData() {
-    const user = this.userService.getCurrentUser();
-    // this.applicationsList = await this.applicationService.
+    this.utiltiy.showLoader();
+    const user = await this.userService.getCurrentUser();
+    this.applicationsList =
+      await this.applicationService.getApplicationsByUserID(user.user_id);
+      console.log(this.applicationsList);
+    this.utiltiy.hideLoader();
     this.scholarshipList = await this.scholarshipService.getScholarShipList(
       this.limit,
       this.lastItem ? this.lastItem.key : undefined
     );
+  }
+
+  showAll() {
+    this.nav.navigateTo('student/scholarships');
   }
 }

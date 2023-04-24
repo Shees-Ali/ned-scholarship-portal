@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 //All of this will be replaced with Firebase once we integrate it
 export interface ApplicationList {
@@ -11,50 +11,77 @@ export interface ApplicationList {
 }
 
 const DEPENDENTS_DATA: ApplicationList[] = [
-  {id: 1231, type:'scholarship' , date: '10/10/10' , app_status: 'under-review', view:'view/edit', download:'download'},
-  {id: 2311, type:'scholarship' , date: '10/10/10' , app_status: 'under-review', view:'view/edit', download:'download'},
-]
+  {
+    id: 1231,
+    type: 'scholarship',
+    date: '10/10/10',
+    app_status: 'under-review',
+    view: 'view/edit',
+    download: 'download',
+  },
+  {
+    id: 2311,
+    type: 'scholarship',
+    date: '10/10/10',
+    app_status: 'under-review',
+    view: 'view/edit',
+    download: 'download',
+  },
+];
 
 const COLUMNS_SCHEMA = [
   {
-    key: "id",
-    type: "number",
-    label: "Application ID"
-},
-  {
-      key: "type",
-      type: "text",
-      label: "Type"
+    key: 'id',
+    type: 'number',
+    label: 'Application ID',
   },
   {
-    key: "date",
-    type: "text",
-    label: "Date"
+    key: 'type',
+    type: 'text',
+    label: 'Type',
   },
   {
-    key: "app_status",
-    type: "string",
-    label: "Application Status"
+    key: 'date',
+    type: 'text',
+    label: 'Date',
   },
   {
-      key: "view",
-      type: "text",
-      label: "View/Edit"
+    key: 'app_status',
+    type: 'string',
+    label: 'Application Status',
   },
   {
-      key: "download",
-      type: "text",
-      label: "Download"
-  }
-]
+    key: 'view',
+    type: 'text',
+    label: 'View/Edit',
+  },
+  {
+    key: 'download',
+    type: 'text',
+    label: 'Download',
+  },
+];
 
 @Component({
   selector: 'my-applications-list',
   templateUrl: './my-applications-list.component.html',
-  styleUrls: ['./my-applications-list.component.scss']
+  styleUrls: ['./my-applications-list.component.scss'],
 })
-export class MyApplicationsListComponent {
-  displayedColumns: string[] = ['id', 'type', 'date', 'app_status', 'view', 'download'];
+export class MyApplicationsListComponent implements OnInit {
+  @Input('application_list') application_list?: Array<any>;
+
+  displayedColumns: string[] = [
+    'id',
+    'type',
+    'date',
+    'app_status',
+    'view',
+    'download',
+  ];
   dataSource: any = DEPENDENTS_DATA;
   columnsSchema: any = COLUMNS_SCHEMA;
+
+  ngOnInit() {
+    console.log(this.application_list);
+  }
 }

@@ -18,4 +18,8 @@ export class StudentService {
   getStudentData(user_id: string | undefined) {
     return this.firebase.getDataOnValue('students/' + user_id);
   }
+
+  countStudents() {
+    return this.firebase.countData('students');
+  }
 }

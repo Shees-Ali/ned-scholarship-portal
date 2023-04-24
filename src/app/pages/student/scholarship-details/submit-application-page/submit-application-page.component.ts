@@ -81,6 +81,8 @@ export class SubmitApplicationPageComponent extends BasePage {
     const user = await this.userService.getCurrentUser();
     const application = {
       student_id: user.user_id,
+      student_name: user.first_name + user.last_name,
+      student_email: user.email,
       scholarship_id: this.scholarship.key,
       cover_letter: this.cover_letter,
       submitted_date: date.toLocaleDateString(),
@@ -88,9 +90,12 @@ export class SubmitApplicationPageComponent extends BasePage {
     };
     console.log(application);
     this.applicationService.setApplicationsData(application).then((res) => {
-      this.userService.updateUser(user.user_id, {
-        has_applied: true,
-      });
+      if (!user.has_applied) {
+        this.userService.updateUser(user.user_id, {
+          has_applied: true,
+          has_granted: false,
+        });
+      }
       this.nav.navigateTo('student/dashboard');
     });
   }

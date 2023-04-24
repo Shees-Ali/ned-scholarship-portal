@@ -5,15 +5,13 @@
 
   <div class="card margin-bottom-20">
     <p class="card-title">My Application Status</p>
-    <!-- <div class="my-application-list"> -->
     <my-applications-list class="my-application-list"></my-applications-list>
-    <!-- </div> -->
   </div>
 
   <div class="card margin-bottom-20">
     <p class="card-title">
       Apply Now
-      <button mat-button style="float: right">See All</button>
+      <button (click)="showAll()" mat-button style="float: right">See All</button>
     </p>
 
     <div *ngIf="scholarshipList.length > 0" class="scholarship-listing">
@@ -21,10 +19,5 @@
         <scholarship-card [scholarship]="scholarship"></scholarship-card>
       </ng-container>
     </div>
-    <!-- <div class="scholarship-listing">
-      <scholarship-card></scholarship-card>
-      <scholarship-card></scholarship-card>
-      <scholarship-card></scholarship-card>
-    </div> -->
   </div>
 </div>

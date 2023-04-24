@@ -12,6 +12,8 @@ export class ApplicationsService {
     return this.firebase.pushData('applications', application);
   }
 
+  acceptApplication(application_id: string | undefined) {}
+
   getApplicationsData(application_id: string | undefined) {
     return this.firebase.getDataOnValue('applications/' + application_id);
   }
@@ -20,11 +22,11 @@ export class ApplicationsService {
     return this.firebase.listApplicationsByScholarship(scholarship_id);
   }
 
-  getApplicationsList(limit: number, last_item = undefined) {
-    return this.firebase.listData('applications', limit, last_item);
+  getApplicationsByUserID(user_id: string) {
+    return this.firebase.listApplicationsByUserID(user_id);
   }
 
-  getApplicationsCount() {
-    return this.firebase.countData('applications');
+  getApplicationsList(limit: number, last_item = undefined) {
+    return this.firebase.listData('applications', limit, last_item);
   }
 }
