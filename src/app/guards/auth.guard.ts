@@ -19,7 +19,6 @@ export class AuthGuard {
     state: RouterStateSnapshot
   ): Promise<boolean | void> {
     return this.auth.getUser().then((res) => {
-      console.log(res);
       if (!res) {
         this.router.navigate(['/authentication']);
       }

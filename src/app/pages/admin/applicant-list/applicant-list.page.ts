@@ -29,11 +29,17 @@ export class ApplicantListComponent extends BasePage implements OnInit {
   }
 
   async getData() {
-    console.log(this.scholarship_id);
     this.applicants_list =
       await this.applicationService.getApplicationsByScholarShipID(
         this.scholarship_id
       );
-    console.log(this.applicants_list);
+  }
+
+  edit() {
+    this.nav.navigateTo('admin/enter-scholarship', {
+      queryParams: {
+        scholarship_id: this.scholarship_id,
+      },
+    });
   }
 }

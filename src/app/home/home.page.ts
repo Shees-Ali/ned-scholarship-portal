@@ -15,40 +15,35 @@ export class HomePage extends BasePage implements OnInit {
   lastItem: any = undefined;
   searchTerm: string = '';
   filter: string = '';
-  constructor(injector: Injector,
- ){
+  constructor(injector: Injector) {
     super(injector);
-    
   }
   // public TawkMessengerAngular: TawkMessengerAngular
   async ngOnInit(): Promise<void> {
     this.utiltiy.isHome.next(true);
     await this.getData();
     Tawk_API.init();
-  //   this.TawkMessengerAngular.init({
-	// 		propertyId: ["6441b7994247f20fefece3d0"],
-	// 		widgetId: ["1gugbac93"]
-  // })
-}
+    //   this.TawkMessengerAngular.init({
+    // 		propertyId: ["6441b7994247f20fefece3d0"],
+    // 		widgetId: ["1gugbac93"]
+    // })
+  }
 
   async getData() {
     this.utiltiy.showLoader();
-    console.log(this.lastItem);
     this.scholarshipList = await this.scholarshipService.getScholarShipList(
       this.limit,
       this.lastItem ? this.lastItem.name : undefined,
       this.filter
     );
-    this.scholarshipsCount =
-    await this.scholarshipService.getScholarShipCount(this.filter);
+    this.scholarshipsCount = await this.scholarshipService.getScholarShipCount(
+      this.filter
+    );
     this.lastItem = this.scholarshipList[this.limit - 1];
-    console.log(this.scholarshipsCount);
     this.utiltiy.hideLoader();
   }
 
   handlePageEvent($event: any) {
-    console.log($event);
-    console.log(this.lastItem);
     if (this.limit !== $event.pageSize) {
       this.limit = $event.pageSize;
       this.lastItem = undefined;

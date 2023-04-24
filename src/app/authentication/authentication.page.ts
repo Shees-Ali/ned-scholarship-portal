@@ -60,7 +60,6 @@ export class AuthenticationPage extends BasePage implements OnInit {
   }
 
   signIn() {
-    console.log(this.signInForm.value);
     this.utiltiy.showLoader();
     if (this.signInForm.invalid) {
       this.utiltiy.hideLoader();
@@ -76,7 +75,6 @@ export class AuthenticationPage extends BasePage implements OnInit {
           if (user.role == 'student') {
             this.nav.navigateTo('student');
           } else if (user.role == 'admin') {
-            console.log(user);
             this.nav.navigateTo('admin');
           }
         }
@@ -92,7 +90,6 @@ export class AuthenticationPage extends BasePage implements OnInit {
   }
 
   signUp() {
-    console.log(this.signUpForm.value);
     if (this.signUpForm.invalid) {
       this.utiltiy.hideLoader();
       return this.openSnackBar('Sign Up Form InValid !', 'Okay');

@@ -64,9 +64,16 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
       guardian_monetry_assistance: [''],
       guardian_residential_address: ['', [Validators.required]],
     });
-    this.userService.getCurrentUser().then((res: any) => {
-      this.user = res;
-      this.setValues();
+    this.storage.get('user_obj').then((string) => {
+      if (string) {
+        this.user = JSON.parse(string);
+        this.setValues();
+      } else {
+        this.userService.getCurrentUser().then((res: any) => {
+          this.user = res;
+          this.setValues();
+        });
+      }
     });
   }
 

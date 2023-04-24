@@ -1,16 +1,19 @@
 @import "/src/app/pages/student/profile-completion/first-form-page/first-form-page.component.scss";
 
-.upload-img-text{
+.upload-img-text {
   font-size: 18px;
 }
-.banner-icon{
+.banner-icon {
   margin: 6px;
-  .banner-img{
+  .banner-img {
     max-width: 1240px;
   }
-  
 }
 
 .submit-btn {
   margin-top: 16px;
+  button {
+    height: 40px;
+    width: 140px;
+  }
 }

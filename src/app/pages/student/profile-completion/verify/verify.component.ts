@@ -26,9 +26,16 @@ export class VerifyComponent extends BasePage {
   documents: Array<any> = [];
   constructor(injector: Injector) {
     super(injector);
-    this.userService.getCurrentUser().then((res: any) => {
-      this.user = res;
-      this.setValues();
+    this.storage.get('user_obj').then((string) => {
+      if (string) {
+        this.user = JSON.parse(string);
+        this.setValues();
+      } else {
+        this.userService.getCurrentUser().then((res: any) => {
+          this.user = res;
+          this.setValues();
+        });
+      }
     });
   }
 

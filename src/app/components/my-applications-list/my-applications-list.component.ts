@@ -13,15 +13,13 @@ export class MyApplicationsListComponent extends BasePage implements OnInit {
     super(injector);
   }
 
-  ngOnInit() {
-    console.log(this.application_list);
-  }
+  ngOnInit() {}
 
   toApplication(application: any) {
     this.nav.navigateTo('student/application', {
       queryParams: {
         application: JSON.stringify(application),
-        isStudent: true
+        isStudent: true,
       },
     });
   }

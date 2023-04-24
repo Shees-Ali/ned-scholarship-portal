@@ -32,6 +32,7 @@ export class FirebaseService {
   getDataOnValue(route: string) {
     return new Promise<any>(async (resolve) => {
       const dBref = ref(this.database, route);
+      off(dBref);
       onValue(dBref, (snapshot) => {
         const data = snapshot.val();
         resolve(data);

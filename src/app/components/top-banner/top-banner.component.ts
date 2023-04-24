@@ -16,7 +16,6 @@ export class TopBannerComponent extends BasePage {
     this.authService.getUser().then(async (res: User | undefined) => {
       this.userData = res;
       this.user = await this.userService.getUserData(res?.uid);
-      console.log(this.user);
     });
   }
 }

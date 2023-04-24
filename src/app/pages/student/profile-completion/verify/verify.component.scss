@@ -36,3 +36,11 @@
     min-width: 25%;
   }
 }
+
+.profile-icon {
+  img {
+    object-fit: cover;
+    width: 120px;
+    height: 150px;
+  }
+}

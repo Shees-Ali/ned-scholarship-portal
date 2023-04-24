@@ -54,9 +54,16 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
       home_address: ['', Validators.required],
       permanent_address: ['', Validators.required],
     });
-    this.userService.getCurrentUser().then((res: any) => {
-      this.user = res;
-      this.setValues();
+    this.storage.get('user_obj').then((string) => {
+      if (string) {
+        this.user = JSON.parse(string);
+        this.setValues();
+      } else {
+        this.userService.getCurrentUser().then((res: any) => {
+          this.user = res;
+          this.setValues();
+        });
+      }
     });
   }
 
@@ -69,6 +76,8 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
       );
       if (student) {
         const form = student.particulars_of_applicant;
+        this.profileImg = form['profile_img'] ?? '';
+        delete form['profile_img'];
         this.firstFormGroup.setValue(form);
       }
       this.firstFormGroup.controls['first_name'].disable();
@@ -93,7 +102,6 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
         this.firstFormGroup.controls['email'].setValue(this.user.email);
       }
     }
-
   }
 
   onProfilePic($event: any) {
@@ -129,6 +137,7 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
     _form['first_name'] = this.user.first_name;
     _form['last_name'] = this.user.last_name;
     _form['email'] = this.user.email;
+    _form['profile_img'] = this.profileImg;
     const form: string = JSON.stringify(_form);
     this.storage.set('profileCompletion:first', form);
     this.next.emit();

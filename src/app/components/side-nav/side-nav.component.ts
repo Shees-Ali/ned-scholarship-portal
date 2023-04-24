@@ -47,12 +47,24 @@ export class SideNavComponent extends BasePage {
   user: any;
   constructor(injector: Injector) {
     super(injector);
-    this.userService.getCurrentUser().then((res: any) => {
-      this.user = res;
+  }
+
+  async ngOnInit() {
+    const string = await this.storage.get('user_obj');
+    if (string) {
+      this.user = JSON.parse(string);
       if (this.user.isProfileComplete) {
         this.routeLinks[1].name = 'Update Profile';
       }
-    });
+    } else {
+      this.userService.getCurrentUser().then((res: any) => {
+        this.user = res;
+        if (this.user.isProfileComplete) {
+          this.routeLinks[1].name = 'Update Profile';
+        }
+        this.storage.set('user_obj', JSON.stringify(res));
+      });
+    }
   }
 
   goTo(link: string) {

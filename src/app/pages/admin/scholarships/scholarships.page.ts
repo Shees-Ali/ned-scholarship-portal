@@ -24,7 +24,6 @@ export class ScholarshipsPage extends BasePage implements OnInit {
 
   async getData() {
     this.utiltiy.showLoader();
-    console.log(this.lastItem);
     this.scholarshipList = await this.scholarshipService.getScholarShipList(
       this.limit,
       this.lastItem ? this.lastItem.name : undefined,
@@ -34,13 +33,10 @@ export class ScholarshipsPage extends BasePage implements OnInit {
       this.filter
     );
     this.lastItem = this.scholarshipList[this.limit - 1];
-    console.log(this.scholarshipsCount);
     this.utiltiy.hideLoader();
   }
 
   handlePageEvent($event: any) {
-    console.log($event);
-    console.log(this.lastItem);
     if (this.limit !== $event.pageSize) {
       this.limit = $event.pageSize;
       this.lastItem = undefined;

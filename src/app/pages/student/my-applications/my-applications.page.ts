@@ -28,8 +28,6 @@ export class MyApplicationsPage extends BasePage implements OnInit {
   }
 
   handlePageEvent($event: any) {
-    console.log($event);
-    console.log(this.lastItem);
     if (this.limit !== $event.pageSize) {
       this.limit = $event.pageSize;
       this.lastItem = undefined;

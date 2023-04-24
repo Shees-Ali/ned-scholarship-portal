@@ -1,12 +1,26 @@
 <div class="form-content">
   <div class="form-review-box">
-    <p  *ngIf="!isComponent" class="form-heading">Review</p>
+    <p *ngIf="!isComponent" class="form-heading">Review</p>
+
+    <mat-grid-list cols="1" rowHeight="150px">
+      <mat-grid-tile [colspan]="1" [rowspan]="1" class="profile-icon">
+        <img
+          [src]="
+            particulars_of_applicant?.profile_img == ''
+              ? 'assets/svgs/upload.svg'
+              : particulars_of_applicant?.profile_img
+          "
+        />
+      </mat-grid-tile>
+    </mat-grid-list>
 
     <div class="records-row">
       <div class="sub-row">
         <p class="form-subheading">Particulars of Applicant</p>
         <p *ngFor="let item of particulars_of_applicant | keyvalue">
-          {{ getFormattedKey(item.key) }} - {{ item.value }}
+          <ng-container *ngIf="item.key !== 'profile_img'">
+            {{ getFormattedKey(item.key) }} - {{ item.value }}
+          </ng-container>
         </p>
       </div>
 

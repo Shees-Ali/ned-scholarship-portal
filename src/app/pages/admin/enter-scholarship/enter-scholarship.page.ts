@@ -11,33 +11,33 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 export class EnterScholarshipComponent extends BasePage implements OnInit {
   editorConfig: AngularEditorConfig = {
     editable: true,
-      spellcheck: true,
-      height: 'auto',
-      minHeight: '0',
-      maxHeight: 'auto',
-      width: 'auto',
-      minWidth: '0',
-      translate: 'yes',
-      enableToolbar: true,
-      showToolbar: true,
-      placeholder: 'Enter text here...',
-      defaultParagraphSeparator: '',
-      defaultFontName: '',
-      defaultFontSize: '',
-      fonts: [
-        {class: 'arial', name: 'Arial'},
-        {class: 'times-new-roman', name: 'Times New Roman'},
-        {class: 'calibri', name: 'Calibri'},
-        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
-      ],
-      customClasses: [
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+    ],
+    customClasses: [
       {
         name: 'quote',
         class: 'quote',
       },
       {
         name: 'redText',
-        class: 'redText'
+        class: 'redText',
       },
       {
         name: 'titleText',
@@ -49,12 +49,10 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
     uploadWithCredentials: false,
     sanitize: true,
     toolbarPosition: 'top',
-    toolbarHiddenButtons: [
-      ['bold', 'italic'],
-      ['fontSize']
-    ]
-};
+    toolbarHiddenButtons: [['bold', 'italic'], ['fontSize']],
+  };
   scholarshipDetailsFormGroup: FormGroup<any>;
+  scholarshipId: any;
   bannerImg: string = '';
   constructor(injector: Injector) {
     super(injector);
@@ -65,12 +63,21 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
       description: ['', Validators.required],
       criteria: ['', Validators.required],
       due_date: ['', Validators.required],
-      // img: ['', Validators.required],
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.utiltiy.isPages.next(true);
+    this.scholarshipId = this.nav.getQueryParams()['scholarship_id'];
+    if (this.scholarshipId) {
+      const formData = await this.scholarshipService.getScholarshipData(
+        this.scholarshipId
+      );
+      formData['due_date'] = new Date(formData['due_date']);
+      this.bannerImg = formData['banner_img'];
+      delete formData['banner_img'];
+      this.scholarshipDetailsFormGroup.setValue(formData);
+    }
   }
 
   onBannerImg($event: any) {
@@ -98,20 +105,27 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
     if (!this.scholarshipDetailsFormGroup.valid) {
       return this.utiltiy.openSnackBar('Please Fill All the Fields !', 'OK');
     }
-    if (!this.bannerImg){
+    if (!this.bannerImg) {
       return this.utiltiy.openSnackBar('Please Select a Banner Image', 'OK');
     }
     this.utiltiy.showLoader();
     const formValue = this.scholarshipDetailsFormGroup.value;
-    formValue["banner_img"] = this.bannerImg;
-    formValue["due_date"] = formValue["due_date"].toLocaleDateString();
-    this.scholarshipService.setScholarshipData(formValue).then((res) => {
-      this.utiltiy.hideLoader();
-      if (res) {
-        this.nav.navigateTo('admin/scholarships');
-      }
-    });
+    formValue['banner_img'] = this.bannerImg;
+    formValue['due_date'] = formValue['due_date'].toLocaleDateString();
+    if (this.scholarshipId) {
+      this.scholarshipService
+        .updateScholarship(this.scholarshipId, formValue)
+        .then(() => {
+          this.utiltiy.hideLoader();
+          this.nav.navigateTo('admin/scholarships');
+        });
+    } else {
+      this.scholarshipService.setScholarshipData(formValue).then((res) => {
+        this.utiltiy.hideLoader();
+        if (res) {
+          this.nav.navigateTo('admin/scholarships');
+        }
+      });
+    }
   }
-
-  onImage($event: any) {}
 }

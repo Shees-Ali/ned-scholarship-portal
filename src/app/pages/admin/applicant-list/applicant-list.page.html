@@ -10,8 +10,10 @@
           <p>Applicant Name</p>
         </div>
         <div class="header-col">
-          <p>Date of Submission<p>
+          <p>Date of Submission</p>
+          <p></p>
         </div>
+
         <div class="header-col">
           <p>Status</p>
         </div>
@@ -37,21 +39,23 @@
             <p>{{ item.status }}</p>
           </div>
           <div class="content-col">
-            <button mat-button
-            (click)="toApplication(item)"
-            >View</button>
+            <button mat-button (click)="toApplication(item)">View</button>
           </div>
         </ng-container>
       </div>
     </mat-grid-list>
   </div>
   <div *ngIf="applicants_list.length == 0">
-    <p style="text-align: center;">
+    <p style="text-align: center">
       There are no Applicants for this Scholarship.
     </p>
   </div>
-  <div class="archive-btn">
-    <button mat-button>Archive Scholarship</button>
+  <div class="buttons-div">
+    <div class="archive-btn">
+      <button mat-button>Archive Scholarship</button>
+    </div>
+    <div class="edit-btn">
+      <button mat-button (click)="edit()">Edit Scholarship</button>
+    </div>
   </div>
 </div>
-

@@ -50,8 +50,6 @@ export class AuthService {
   signUp(obj: any) {
     const email = obj.email;
     const password = obj.password;
-    console.log(email);
-    console.log(password);
     return new Promise<any>((resolve, reject) => {
       createUserWithEmailAndPassword(this.auth, email, password)
         .then((userCredential) => {
@@ -80,6 +78,7 @@ export class AuthService {
       };
       user.displayName = obj['first_name'] + ' ' + obj['last_name'];
       await this.auth.updateCurrentUser(user);
+      this.storage.set('user_obj', JSON.stringify(db_obj));
       this.userService.setUserData(user.uid, db_obj).then(() => {
         console.log('Success !!!');
       });
