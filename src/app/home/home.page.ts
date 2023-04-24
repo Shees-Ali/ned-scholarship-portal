@@ -61,4 +61,12 @@ export class HomePage extends BasePage implements OnInit {
     this.filter = '';
     this.getData();
   }
+
+  applyNow(scholarship: any) {
+    this.nav.navigateTo('student/scholarship-details', {
+      queryParams: {
+        key: scholarship.key,
+      },
+    });
+  }
 }

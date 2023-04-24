@@ -69,9 +69,9 @@ export class SideNavComponent extends BasePage {
 
   goTo(link: string) {
     if (link == 'logout') {
-      this.isExpanded = false;
-      return this.authService.logOut();
+      this.authService.logOut();
+      return this.isExpanded = false;
     }
-    this.nav.navigateTo(this.user.role + '/' + link);
+    return this.nav.navigateTo(this.user.role + '/' + link);
   }
 }

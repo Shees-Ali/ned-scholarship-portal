@@ -13,9 +13,14 @@ export class TopBannerComponent extends BasePage {
   user: any;
   constructor(injector: Injector) {
     super(injector);
-    this.authService.getUser().then(async (res: User | undefined) => {
-      this.userData = res;
-      this.user = await this.userService.getUserData(res?.uid);
+    this.storage.get('user_obj').then((res) => {
+      if (res) {
+        this.user = JSON.parse(res);
+      } else {
+        this.userService.getCurrentUser().then((res: any) => {
+          this.user = res;
+        });
+      }
     });
   }
 }

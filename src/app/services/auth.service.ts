@@ -6,6 +6,7 @@ import {
   UserCredential,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from '@angular/fire/auth';
 import { StorageService } from './storage.service';
 import { UserService } from './database/user.service';
@@ -97,8 +98,9 @@ export class AuthService {
     });
   }
 
-  logOut() {
-    this.storage.set('user', null);
+  async logOut() {
+    signOut(this.auth);
+    await this.storage.set('user', '');
     this.nav.navigateFromRoot('authentication');
   }
 }

@@ -50,7 +50,13 @@
             {{ scholarship?.sponsor_name }}
           </p>
         </div>
-        <button mat-button class="apply-now-btn">Apply Now -></button>
+        <button
+          mat-button
+          (click)="applyNow(scholarship)"
+          class="apply-now-btn"
+        >
+          Apply Now ->
+        </button>
 
         <!-- </div> -->
       </div>
