@@ -24,6 +24,7 @@ export class VerifyComponent extends BasePage {
   user: any;
   declaration: boolean = false;
   documents: Array<any> = [];
+  isLoading: boolean = false;
   constructor(injector: Injector) {
     super(injector);
   }
@@ -38,6 +39,7 @@ export class VerifyComponent extends BasePage {
   }
 
   async setValues(): Promise<void> {
+    this.isLoading = true;
     const student = await this.studentService.getStudentData(
       this.isAdmin ? this.student_id : this.user.user_id
     );
@@ -83,6 +85,7 @@ export class VerifyComponent extends BasePage {
         this.documents = student.documents;
       }
     }
+    this.isLoading = false;
   }
 
   async prevPage() {

@@ -1,4 +1,4 @@
-<div class="form-content">
+<div *ngIf="!isLoading" class="form-content">
   <div class="form-review-box">
     <p *ngIf="!isComponent" class="form-heading">Review</p>
 
@@ -162,4 +162,11 @@
       </div>
     </div>
   </ng-container>
+</div>
+
+<div class="spinner" *ngIf="isLoading">
+  <mat-progress-spinner
+    color="primary"
+    mode="indeterminate"
+  ></mat-progress-spinner>
 </div>

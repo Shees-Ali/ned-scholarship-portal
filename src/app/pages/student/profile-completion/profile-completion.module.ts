@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRippleModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
@@ -45,9 +45,8 @@ import { MatListModule } from '@angular/material/list';
     MatProgressBarModule,
     MatExpansionModule,
     MatListModule,
+    MatProgressSpinnerModule,
   ],
-  exports: [
-    VerifyComponent
-  ]
+  exports: [VerifyComponent],
 })
 export class ProfileCompletionModule {}
