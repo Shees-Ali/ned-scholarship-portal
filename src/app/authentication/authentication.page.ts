@@ -28,10 +28,10 @@ export class AuthenticationPage extends BasePage implements OnInit {
     });
     this.signUpForm = this.formBuilder.group(
       {
-        first_name: ['Shees', Validators.required],
-        last_name: ['Ali', Validators.required],
+        first_name: ['', [Validators.required, Validators.maxLength(25)]],
+        last_name: ['', [Validators.required, Validators.maxLength(25)]],
         email: [
-          'sheesali088@cloud.neduet.edu.pk',
+          '',
           [
             Validators.required,
             Validators.pattern('^[a-z0-9._%+-]+@cloud.neduet.edu.pk'),

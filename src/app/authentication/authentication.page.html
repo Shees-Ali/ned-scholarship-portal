@@ -28,9 +28,9 @@
         <button class="signin-btn" mat-raised-button (click)="signIn()">
           Sign In
         </button>
-        <caption class="ineed-help">
+        <!-- <caption class="ineed-help">
           Need help?<a> Go to online help </a>
-        </caption>
+        </caption> -->
       </div>
     </mat-grid-tile>
 
@@ -47,8 +47,22 @@
                   formControlName="first_name"
                   matInput
                   placeholder="Enter First Name"
+                  maxlength="25"
                 />
-                <mat-hint>Enter First Name</mat-hint>
+
+                <!-- <mat-hint>Enter First Name</mat-hint> -->
+
+                <mat-hint *ngIf="!signUpForm.controls['first_name'].touched"
+                  >Enter First Name</mat-hint
+                >
+
+                <mat-hint
+                  *ngIf="signUpForm.controls['first_name'].invalid &&
+                  (signUpForm.controls['first_name'].dirty ||
+                  signUpForm.controls['first_name'].touched)"
+                >
+                  Invalid First Name
+                </mat-hint>
               </mat-form-field>
             </mat-grid-tile>
             <mat-grid-tile>
@@ -58,15 +72,33 @@
                   formControlName="last_name"
                   matInput
                   placeholder="Enter Last Name"
+                  maxlength="25"
                 />
-                <mat-hint>Enter Last Name</mat-hint>
+                <mat-hint *ngIf="!signUpForm.controls['last_name'].touched"
+                  >Enter Last Name</mat-hint
+                >
+                <mat-hint
+                  *ngIf="signUpForm.controls['last_name'].invalid &&
+                (signUpForm.controls['last_name'].dirty ||
+                signUpForm.controls['last_name'].touched)"
+                >
+                  Invalid Last Name
+                </mat-hint>
               </mat-form-field>
             </mat-grid-tile>
           </mat-grid-list>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input formControlName="email" matInput placeholder="Enter Email" />
-            <mat-hint>Enter your Cloud Email address</mat-hint>
+            <mat-hint *ngIf="!signUpForm.controls['email'].touched"
+              >Enter your Cloud Email address</mat-hint
+            >
+            <mat-hint
+              *ngIf="signUpForm.controls['email'].invalid &&
+          (signUpForm.controls['email'].dirty ||
+          signUpForm.controls['email'].touched)"
+              >Email should be in format xyx@cloud.neduet.edu.pk</mat-hint
+            >
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
@@ -76,7 +108,13 @@
               matInput
               placeholder="Enter Password"
             />
-            <mat-hint>Enter Password</mat-hint>
+            <mat-hint *ngIf="!signUpForm.controls['password'].touched"
+              >Enter Password</mat-hint
+            >
+            <mat-hint
+              *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)"
+              >Password be at least 8 digits</mat-hint
+            >
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Confirm Password</mat-label>
@@ -86,15 +124,22 @@
               type="password"
               placeholder="Confirm Password"
             />
-            <mat-hint>Enter Password again to continue</mat-hint>
+            <mat-hint *ngIf="!signUpForm.controls['password'].touched"
+              >Enter Password again to continue</mat-hint
+            >
+            <mat-hint
+              *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)"
+            >
+              Confirm Password should be similar too Password
+            </mat-hint>
           </mat-form-field>
         </form>
         <button (click)="signUp()" class="signup-btn" mat-raised-button>
           Submit
         </button>
-        <caption class="ineed-help">
+        <!-- <caption class="ineed-help">
           Need help?<a> Go to online help </a>
-        </caption>
+        </caption> -->
       </div>
     </mat-grid-tile>
   </mat-grid-list>
@@ -105,13 +150,21 @@
     <p class="moving-text">NED Scholarship Portal</p>
     <ng-container *ngIf="!isSignUp">
       <p class="moving-question">Dont have an account yet?</p>
-      <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
+      <button
+        class="changeto-signup-btn"
+        mat-raised-button
+        (click)="changeTo()"
+      >
         Sign Up
       </button>
     </ng-container>
     <ng-container *ngIf="isSignUp">
       <p class="moving-question">Already have an Account?</p>
-      <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
+      <button
+        class="changeto-signup-btn"
+        mat-raised-button
+        (click)="changeTo()"
+      >
         Sign In
       </button>
     </ng-container>
