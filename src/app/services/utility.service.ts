@@ -12,7 +12,7 @@ export class UtilityService {
   isHome = new Subject<boolean>();
   isAuthenticationPage = new Subject<boolean>();
   isLoading = new Subject<boolean>();
-  error_messages = "";
+  error_messages = '';
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) {}
 
   showLoader() {
@@ -52,7 +52,4 @@ export class UtilityService {
       });
     });
   }
-
-
-  
 }

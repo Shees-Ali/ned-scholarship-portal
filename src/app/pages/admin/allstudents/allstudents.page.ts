@@ -12,24 +12,31 @@ interface AllStudentsList {
 @Component({
   selector: 'app-allstudents',
   templateUrl: './allstudents.page.html',
-  styleUrls: ['./allstudents.page.scss']
+  styleUrls: ['./allstudents.page.scss'],
 })
 export class AllstudentsPage extends BasePage implements OnInit {
-  constructor(injector: Injector,) {
+  constructor(injector: Injector) {
     super(injector);
   }
 
-  all_students_list: AllStudentsList[] = [
-    {
-      roll_no: 'CT-087',
-      name: 'Anon',
-      guardian_name: 'Big Anon',
-      email: 'anon@cloud.neduet.edu.pk',
-      scholarship_status: 'Not Received',
-    },
-  ]
-  
+  all_students_list: any[] = [];
+
   ngOnInit() {
     this.utiltiy.isPages.next(true);
+    this.getData();
+  }
+
+  async getData() {
+    this.utiltiy.showLoader();
+    this.all_students_list = await this.studentService.getStudentsList(10);
+    for (let index = 0; index < this.all_students_list.length; index++) {
+      const element = this.all_students_list[index];
+      if (element.isProfileComplete) {
+        element['particulars'] =
+          await this.studentService.getStudentParticulars(element.user_id);
+      }
+    }
+    console.log(this.all_students_list);
+    this.utiltiy.hideLoader();
   }
 }

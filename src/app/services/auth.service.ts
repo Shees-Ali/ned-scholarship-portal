@@ -101,6 +101,7 @@ export class AuthService {
   async logOut() {
     signOut(this.auth);
     await this.storage.set('user', '');
+    await this.storage.set('user_obj', '');
     this.nav.navigateFromRoot('authentication');
   }
 }

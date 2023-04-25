@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { FirebaseService } from './firebase.service';
 import { AuthService } from '../auth.service';
 import { StorageService } from '../storage.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  userUpdated = new Subject<void>();
   constructor(
     private firebase: FirebaseService,
     private storage: StorageService

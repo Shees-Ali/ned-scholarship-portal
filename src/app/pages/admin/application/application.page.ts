@@ -19,6 +19,7 @@ export class ApplicationPage extends BasePage implements OnInit {
       this.isStudent = this.nav.getQueryParams()['isStudent'];
     }
     this.application = JSON.parse(string);
+    console.log(this.application);
   }
 
   approve() {

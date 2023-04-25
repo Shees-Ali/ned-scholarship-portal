@@ -71,6 +71,8 @@ export class AuthenticationPage extends BasePage implements OnInit {
       .then(async (res) => {
         const user = await this.userService.getUserData(res?.uid);
         if (res && user) {
+          this.storage.set('user_obj', JSON.stringify(user));
+          this.userService.userUpdated.next();
           this.utiltiy.hideLoader();
           if (user.role == 'student') {
             this.nav.navigateTo('student');
@@ -80,11 +82,11 @@ export class AuthenticationPage extends BasePage implements OnInit {
         }
       })
       .catch((err) => {
-        if (err.code == "auth/user-not-found") {
-          this.utiltiy.openSnackBar("User Doesn't Exist", "OK");
-        } else if (err.code == "auth/wrong-password") {
-          this.utiltiy.openSnackBar("Wrong Password", "OK");
-        } 
+        if (err.code == 'auth/user-not-found') {
+          this.utiltiy.openSnackBar("User Doesn't Exist", 'OK');
+        } else if (err.code == 'auth/wrong-password') {
+          this.utiltiy.openSnackBar('Wrong Password', 'OK');
+        }
         this.utiltiy.hideLoader();
       });
   }
@@ -104,8 +106,8 @@ export class AuthenticationPage extends BasePage implements OnInit {
         }
       })
       .catch((err) => {
-        if (err.code == "auth/email-already-in-use") {
-          this.utiltiy.openSnackBar("Email Already In Use", "OK");
+        if (err.code == 'auth/email-already-in-use') {
+          this.utiltiy.openSnackBar('Email Already In Use', 'OK');
         }
         this.utiltiy.hideLoader();
       });

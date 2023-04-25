@@ -44,3 +44,12 @@
     height: 150px;
   }
 }
+
+.file-item {
+  display: flex;
+  align-items: center;
+  
+  .file-name {
+    margin-left: 16px;
+  }
+}

@@ -90,6 +90,28 @@ export class FirebaseService {
     });
   }
 
+  listStudents() {
+    return new Promise<any>((resolve) => {
+      let listQuery;
+      let array: any[] = [];
+
+      listQuery = query(
+        ref(this.database, 'users'),
+        orderByChild('role'),
+        equalTo('student')
+      );
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          childData['key'] = childSnapshot.key;
+          array.push(childData);
+        });
+        resolve(array);
+      });
+    });
+  }
+
   listApplicationsByScholarship(scholarship_id: string) {
     return new Promise<any>((resolve) => {
       let array: any[] = [];
@@ -148,6 +170,19 @@ export class FirebaseService {
             resolve(true);
           }
         });
+      });
+    });
+  }
+
+  getStudentParticulars(student_id: string) {
+    return new Promise<boolean>((resolve) => {
+      let listQuery = query(
+        ref(this.database, `students/${student_id}/particulars_of_applicant`),
+      );
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        // console.log(snapshot.val());
+        resolve(snapshot.val())
       });
     });
   }

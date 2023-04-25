@@ -7,7 +7,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 })
 export class ToolbarComponent {
   @Input('sidenav') sidenav: any;
-  @Input('btnText') btnText: string = 'Download Application';
+  @Input('btnText') btnText: string = '';
   @Input('showProfileIcon') showProfileIcon: boolean = true;
   @Output('btnClicked') btnClicked: EventEmitter<any> = new EventEmitter<any>();
 }

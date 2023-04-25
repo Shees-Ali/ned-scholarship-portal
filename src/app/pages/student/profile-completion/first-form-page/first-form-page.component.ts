@@ -58,11 +58,6 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
       if (string) {
         this.user = JSON.parse(string);
         this.setValues();
-      } else {
-        this.userService.getCurrentUser().then((res: any) => {
-          this.user = res;
-          this.setValues();
-        });
       }
     });
   }

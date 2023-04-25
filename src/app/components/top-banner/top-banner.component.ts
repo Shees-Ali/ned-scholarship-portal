@@ -15,11 +15,8 @@ export class TopBannerComponent extends BasePage {
     super(injector);
     this.storage.get('user_obj').then((res) => {
       if (res) {
+        console.log(res);
         this.user = JSON.parse(res);
-      } else {
-        this.userService.getCurrentUser().then((res: any) => {
-          this.user = res;
-        });
       }
     });
   }

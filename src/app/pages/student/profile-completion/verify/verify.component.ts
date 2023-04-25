@@ -26,15 +26,13 @@ export class VerifyComponent extends BasePage {
   documents: Array<any> = [];
   constructor(injector: Injector) {
     super(injector);
+  }
+
+  ngOnInit() {
     this.storage.get('user_obj').then((string) => {
       if (string) {
         this.user = JSON.parse(string);
         this.setValues();
-      } else {
-        this.userService.getCurrentUser().then((res: any) => {
-          this.user = res;
-          this.setValues();
-        });
       }
     });
   }
@@ -149,5 +147,9 @@ export class VerifyComponent extends BasePage {
       .map((word: any) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
     return formattedString;
+  }
+
+  download(item: any) {
+    window.open(item.download_url);
   }
 }

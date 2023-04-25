@@ -50,19 +50,26 @@ export class SubmitApplicationPageComponent extends BasePage {
   };
   cover_letter: any = '';
   canApply: boolean = true;
+  user: any;
   constructor(injector: Injector, public dialog: MatDialog) {
     super(injector);
     this.userService.getCurrentUser().then(async (res: any) => {
-      let user = res;
+      this.user = res;
       this.canApply = await this.applicationService.checkIfUserApplied(
-        user.user_id,
+        this.user.user_id,
         this.scholarship.key
       );
-      console.log(this.canApply);
     });
   }
 
   async submit() {
+    if (!this.user.isProfileComplete) {
+      return this.utiltiy.openSnackBar(
+        'Please Complete Profile Information Before Applying',
+        'OK',
+        'error'
+      );
+    }
     let date = new Date();
     if (this.cover_letter == '') {
       return this.utiltiy.openSnackBar(
@@ -97,7 +104,6 @@ export class SubmitApplicationPageComponent extends BasePage {
       submitted_date: date.toLocaleDateString(),
       status: 'under-review',
     };
-    console.log(application);
     this.applicationService.setApplicationsData(application).then((res) => {
       if (!user.has_applied) {
         this.userService.updateUser(user.user_id, {

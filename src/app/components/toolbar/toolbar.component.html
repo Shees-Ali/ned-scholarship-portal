@@ -1,12 +1,14 @@
 <mat-toolbar class="toolbar">
   <div class="left-side">
     <img src="assets/images/NEDUET_logo.png" alt="NED LOGO" />
-    <span class="main-heading">NED UNIVERSITY PAKISTAN</span>
+    <span class="main-heading"
+      >NED University of Engineering and Technology
+    </span>
   </div>
   <!-- <span class="example-spacer"></span> -->
 
   <div class="right-side">
-    <button (click)="btnClicked.emit()" class="btn-text" mat-button>
+    <button *ngIf="btnText !== ''" (click)="btnClicked.emit()" class="btn-text" mat-button>
       {{ btnText }}
     </button>
     <button

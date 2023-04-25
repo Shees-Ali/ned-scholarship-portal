@@ -51,7 +51,7 @@
             <p>Studying, Class/Job</p>
           </div>
           <div class="header-col">
-            <p>Occupation/p></p>
+            <p>Occupation</p>
           </div>
         </div>
         <div
@@ -129,11 +129,14 @@
   <div class="files-div">
     <p class="form-heading">Documents</p>
 
-    <p *ngFor="let item of documents">
+    <p class="file-item" *ngFor="let item of documents">
       <mat-icon>insert_drive_file</mat-icon>
       <span class="file-name">
         {{ item.file_name }}
       </span>
+      <button *ngIf="isAdmin" (click)="download(item)" mat-icon-button>
+        <mat-icon>cloud_download</mat-icon>
+      </button>
     </p>
   </div>
 

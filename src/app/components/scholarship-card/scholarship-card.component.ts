@@ -12,18 +12,14 @@ export class ScholarshipCardComponent extends BasePage implements OnInit {
 
   constructor(injector: Injector) {
     super(injector);
+    this.storage.get('user_obj').then((string) => {
+      if (string) {
+        this.user = JSON.parse(string);
+      }
+    });
   }
 
-  async ngOnInit(): Promise<void> {
-    const string = await this.storage.get('user_obj');
-    if (string) {
-      this.user = JSON.parse(string);
-    } else {
-      this.userService.getCurrentUser().then((res: any) => {
-        this.user = res;
-      });
-    }
-  }
+  async ngOnInit(): Promise<void> {}
 
   to_apply() {
     this.nav.navigateTo('student/scholarship-details', {
