@@ -1,8 +1,8 @@
 <img src="assets/images/LoginPage-Background.jpg" class="background-image" />
 
-<div class="mainbox">
+<div class="mainbox" *ngIf="currentScreenSize != 'Small'">
   <!-- <mat-card> -->
-  <mat-grid-list cols="2" rowHeight="70vh">
+  <mat-grid-list cols="2" rowHeight="75vh">
     <mat-grid-tile>
       <div class="login-card">
         <p class="login-title">Sign In</p>
@@ -117,3 +117,133 @@
     </ng-container>
   </div>
 </div>
+
+<!-- For Small Size -->
+
+<div class="m-mainbox" *ngIf="currentScreenSize == 'Small'">
+  <mat-grid-list cols="1" rowHeight="80vh">
+    <mat-grid-tile *ngIf="!isSignUp">
+      <div class="m-login-card">
+        <p class="m-login-title">Sign In</p>
+        <p class="m-login-subtitle">NED University’s Scholarship Portal</p>
+        <form class="form" [formGroup]="signInForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Enter Email" />
+            <mat-hint>Enter your Cloud Email address</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              matInput
+              formControlName="password"
+              placeholder="Enter Password"
+            />
+            <mat-hint>Enter Password</mat-hint>
+          </mat-form-field>
+        </form>
+        <p class="m-login-text">Forgot Password?</p>
+        <button class="m-signin-btn" mat-raised-button (click)="signIn()">
+          Sign In
+        </button>
+        <caption class="m-ineed-help">
+          Need help?<a> Go to online help </a>
+        </caption>
+        <p class="m-change-text">Dont have an account yet?
+          <button class="m-changeto-signup-btn" mat-button (click)="changeTo()">
+          Sign Up
+          </button>
+        </p>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile *ngIf="isSignUp">
+      <div class="m-signup-card">
+        <p class="m-signup-title">Sign Up</p>
+        <p class="m-signup-subtitle">NED University’s Scholarship Portal</p>
+        <form class="form" [formGroup]="signUpForm">
+          <mat-grid-list cols="2" rowHeight="85px" [gutterSize]="'8px'">
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input
+                  formControlName="first_name"
+                  matInput
+                  placeholder="Enter First Name"
+                />
+                <mat-hint>Enter First Name</mat-hint>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input
+                  formControlName="last_name"
+                  matInput
+                  placeholder="Enter Last Name"
+                />
+                <mat-hint>Enter Last Name</mat-hint>
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Enter Email" />
+            <mat-hint>Enter your Cloud Email address</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              formControlName="password"
+              type="password"
+              matInput
+              placeholder="Enter Password"
+            />
+            <mat-hint>Enter Password</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              formControlName="confirm_password"
+              matInput
+              type="password"
+              placeholder="Confirm Password"
+            />
+            <mat-hint>Enter Password again to continue</mat-hint>
+          </mat-form-field>
+        </form>
+        <button (click)="signUp()" class="m-signup-btn" mat-raised-button>
+          Submit
+        </button>
+        <caption class="m-ineed-help">
+          Need help?<a> Go to online help </a>
+        </caption>
+        <p class="m-change-text">Already have an Account?
+          <button class="m-changeto-signin-btn" mat-button (click)="changeTo()">
+          Sign In
+          </button>
+        </p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <!-- </mat-card> -->
+  <!-- <div class="moving-slide" [class.active]="isSignUp">
+    <img src="assets/images/NED-Logo-white.png" />
+    <p class="moving-text">Welcome To</p>
+    <p class="moving-text">NED Scholarship Portal</p>
+    <ng-container *ngIf="!isSignUp">
+      <p class="moving-question">Dont have an account yet?</p>
+      <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
+        Sign Up
+      </button>
+    </ng-container>
+    <ng-container *ngIf="isSignUp">
+      <p class="moving-question">Already have an Account?</p>
+      <button class="changeto-signup-btn" mat-raised-button (click)="changeTo()">
+        Sign In
+      </button>
+    </ng-container>
+  </div> -->
+</div>
+

@@ -21,3 +21,30 @@
 .margin-top-150 {
   margin-top: 150px;
 }
+
+@media only screen and (max-width: 1000px) {    
+  .content-container{
+    margin-left: 5px;
+  }
+  mat-sidenav-container{
+    mat-sidenav, .desktop-nav{
+      scale: 0;
+    }
+  }
+  .mobile-nav{
+    width: 200px;
+    z-index: 1000000;
+  }
+}
+
+@media only screen and (max-width: 800px) {    
+  .margin-top-150 {
+    margin-top: 125px;
+  }
+}
+
+@media only screen and (max-width: 420px) {    
+  .margin-top-150 {
+    margin-top: 100px;
+  }
+}

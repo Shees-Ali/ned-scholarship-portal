@@ -11,6 +11,7 @@
   background-color: #ffffff;
   position: fixed;
   width: 896px;
+  height: fit-content;
   top: 50%;
   left: 50%;
   border-radius: 10px;
@@ -23,8 +24,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    margin-right: 54px;
-    margin-left: 54px;
+    margin: 0 10%;
     .login-title,
     .signup-title {
       font-size: 34px;
@@ -125,5 +125,133 @@
 .form {
   mat-form-field {
     width: 100%;
+  }
+}
+
+.background-image {
+  object-fit: cover;
+  position: fixed;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+}
+
+// mobile-display
+// mobile-display
+// mobile-display
+
+.m-mainbox {
+  background-color: #ffffff;
+  position: fixed;
+  width: 50vw;
+  height: fit-content;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  font-family: "Roboto";
+  .m-login-card,
+  .m-signup-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0 10%;
+    .m-login-title,
+    .m-signup-title {
+      font-size: 34px;
+      margin-top: 5%;
+      margin-bottom: 5px;
+    }
+    .m-login-subtitle,
+    .m-signup-subtitle {
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+      color: rgba(0, 0, 0, 0.6);
+      margin-top: 5px;
+    }
+    .m-login-text {
+      font-size: 16px;
+      letter-spacing: 0.15px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    mat-form-field {
+      input {
+        height: 14px;
+      }
+      input:active {
+        border-color: #1bb55e;
+      }
+      mat-label {
+        color: #000;
+      }
+      mat-hint {
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+    .m-signin-btn,
+    .m-signup-btn{
+      background-color: #1bb55e;
+      color: white;
+      margin: 5px 0px;
+    }
+    .m-ineed-help {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    caption{
+      font-size: 10px;
+      margin-top: 16px;
+      font-weight: 500;
+      a {
+        color: #3f51b5;
+      }
+    }
+    .m-change-text{
+      text-align: center;
+      font-size: 16px;
+      margin-top: 16px;
+      font-weight: 500;
+      .m-changeto-signup-btn, 
+      .m-changeto-signin-btn{
+        color: #3f51b5;
+      }
+    }
+  }
+
+  .moving-slide {
+    background-color: white;
+    position: fixed;
+    height: inherit;
+    width: 50%;
+    border-radius: 10px;
+    transform: translate(100%, -100%);
+    z-index: 5;
+    height: 100%;
+    background-color: #1bb55e;
+    z-index: 6;
+    transition: transform 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Fira Sans";
+    img {
+      object-fit: cover;
+      height: 200px;
+    }
+    .moving-text {
+      margin: 0;
+
+      font-weight: 700;
+      font-size: 40px;
+      text-align: center;
+      letter-spacing: -0.337115px;
+      color: #ffffff;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    }
   }
 }

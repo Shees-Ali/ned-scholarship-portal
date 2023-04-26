@@ -1,8 +1,11 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, OnDestroy } from '@angular/core';
 import { BasePage } from '../base/base.page';
 import { FormGroup, Validators } from '@angular/forms';
 import { ConfirmPasswordValidator } from '../services/validators/confirm-password.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-authentication',
@@ -13,8 +16,15 @@ export class AuthenticationPage extends BasePage implements OnInit {
   isSignUp: boolean = false;
   signInForm: FormGroup<any>;
   signUpForm: FormGroup<any>;
-
-  constructor(injector: Injector, private _snackBar: MatSnackBar) {
+  destroyed = new Subject<void>();
+  currentScreenSize: string = '';
+  
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'Small'],
+    [Breakpoints.Small, 'Small'],
+  ]);
+  
+  constructor(injector: Injector, private _snackBar: MatSnackBar, private breakpointObserver: BreakpointObserver) {
     super(injector);
     this.signInForm = this.formBuilder.group({
       email: [
@@ -44,6 +54,26 @@ export class AuthenticationPage extends BasePage implements OnInit {
         validator: ConfirmPasswordValidator('password', 'confirm_password'),
       }
     );
+    breakpointObserver
+      .observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ])
+      .pipe(takeUntil(this.destroyed))
+      .subscribe(result => {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+          }
+        }
+      });
+  }
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
   }
 
   ngOnInit() {

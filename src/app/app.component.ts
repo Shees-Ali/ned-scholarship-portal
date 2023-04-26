@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { UtilityService } from './services/utility.service';
 import { NavService } from './services/nav.service';
@@ -10,11 +10,13 @@ import { NavService } from './services/nav.service';
 })
 export class AppComponent implements OnInit {
   title = 'ned-scholarship-portal';
-  isExpanded: boolean = false;
+  isExpanded: boolean = true;
   isAuthenticationPage: boolean = true;
   isPages: boolean = false;
   isHome: boolean = false;
   isLoading: boolean = false;
+  
+  
   constructor(
     authService: AuthService,
     utilityService: UtilityService,
@@ -41,6 +43,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
 
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;

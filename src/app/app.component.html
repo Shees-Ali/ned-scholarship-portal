@@ -1,7 +1,7 @@
 <screen-loader *ngIf="isLoading"></screen-loader>
 <ng-container *ngIf="isPages">
-  <toolbar></toolbar>
-
+  <toolbar (menuBtnClicked)="toggleMenu()"></toolbar>
+  <side-nav class="mobile-nav" [isExpanded]="isExpanded"></side-nav>
   <mat-sidenav-container autosize>
     <mat-sidenav
       class="box-shadow margin-top-150"
@@ -11,7 +11,7 @@
       mode="side"
       opened="true"
     >
-      <side-nav [isExpanded]="isExpanded"></side-nav>
+      <side-nav class="desktop-nav" [isExpanded]="isExpanded"></side-nav>
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="content-container margin-top-150">
