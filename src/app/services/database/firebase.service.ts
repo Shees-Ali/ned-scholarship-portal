@@ -16,6 +16,7 @@ import {
 } from '@angular/fire/database';
 import {
   Storage,
+  UploadMetadata,
   deleteObject,
   getDownloadURL,
   ref as storageRef,
@@ -177,12 +178,12 @@ export class FirebaseService {
   getStudentParticulars(student_id: string) {
     return new Promise<boolean>((resolve) => {
       let listQuery = query(
-        ref(this.database, `students/${student_id}/particulars_of_applicant`),
+        ref(this.database, `students/${student_id}/particulars_of_applicant`)
       );
       off(listQuery);
       onValue(listQuery, (snapshot) => {
         // console.log(snapshot.val());
-        resolve(snapshot.val())
+        resolve(snapshot.val());
       });
     });
   }
@@ -213,7 +214,10 @@ export class FirebaseService {
     return new Promise<any>((resolve) => {
       const filePath = `${this.basePath}/${user_id}/${fileUpload.file.name}`;
       const ref = storageRef(this.storage, filePath);
-      const uploadTask = uploadBytesResumable(ref, fileUpload.file.file);
+      const meta: UploadMetadata = {
+        contentType: 'application/pdf',
+      };
+      const uploadTask = uploadBytesResumable(ref, fileUpload.extra, meta);
       const file: any = {};
       file['file_name'] = fileUpload.file.name;
 

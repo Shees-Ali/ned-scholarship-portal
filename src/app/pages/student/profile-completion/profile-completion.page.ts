@@ -8,7 +8,7 @@ import { BasePage } from 'src/app/base/base.page';
   styleUrls: ['./profile-completion.page.scss'],
 })
 export class ProfileCompletionPage extends BasePage implements OnInit {
-  selectedTab: number = 1;
+  selectedTab: number = 4;
   constructor(injector: Injector) {
     super(injector);
     this.utiltiy.isPages.next(true);

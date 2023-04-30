@@ -78,6 +78,12 @@ export class FourthFormPageComponent
     for (let index = 0; index < files.length; index++) {
       const element = files[index];
       const file: FileUpload = new FileUpload(element);
+      let reader = new FileReader();
+      reader.readAsArrayBuffer(files[index]);
+      reader.onload = () => { 
+        console.log(reader.result);
+        file['extra'] = reader.result;
+      }
       const isPDF = file.name?.toLowerCase().includes('.pdf');
       if (!isPDF) {
         this.utiltiy.openSnackBar('Only PDF files allowed !', 'Okay', 'error');
