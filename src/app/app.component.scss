@@ -24,7 +24,7 @@
 
 @media only screen and (max-width: 1000px) {    
   .content-container{
-    margin-left: 5px;
+    margin-left: 0px;
   }
   mat-sidenav-container{
     mat-sidenav, .desktop-nav{
@@ -43,7 +43,10 @@
   }
 }
 
-@media only screen and (max-width: 420px) {    
+@media only screen and (max-width: 420px) { 
+  .content-container{
+    padding: 14px;
+  }   
   .margin-top-150 {
     margin-top: 100px;
   }

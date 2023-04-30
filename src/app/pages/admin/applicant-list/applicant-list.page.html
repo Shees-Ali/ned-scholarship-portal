@@ -1,49 +1,91 @@
 <div class="content">
   <p class="form-heading">List of Applicants for Scholarship</p>
   <div class="table" *ngIf="applicants_list.length > 0">
-    <mat-grid-list cols="1" rowHeight="8:1">
-      <div class="header-row">
-        <div class="header-col">
-          <p>Application ID</p>
+      <div *ngIf="currentScreenSize != 'Small'">
+        <div class="header-row">
+          <div class="header-col">
+            <p>Application ID</p>
+          </div>
+          <div class="header-col">
+            <p>Applicant Name</p>
+          </div>
+          <div class="header-col">
+            <p>Date of Submission</p>
+            <p></p>
+          </div>
+          <div class="header-col">
+            <p>Status</p>
+          </div>
+          <div class="header-col">
+            <p>View Application</p>
+          </div>
         </div>
-        <div class="header-col">
-          <p>Applicant Name</p>
-        </div>
-        <div class="header-col">
-          <p>Date of Submission</p>
-          <p></p>
-        </div>
-
-        <div class="header-col">
-          <p>Status</p>
-        </div>
-        <div class="header-col">
-          <p>View Application</p>
+        <div
+          *ngFor="let item of applicants_list; let i = index"
+          class="content-row"
+        >
+          <ng-container>
+            <div class="content-col">
+              <p>{{ item.key }}</p>
+            </div>
+            <div class="content-col">
+              <p>{{ item.student_name }}</p>
+            </div>
+            <div class="content-col">
+              <p>{{ item.submitted_date }}</p>
+            </div>
+            <div class="content-col">
+              <p>{{ item.status }}</p>
+            </div>
+            <div class="content-col">
+              <button mat-button (click)="toApplication(item)">View</button>
+            </div>
+          </ng-container>
         </div>
       </div>
-      <div
-        *ngFor="let item of applicants_list; let i = index"
-        class="content-row"
-      >
-        <ng-container>
-          <div class="content-col">
-            <p>{{ item.key }}</p>
+      <!-- For Mobile -->
+      <div *ngIf="currentScreenSize == 'Small'">
+        <div
+          *ngFor="let item of applicants_list; let i = index"
+          class="m-table"
+        >
+          <div class="m-header-col">
+            <div class="m-header-row">
+              <p>Application ID</p>
+            </div>
+            <div class="m-header-row">
+              <p>Applicant Name</p>
+            </div>
+            <div class="m-header-row">
+              <p>Date of Submission</p>
+              <p></p>
+            </div>
+            <div class="m-header-row">
+              <p>Status</p>
+            </div>
+            <div class="m-header-row">
+              <p>View Application</p>
+            </div>
           </div>
-          <div class="content-col">
-            <p>{{ item.student_name }}</p>
+          <div class="m-content-col">
+            <div class="m-content-row">
+              <p>{{ item.key }}</p>
+            </div>
+            <div class="m-content-row">
+              <p>{{ item.student_name }}</p>
+            </div>
+            <div class="m-content-row">
+              <p>{{ item.submitted_date }}</p>
+            </div>
+            <div class="m-content-row">
+              <p>{{ item.status }}</p>
+            </div>
+            <div class="m-content-row">
+              <button mat-button (click)="toApplication(item)">View</button>
+            </div>
           </div>
-          <div class="content-col">
-            <p>{{ item.submitted_date }}</p>
-          </div>
-          <div class="content-col">
-            <p>{{ item.status }}</p>
-          </div>
-          <div class="content-col">
-            <button mat-button (click)="toApplication(item)">View</button>
-          </div>
-        </ng-container>
+        </div>
       </div>
-    </mat-grid-list>
   </div>
   <div *ngIf="applicants_list.length == 0">
     <p style="text-align: center">

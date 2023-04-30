@@ -113,3 +113,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 760px) {
+  .form-heading{
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .form-heading{
+    font-size: 20px;
+  }
+}

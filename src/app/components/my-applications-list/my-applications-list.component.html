@@ -1,62 +1,87 @@
-<div class="header-row">
-  <div class="header-col">
-    <p>S.no</p>
+<div *ngIf="currentScreenSize != 'Small'">
+  <div class="header-row">
+    <div class="header-col">
+      <p>S.no</p>
+    </div>
+    <div class="header-col">
+      <p>Application ID</p>
+    </div>
+    <div class="header-col">
+      <p>Submission Date</p>
+    </div>
+    <div class="header-col">
+      <p>Application Status</p>
+    </div>
+    <div class="header-col">
+      <p>View</p>
+    </div>
   </div>
-  <div class="header-col">
-    <p>Application ID</p>
-  </div>
-  <div class="header-col">
-    <p>Submission Date</p>
-  </div>
-  <div class="header-col">
-    <p>Application Status</p>
-  </div>
-  <div class="header-col">
-    <p>View</p>
+  <div
+    *ngFor="let item of application_list; let i = index"
+    class="content-row"
+  >
+    <ng-container>
+      <div class="content-col">
+        <p>{{ i+1 }}</p>
+      </div>
+      <div class="content-col">
+        <p>{{ item.scholarship_id }}</p>
+      </div>
+      <div class="content-col">
+        <p>{{ item.submitted_date }}</p>
+      </div>
+      <div class="content-col">
+        <p class="highlight">{{ item.status }}</p>
+      </div>
+      <div class="content-col">
+        <button mat-button (click)="toApplication(item)">View</button>
+      </div>  
+    </ng-container>
   </div>
 </div>
-<div
-  *ngFor="let item of application_list; let i = index"
-  class="content-row"
->
-  <ng-container>
-    <div class="content-col">
-      <p>{{ i+1 }}</p>
-    </div>
-    <div class="content-col">
-      <p>{{ item.scholarship_id }}</p>
-    </div>
-    <div class="content-col">
-      <p>{{ item.submitted_date }}</p>
-    </div>
-    <div class="content-col">
-      <p class="highlight">{{ item.status }}</p>
-    </div>
-    <div class="content-col">
-      <button mat-button (click)="toApplication(item)">View</button>
-    </div>
-
-  </ng-container>
-
-<!-- <mat-table [dataSource]="dataSource">
-  <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-    <mat-header-cell *matHeaderCellDef>
-      {{ col.label }}
-    </mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      <div [ngSwitch]="col.type">
-        <span *ngSwitchDefault>
-          {{ element[col.key] }}
-        </span>
+<!-- For Mobile -->
+<!-- For Mobile -->
+<!-- For Mobile -->
+<div *ngIf="currentScreenSize == 'Small'">
+  <div
+    *ngFor="let item of application_list; let i = index"
+    class="table"
+  >
+    <div class="m-header-col">
+      <div class="m-header-row">
+        <p>S.no</p>
       </div>
-    </mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table> -->
-<!-- <mat-paginator
-  [pageSizeOptions]="[5, 10, 20]"
-  showFirstLastButtons
-  aria-label="Select page"
->
-</mat-paginator> -->
+      <div class="m-header-row">
+        <p>Application ID</p>
+      </div>
+      <div class="m-header-row">
+        <p>Submission Date</p>
+      </div>
+      <div class="m-header-row">
+        <p>Application Status</p>
+      </div>
+      <div class="m-header-row">
+        <p>View</p>
+      </div>
+    </div>
+    <div class="m-content-col">
+      <ng-container>
+        <div class="m-content-row">
+          <p>{{ i+1 }}</p>
+        </div>
+        <div class="m-content-row">
+          <p>{{ item.scholarship_id }}</p>
+        </div>
+        <div class="m-content-row">
+          <p>{{ item.submitted_date }}</p>
+        </div>
+        <div class="m-content-row">
+          <p class="highlight">{{ item.status }}</p>
+        </div>
+        <div class="m-content-row">
+          <button mat-button (click)="toApplication(item)">View</button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

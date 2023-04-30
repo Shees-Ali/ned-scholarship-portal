@@ -1,5 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-applicant-list',
@@ -8,8 +11,36 @@ import { BasePage } from 'src/app/base/base.page';
 })
 export class ApplicantListComponent extends BasePage implements OnInit {
   scholarship_id: string = '';
-  constructor(injector: Injector) {
+  destroyed = new Subject<void>();
+  currentScreenSize: string = '';
+
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'Small'],
+    [Breakpoints.Small, 'Small'],
+  ]);
+
+  constructor(injector: Injector, breakpointObserver: BreakpointObserver) {
     super(injector);
+    breakpointObserver
+    .observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ])
+    .pipe(takeUntil(this.destroyed))
+    .subscribe(result => {
+      for (const query of Object.keys(result.breakpoints)) {
+        if (result.breakpoints[query]) {
+          this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+        }
+      }
+    });
+  }
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
   }
 
   applicants_list: any[] = [];

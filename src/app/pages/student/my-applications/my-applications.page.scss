@@ -29,3 +29,34 @@
   }  
 }
 
+@media only screen and (max-width: 760px) {
+  .card{
+    padding: 0 16px;
+    width: calc(100% - 32px);
+    .my-app-box > .mat-headline-4{
+      font-size: 24px;
+    }
+    .my-app-box > button{
+      width: 100px;
+      .mat-caption{
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .card{
+    padding: 0 12px;
+    width: calc(100% - 24px);
+    .my-app-box > .mat-headline-4{
+      font-size: 20px;
+    }
+    .my-app-box > button{
+      width: 60px;
+      .mat-caption{
+        font-size: 12px;
+      }
+    }
+  }
+}

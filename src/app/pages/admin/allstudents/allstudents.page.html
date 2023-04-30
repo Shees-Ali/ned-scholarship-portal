@@ -1,53 +1,103 @@
 <div class="form-content">
   <p class="form-heading">List of All Registered Students</p>
-  <mat-grid-list cols="1" rowHeight="8:1">
-    <div class="header-row">
-      <div class="header-col">
-        <p>Roll No.</p>
+    <div *ngIf="currentScreenSize != 'Small'">
+      <div class="header-row">
+        <div class="header-col">
+          <p>Roll No.</p>
+        </div>
+        <div class="header-col">
+          <p>Name</p>
+        </div>
+        <div class="header-col">
+          <p>Profile Completed</p>
+        </div>
+        <div class="header-col">
+          <p>Batch</p>
+        </div>
+        <div class="header-col">
+          <p>Email</p>
+        </div>
+        <div class="header-col">
+          <p>Scholarship Status</p>
+        </div>
       </div>
-      <div class="header-col">
-        <p>Name</p>
-      </div>
-      <div class="header-col">
-        <p>Profile Completed</p>
-      </div>
-      <div class="header-col">
-        <p>Batch</p>
-      </div>
-      <div class="header-col">
-        <p>Email</p>
-      </div>
-      <div class="header-col">
-        <p>Scholarship Status</p>
+      <div
+        *ngFor="let item of all_students_list; let i = index"
+        class="content-row"
+      >
+        <ng-container>
+          <div class="content-col">
+            <p>{{ item.particulars ? item.particulars.roll_no : '---' }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.first_name + ' ' + item.last_name }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.isProfileComplete ? "Yes" : "No" }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.particulars ? item.particulars.batch : '---' }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.email }}</p>
+          </div>
+          <div class="content-col">
+            <p>
+              {{ item.has_granted ? 'Received' : item.has_applied ? 'Applied' :
+              'Not Applied'}}
+            </p>
+          </div>
+        </ng-container>
       </div>
     </div>
-    <div
-      *ngFor="let item of all_students_list; let i = index"
-      class="content-row"
-    >
-      <ng-container>
-        <div class="content-col">
-          <p>{{ item.particulars ? item.particulars.roll_no : '---' }}</p>
+    <div *ngIf="currentScreenSize == 'Small'">
+      <div
+        *ngFor="let item of all_students_list; let i = index"
+        class="table"
+      >
+        <div class="m-header-col">
+          <div class="m-content-row">
+            <p>Roll No.</p>
+          </div>
+          <div class="m-content-row">
+            <p>Name</p>
+          </div>
+          <div class="m-content-row">
+            <p>Profile Completed</p>
+          </div>
+          <div class="m-content-row">
+            <p>Batch</p>
+          </div>
+          <div class="m-content-row">
+            <p>Email</p>
+          </div>
+          <div class="m-content-row">
+            <p>Scholarship Status</p>
+          </div>
         </div>
-        <div class="content-col">
-          <p>{{ item.first_name + ' ' + item.last_name }}</p>
+        <div class="m-content-col">
+          <div class="m-content-row">
+            <p>{{ item.particulars ? item.particulars.roll_no : '---' }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.first_name + ' ' + item.last_name }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.isProfileComplete ? "Yes" : "No" }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.particulars ? item.particulars.batch : '---' }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.email }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>
+              {{ item.has_granted ? 'Received' : item.has_applied ? 'Applied' :
+              'Not Applied'}}
+            </p>
+          </div>
         </div>
-        <div class="content-col">
-          <p>{{ item.isProfileComplete ? "Yes" : "No" }}</p>
-        </div>
-        <div class="content-col">
-          <p>{{ item.particulars ? item.particulars.batch : '---' }}</p>
-        </div>
-        <div class="content-col">
-          <p>{{ item.email }}</p>
-        </div>
-        <div class="content-col">
-          <p>
-            {{ item.has_granted ? 'Received' : item.has_applied ? 'Applied' :
-            'Not Applied'}}
-          </p>
-        </div>
-      </ng-container>
+      </div>  
     </div>
-  </mat-grid-list>
 </div>
