@@ -3,8 +3,8 @@
   <p class="upload-img-text">Upload Banner/Promotion Image:</p>
   <input type="file" (change)="onBannerImg($event)" hidden id="bannerfile" />
   <form [formGroup]="scholarshipDetailsFormGroup">
-    <mat-grid-list cols="3" rowHeight="100px">
-      <mat-grid-tile [colspan]="3" [rowspan]="4" class="banner-icon">
+    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+      <mat-grid-tile [colspan]="span3" [rowspan]="4" class="banner-icon">
         <button (click)="changePicture()" mat-button>
           <img
             [src]="bannerImg == '' ? 'assets/images/bannerupload.png' : bannerImg"
@@ -38,18 +38,6 @@
           <input matInput formControlName="sponsor_name" required />
         </mat-form-field>
       </mat-grid-tile>
-      <!-- <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <mat-form-field class="form-field">
-          <mat-label>Scholarship Description</mat-label>
-          <textarea matInput formControlName="description" required></textarea>
-        </mat-form-field>
-      </mat-grid-tile> -->
-      <!-- <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <mat-form-field class="form-field">
-          <mat-label>Eligibility Criteria</mat-label>
-          <textarea matInput formControlName="criteria" required></textarea>
-        </mat-form-field>
-      </mat-grid-tile> -->
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Choose a date</mat-label>
@@ -62,16 +50,6 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </mat-grid-tile>
-
-      <!-- <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-form-field class="form-field">
-          <mat-label>Input Image (if any)</mat-label>
-          <input type="file" 
-          (change)="onImage($event)" 
-          
-          formControlName="img"/>
-        </mat-form-field>
-      </mat-grid-tile> -->
     </mat-grid-list>
 
     <div class="form-field">

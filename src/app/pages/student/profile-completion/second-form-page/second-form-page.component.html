@@ -2,7 +2,7 @@
   <p class="form-heading">Guardian info</p>
 
   <form [formGroup]="secondFormGroup">
-    <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Name</mat-label>
@@ -73,7 +73,7 @@
           <input matInput formControlName="guardian_monetry_assistance" />
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-grid-tile [colspan]="span2" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Residential Address</mat-label>
           <input
@@ -93,96 +93,189 @@
     </button>
   </div>
 
-  <mat-grid-list cols="1" rowHeight="8:1">
-    <div class="header-row">
-      <div class="header-col">
-        <p>Serial No.</p>
+  <div *ngIf="currentScreenSize != 'Small'">
+      <div class="header-row">
+        <div class="header-col">
+          <p>Serial No.</p>
+        </div>
+        <div class="header-col">
+          <p>Full Name</p>
+        </div>
+        <div class="header-col">
+          <p>Relation</p>
+        </div>
+        <div class="header-col">
+          <p>Age</p>
+        </div>
+        <div class="header-col">
+          <p>Studying, Class/Job</p>
+        </div>
+        <div class="header-col">
+          <p>Actions</p>
+        </div>
       </div>
-      <div class="header-col">
-        <p>Full Name</p>
+      <div
+        *ngFor="let item of dependents_data; let i = index"
+        class="content-row"
+      >
+        <ng-container *ngIf="!item.isEdit">
+          <div class="content-col">
+            <p>{{ i + 1 }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.name }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.relation }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.age }}</p>
+          </div>
+          <div class="content-col">
+            <p>{{ item.occupation }}</p>
+          </div>
+          <div class="content-col">
+            <button mat-icon-button (click)="item.isEdit = !item.isEdit">
+              <mat-icon>create_outline</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeDependent(i)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="item.isEdit">
+          <div class="content-col">
+            <p>{{ i + 1 }}</p>
+          </div>
+          <div class="content-col">
+            <mat-form-field>
+              <input class="dependents-input" matInput [(ngModel)]="item.name" />
+            </mat-form-field>
+          </div>
+          <div class="content-col">
+            <mat-form-field>
+              <input
+                class="dependents-input"
+                matInput
+                [(ngModel)]="item.relation"
+              />
+            </mat-form-field>
+          </div>
+          <div class="content-col">
+            <mat-form-field>
+              <input class="dependents-input" matInput [(ngModel)]="item.age" />
+            </mat-form-field>
+          </div>
+          <div class="content-col">
+            <mat-form-field>
+              <input
+                class="dependents-input"
+                matInput
+                [(ngModel)]="item.occupation"
+              />
+            </mat-form-field>
+          </div>
+          <div class="content-col">
+            <button mat-icon-button (click)="item.isEdit = !item.isEdit">
+              <mat-icon>check</mat-icon>
+            </button>
+          </div>
+        </ng-container>
       </div>
-      <div class="header-col">
-        <p>Relation</p>
-      </div>
-      <div class="header-col">
-        <p>Age</p>
-      </div>
-      <div class="header-col">
-        <p>Studying, Class/Job</p>
-      </div>
-      <div class="header-col">
-        <p>Actions</p>
-      </div>
-    </div>
+  </div>
+  <!-- For Mobile Phone  -->
+  <div *ngIf="currentScreenSize == 'Small'">
     <div
-      *ngFor="let item of dependents_data; let i = index"
-      class="content-row"
-    >
-      <ng-container *ngIf="!item.isEdit">
-        <div class="content-col">
-          <p>{{ i + 1 }}</p>
+        *ngFor="let item of dependents_data; let i = index"
+        class="m-table"
+      >
+      <div class="m-header-col">
+        <div class="m-header-row">
+          <p>Serial No.</p>
         </div>
-        <div class="content-col">
-          <p>{{ item.name }}</p>
+        <div class="m-header-row">
+          <p>Full Name</p>
         </div>
-        <div class="content-col">
-          <p>{{ item.relation }}</p>
+        <div class="m-header-row">
+          <p>Relation</p>
         </div>
-        <div class="content-col">
-          <p>{{ item.age }}</p>
+        <div class="m-header-row">
+          <p>Age</p>
         </div>
-        <div class="content-col">
-          <p>{{ item.occupation }}</p>
+        <div class="m-header-row">
+          <p>Studying, Class/Job</p>
         </div>
-        <div class="content-col">
-          <button mat-icon-button (click)="item.isEdit = !item.isEdit">
-            <mat-icon>create_outline</mat-icon>
-          </button>
-          <button mat-icon-button (click)="removeDependent(i)">
-            <mat-icon>delete_outline</mat-icon>
-          </button>
+        <div class="m-header-row">
+          <p>Actions</p>
         </div>
-      </ng-container>
-      <ng-container *ngIf="item.isEdit">
-        <div class="content-col">
-          <p>{{ i + 1 }}</p>
-        </div>
-        <div class="content-col">
-          <mat-form-field>
-            <input class="dependents-input" matInput [(ngModel)]="item.name" />
-          </mat-form-field>
-        </div>
-        <div class="content-col">
-          <mat-form-field>
-            <input
-              class="dependents-input"
-              matInput
-              [(ngModel)]="item.relation"
-            />
-          </mat-form-field>
-        </div>
-        <div class="content-col">
-          <mat-form-field>
-            <input class="dependents-input" matInput [(ngModel)]="item.age" />
-          </mat-form-field>
-        </div>
-        <div class="content-col">
-          <mat-form-field>
-            <input
-              class="dependents-input"
-              matInput
-              [(ngModel)]="item.occupation"
-            />
-          </mat-form-field>
-        </div>
-        <div class="content-col">
-          <button mat-icon-button (click)="item.isEdit = !item.isEdit">
-            <mat-icon>check</mat-icon>
-          </button>
-        </div>
-      </ng-container>
+      </div>
+      <div class="m-content-col">
+        <ng-container *ngIf="!item.isEdit">
+          <div class="m-content-row">
+            <p>{{ i + 1 }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.name }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.relation }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.age }}</p>
+          </div>
+          <div class="m-content-row">
+            <p>{{ item.occupation }}</p>
+          </div>
+          <div class="m-content-row">
+            <button mat-icon-button (click)="item.isEdit = !item.isEdit">
+              <mat-icon>create_outline</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removeDependent(i)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="item.isEdit">
+          <div class="m-content-row">
+            <p>{{ i + 1 }}</p>
+          </div>
+          <div class="m-content-row">
+            <mat-form-field>
+              <input class="dependents-input" matInput [(ngModel)]="item.name" />
+            </mat-form-field>
+          </div>
+          <div class="m-content-row">
+            <mat-form-field>
+              <input
+                class="dependents-input"
+                matInput
+                [(ngModel)]="item.relation"
+              />
+            </mat-form-field>
+          </div>
+          <div class="m-content-row">
+            <mat-form-field>
+              <input class="dependents-input" matInput [(ngModel)]="item.age" />
+            </mat-form-field>
+          </div>
+          <div class="m-content-row">
+            <mat-form-field>
+              <input
+                class="dependents-input"
+                matInput
+                [(ngModel)]="item.occupation"
+              />
+            </mat-form-field>
+          </div>
+          <div class="m-content-row">
+            <button mat-icon-button (click)="item.isEdit = !item.isEdit">
+              <mat-icon>check</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
     </div>
-  </mat-grid-list>
+  </div>
   <!-- </article> -->
   <div class="buttons-div">
     <div class="next-btn">

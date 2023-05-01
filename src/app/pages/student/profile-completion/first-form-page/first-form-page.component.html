@@ -12,7 +12,7 @@
   </mat-grid-list>
 
   <form [formGroup]="firstFormGroup">
-    <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Category of Admission</mat-label>
@@ -32,8 +32,8 @@
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-grid-list cols="4" rowHeight="100px">
-      <mat-grid-tile [colspan]="1.5" [rowspan]="1">
+    <mat-grid-list [cols]="breakpoint2" rowHeight="100px" (window:resize)="onResize($event)">
+      <mat-grid-tile [colspan]="span15" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Father's Name</mat-label>
           <input matInput formControlName="father_name" required />
@@ -52,7 +52,7 @@
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Discipline</mat-label>
@@ -72,7 +72,7 @@
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Province</mat-label>
@@ -108,22 +108,22 @@
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Email Address</mat-label>
           <input matInput formControlName="email" required />
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-grid-tile [colspan]="span2" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Home Address</mat-label>
           <input matInput formControlName="home_address" required />
         </mat-form-field>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-grid-list cols="4" rowHeight="100px">
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
+    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+      <mat-grid-tile [colspan]="span3" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Permanent Address</mat-label>
           <input matInput formControlName="permanent_address" required />

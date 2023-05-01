@@ -7,6 +7,9 @@ import {
 } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { BasePage } from 'src/app/base/base.page';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 interface GuardianDependents {
   name: string;
@@ -26,6 +29,16 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
   @Output('next') next: EventEmitter<any> = new EventEmitter<any>();
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
   user: any;
+  breakpoint: number = 0;
+  span2:number = 2;
+  destroyed = new Subject<void>();
+  currentScreenSize: string = '';
+
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'Small'],
+    [Breakpoints.Small, 'Small'],
+  ]);
+
   dependents_data: GuardianDependents[] = [
     {
       name: '',
@@ -36,7 +49,7 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
     },
   ];
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, breakpointObserver: BreakpointObserver) {
     super(injector);
     this.secondFormGroup = this.formBuilder.group({
       guardian_name: ['', [Validators.required]],
@@ -70,10 +83,36 @@ export class SecondFormPageComponent extends BasePage implements OnInit {
         this.setValues();
       }
     });
+    breakpointObserver
+    .observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ])
+    .pipe(takeUntil(this.destroyed))
+    .subscribe(result => {
+      for (const query of Object.keys(result.breakpoints)) {
+        if (result.breakpoints[query]) {
+          this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+        }
+      }
+    });
+  }
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
   }
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 900) ? 1 : 3;
+    this.span2 = (window.innerWidth <= 900) ? 1 : 2;
+  }
+  onResize(event:any) {
+    this.breakpoint = (event.target.innerWidth <= 900) ? 1 : 3;  
+    this.span2 = (window.innerWidth <= 900) ? 1 : 2;
+  }
   async setValues() {
     if (this.user.isProfileComplete) {
       const student = await this.studentService.getStudentData(
