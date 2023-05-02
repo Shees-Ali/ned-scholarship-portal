@@ -6,7 +6,6 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { UserInfo } from '@angular/fire/auth';
 import { FormGroup, Validators } from '@angular/forms';
 import { BasePage } from 'src/app/base/base.page';
 
@@ -20,6 +19,11 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
   @Output('next') next: EventEmitter<any> = new EventEmitter<any>();
   profileImg: string = '';
   user?: any;
+  breakpoint: number = 0;
+  breakpoint2: number = 0;
+  span2:number = 2;
+  span15:number = 1.5;
+  span3:number = 3;
 
   constructor(injector: Injector) {
     super(injector);
@@ -62,8 +66,20 @@ export class FirstFormPageComponent extends BasePage implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 900) ? 1 : 3;
+    this.breakpoint2 = (window.innerWidth <= 900) ? 1 : 4;
+    this.span2 = (window.innerWidth <= 900) ? 1 : 2;
+    this.span15 = (window.innerWidth <= 900) ? 1 : 1.5;
+    this.span3 = (window.innerWidth <= 900) ? 1 : 3;
+  }
+  onResize(event:any) {
+    this.breakpoint = (event.target.innerWidth <= 900) ? 1 : 3;
+    this.breakpoint2 = (event.target.innerWidth <= 900) ? 1 : 4;
+    this.span2 = (window.innerWidth <= 900) ? 1 : 2;
+    this.span15 = (window.innerWidth <= 900) ? 1 : 1.5;
+    this.span3 = (window.innerWidth <= 900) ? 1 : 3;
+  }
   async setValues() {
     if (this.user.isProfileComplete) {
       const student = await this.studentService.getStudentData(

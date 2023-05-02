@@ -10,7 +10,7 @@ import { NavService } from './services/nav.service';
 })
 export class AppComponent implements OnInit {
   title = 'ned-scholarship-portal';
-  isExpanded: boolean = true;
+  isExpanded: boolean = false;
   isAuthenticationPage: boolean = true;
   isPages: boolean = false;
   isHome: boolean = false;

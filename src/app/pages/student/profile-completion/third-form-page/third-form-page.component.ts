@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Injector, Output } from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 interface AcadmicRecords {
   class_year?: string;
@@ -20,6 +23,14 @@ export class ThirdFormPageComponent extends BasePage {
   @Output('next') next: EventEmitter<any> = new EventEmitter<any>();
   @Output('back') back: EventEmitter<any> = new EventEmitter<any>();
   user: any;
+  destroyed = new Subject<void>();
+  currentScreenSize: string = '';
+
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'Small'],
+    [Breakpoints.Small, 'Small'],
+  ]);
+
   academic_records: AcadmicRecords[] = [
     {
       class_year: '',
@@ -32,12 +43,32 @@ export class ThirdFormPageComponent extends BasePage {
     },
   ];
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, breakpointObserver: BreakpointObserver) {
     super(injector);
     this.authService.getUser().then(async (res: any) => {
       this.user = await this.userService.getUserData(res?.uid);
       this.setValues();
     });
+    breakpointObserver
+    .observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge,
+    ])
+    .pipe(takeUntil(this.destroyed))
+    .subscribe(result => {
+      for (const query of Object.keys(result.breakpoints)) {
+        if (result.breakpoints[query]) {
+          this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+        }
+      }
+    });
+  }
+  ngOnDestroy() {
+    this.destroyed.next();
+    this.destroyed.complete();
   }
 
   ngOnInit(): void {}

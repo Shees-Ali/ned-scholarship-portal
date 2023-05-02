@@ -54,6 +54,9 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
   scholarshipDetailsFormGroup: FormGroup<any>;
   scholarshipId: any;
   bannerImg: string = '';
+  breakpoint: number = 3;
+  span3:number = 3;
+
   constructor(injector: Injector) {
     super(injector);
     this.scholarshipDetailsFormGroup = this.formBuilder.group({
@@ -78,6 +81,12 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
       delete formData['banner_img'];
       this.scholarshipDetailsFormGroup.setValue(formData);
     }
+    this.breakpoint = (window.innerWidth <= 900) ? 1 : 3;
+    this.span3 = (window.innerWidth <= 900) ? 1 : 3;
+  }
+  onResize(event:any) {
+    this.breakpoint = (event.target.innerWidth <= 900) ? 1 : 3;
+    this.span3 = (window.innerWidth <= 900) ? 1 : 3;
   }
 
   onBannerImg($event: any) {
