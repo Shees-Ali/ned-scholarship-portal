@@ -24,7 +24,9 @@
             <mat-hint>Enter Password</mat-hint>
           </mat-form-field>
         </form>
-        <p class="login-text">Forgot Password?</p>
+        <button mat-button (click)="forgotPassword()" class="login-text">
+          Forgot Password?
+        </button>
         <button class="signin-btn" mat-raised-button (click)="signIn()">
           Sign In
         </button>
@@ -196,16 +198,19 @@
             <mat-hint>Enter Password</mat-hint>
           </mat-form-field>
         </form>
-        <p class="m-login-text">Forgot Password?</p>
+        <button (click)="forgotPassword()" mat-button class="m-login-text">
+          Forgot Password?
+        </button>
         <button class="m-signin-btn" mat-raised-button (click)="signIn()">
           Sign In
         </button>
         <caption class="m-ineed-help">
           Need help?<a> Go to online help </a>
         </caption>
-        <p class="m-change-text">Dont have an account yet?
+        <p class="m-change-text">
+          Dont have an account yet?
           <button class="m-changeto-signup-btn" mat-button (click)="changeTo()">
-          Sign Up
+            Sign Up
           </button>
         </p>
       </div>
@@ -272,9 +277,10 @@
         <caption class="m-ineed-help">
           Need help?<a> Go to online help </a>
         </caption>
-        <p class="m-change-text">Already have an Account?
+        <p class="m-change-text">
+          Already have an Account?
           <button class="m-changeto-signin-btn" mat-button (click)="changeTo()">
-          Sign In
+            Sign In
           </button>
         </p>
       </div>
@@ -299,4 +305,3 @@
     </ng-container>
   </div> -->
 </div>
-

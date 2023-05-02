@@ -40,6 +40,8 @@
       margin-top: 5px;
     }
     .login-text {
+      display: flex;
+      justify-content: flex-start;
       font-size: 16px;
       letter-spacing: 0.15px;
       color: rgba(0, 0, 0, 0.6);
@@ -175,6 +177,8 @@
       margin-top: 5px;
     }
     .m-login-text {
+      display: flex;
+      justify-content: flex-start;
       font-size: 16px;
       letter-spacing: 0.15px;
       color: rgba(0, 0, 0, 0.6);
@@ -194,7 +198,7 @@
       }
     }
     .m-signin-btn,
-    .m-signup-btn{
+    .m-signup-btn {
       background-color: #1bb55e;
       color: white;
       margin: 5px 0px;
@@ -203,7 +207,7 @@
       margin-top: 5px;
       font-size: 14px;
     }
-    caption{
+    caption {
       font-size: 10px;
       margin-top: 16px;
       font-weight: 500;
@@ -211,13 +215,13 @@
         color: #3f51b5;
       }
     }
-    .m-change-text{
+    .m-change-text {
       text-align: center;
       font-size: 16px;
       margin-top: 16px;
       font-weight: 500;
-      .m-changeto-signup-btn, 
-      .m-changeto-signin-btn{
+      .m-changeto-signup-btn,
+      .m-changeto-signin-btn {
         color: #3f51b5;
       }
     }
