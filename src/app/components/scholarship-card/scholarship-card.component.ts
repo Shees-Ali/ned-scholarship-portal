@@ -36,4 +36,12 @@ export class ScholarshipCardComponent extends BasePage implements OnInit {
       },
     });
   }
+
+  apply_now() {
+    this.nav.navigateTo('student/scholarship-details', {
+      queryParams: {
+        key: this.scholarship.key,
+      },
+    });
+  }
 }

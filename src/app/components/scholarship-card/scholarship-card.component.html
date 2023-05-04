@@ -1,4 +1,4 @@
-<div *ngIf="user" class="scholarship-card">
+<div class="scholarship-card">
   <div class="scholarship-content">
     <p class="scholarship-name">{{ scholarship.name }}</p>
 
@@ -8,22 +8,34 @@
     </p>
   </div>
 
-  <button
-    [disabled]="user.has_granted"
-    mat-button
-    [ngClass]="user.has_granted ? 'disabled' : ''"
-    class="apply-now-btn"
-    *ngIf="user?.role === 'student'"
-    (click)="to_apply()"
-  >
-    Apply Now ->
-  </button>
-  <button
-    mat-button
-    class="apply-now-btn"
-    *ngIf="user?.role === 'admin'"
-    (click)="to_edit()"
-  >
-    View/Edit ->
-  </button>
+  <ng-container *ngIf="user">
+    <button
+      [disabled]="user.has_granted"
+      mat-button
+      [ngClass]="user.has_granted ? 'disabled' : ''"
+      class="apply-now-btn"
+      *ngIf="user?.role === 'student'"
+      (click)="to_apply()"
+    >
+      Apply Now ->
+    </button>
+    <button
+      mat-button
+      class="apply-now-btn"
+      *ngIf="user?.role === 'admin'"
+      (click)="to_edit()"
+    >
+      View/Edit ->
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="!user">
+    <button
+      mat-button
+      class="apply-now-btn"
+      (click)="apply_now()"
+    >
+      Apply Now ->
+    </button>
+  </ng-container>
 </div>

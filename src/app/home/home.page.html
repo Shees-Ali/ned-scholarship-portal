@@ -38,27 +38,8 @@
     </p>
 
     <div *ngIf="scholarshipList.length > 0 " style="width: 100%">
-      <!-- <div > -->
-      <div
-        class="scholarship-card"
-        *ngFor="let scholarship of scholarshipList | filter:searchTerm"
-      >
-        <div class="scholarship-content">
-          <p class="scholarship-name">{{ scholarship.name }}</p>
-          <p class="sponser">
-            <span class="sub-text"> Sponsered By :</span>
-            {{ scholarship?.sponsor_name }}
-          </p>
-        </div>
-        <button
-          mat-button
-          (click)="applyNow(scholarship)"
-          class="apply-now-btn"
-        >
-          Apply Now ->
-        </button>
-
-        <!-- </div> -->
+      <div *ngFor="let scholarship of scholarshipList | filter:searchTerm">
+        <scholarship-card [scholarship]="scholarship"></scholarship-card>
       </div>
 
       <mat-paginator
