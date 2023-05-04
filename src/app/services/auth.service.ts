@@ -104,4 +104,8 @@ export class AuthService {
     await this.storage.set('user_obj', '');
     this.nav.navigateFromRoot('authentication');
   }
+
+  sendResendPassEmail() {
+    
+  }
 }

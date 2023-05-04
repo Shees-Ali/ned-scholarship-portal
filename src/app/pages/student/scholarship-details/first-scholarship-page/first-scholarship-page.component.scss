@@ -20,3 +20,41 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 760px) {
+  .first-page {
+    .banner-img {
+      height: 300px;
+    }
+  
+    .scholarship-name {
+      font-size: 40px;
+      font-weight: 500;
+      border-bottom: 1px solid black;
+    }
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .first-page {
+    .banner-img {
+      height: 200px;
+    }
+  
+    .scholarship-name {
+      font-size: 24px;
+      font-weight: 500;
+      border-bottom: 1px solid black;
+    }
+  
+    .sponser {
+      font-size: 16px;
+  
+      .sub-text {
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+  }
+}

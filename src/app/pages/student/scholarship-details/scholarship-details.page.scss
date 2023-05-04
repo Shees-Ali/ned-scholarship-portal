@@ -1,11 +1,11 @@
 @import "../profile-completion/profile-completion.page.scss";
 
-.content{
+.content {
   background: #fff;
   padding: 24px 62px;
 }
 
-.step-btn{
+.step-btn {
   border: 0;
   font-size: 16px;
 }
@@ -14,4 +14,25 @@
   font-size: 40px;
   font-weight: 500;
   border-bottom: 1px solid black;
+}
+
+@media only screen and (max-width: 760px) {
+  .step-btn {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .step-btn {
+    font-size: 8px;
+  }
+
+  .content {
+    background: #fff;
+    padding: 24px 24px;
+  }
+
+  .heading-name {
+    font-size: 24px;
+  }
 }
