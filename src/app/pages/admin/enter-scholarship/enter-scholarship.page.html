@@ -5,7 +5,7 @@
   <form [formGroup]="scholarshipDetailsFormGroup">
     <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
       <mat-grid-tile [colspan]="span3" [rowspan]="4" class="banner-icon">
-        <button (click)="changePicture()" mat-button>
+        <button class="pic-btn-width" (click)="changePicture()" mat-button>
           <img
             [src]="bannerImg == '' ? 'assets/images/bannerupload.png' : bannerImg"
             class="banner-img"
@@ -19,7 +19,7 @@
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-form-field appearance="fill">
+        <mat-form-field style="width: 100%;" appearance="fill">
           <mat-label>Scholarship Type(Merit or Need)</mat-label>
           <mat-select formControlName="type" name="type">
             <mat-option value="merit_based">Merit Based</mat-option>
@@ -68,6 +68,10 @@
         formControlName="criteria"
         [config]="editorConfig"
       ></angular-editor>
+    </div>
+
+    <div class="extra-feilds-div">
+      
     </div>
   </form>
   <div class="submit-btn">

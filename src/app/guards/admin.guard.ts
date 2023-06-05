@@ -17,20 +17,18 @@ export class AdminGuard {
     private userService: UserService
   ) {}
 
-  canActivate(
+  async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean | void> {
-    return this.auth.getUser().then(async (res) => {
-      const user = await this.userService.getUserData(res?.uid);
-
-      if (!res) {
-        return this.router.navigate(['/authentication']);
-      }
-      if (user.role !== 'admin') {
-        return this.router.navigate(['/pages/student']);
-      }
-      return;
-    });
+    const res = await this.auth.getUser();
+    const user = await this.userService.getUserData(res?.uid);
+    if (!res) {
+      return this.router.navigate(['/authentication']);
+    }
+    if (user.role !== 'admin') {
+      return this.router.navigate(['/pages/student']);
+    }
+    return;
   }
 }

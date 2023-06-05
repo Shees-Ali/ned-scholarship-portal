@@ -16,6 +16,7 @@ export class AuthenticationPage extends BasePage implements OnInit {
   isSignUp: boolean = false;
   signInForm: FormGroup<any>;
   signUpForm: FormGroup<any>;
+  donorSignUpForm: FormGroup<any>;
   destroyed = new Subject<void>();
   currentScreenSize: string = '';
 
@@ -58,6 +59,27 @@ export class AuthenticationPage extends BasePage implements OnInit {
         validator: ConfirmPasswordValidator('password', 'confirm_password'),
       }
     );
+    this.donorSignUpForm = this.formBuilder.group(
+      {
+        first_name: ['', [Validators.required, Validators.maxLength(25)]],
+        last_name: ['', [Validators.required, Validators.maxLength(25)]],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(
+              "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+            ),
+          ],
+        ],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirm_password: ['', Validators.required],
+      },
+      {
+        validator: ConfirmPasswordValidator('password', 'confirm_password'),
+      }
+    );
+
     breakpointObserver
       .observe([
         Breakpoints.XSmall,
@@ -153,6 +175,6 @@ export class AuthenticationPage extends BasePage implements OnInit {
   }
 
   forgotPassword() {
-    console.log("Forgot password");
+    console.log('Forgot password');
   }
 }
