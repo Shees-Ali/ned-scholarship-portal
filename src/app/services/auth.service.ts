@@ -48,7 +48,7 @@ export class AuthService {
     });
   }
 
-  signUp(obj: any) {
+  signUp(obj: any, role: string = 'student') {
     const email = obj.email;
     const password = obj.password;
     return new Promise<any>((resolve, reject) => {
@@ -56,7 +56,7 @@ export class AuthService {
         .then((userCredential) => {
           this.user = userCredential.user;
           this.storage.set('user', JSON.stringify(this.user));
-          this.updateUserDetails(this.user, obj);
+          this.updateUserDetails(this.user, obj, role);
           resolve(this.user);
         })
         .catch((error) => {
@@ -66,12 +66,12 @@ export class AuthService {
     });
   }
 
-  updateUserDetails(user: any, obj: any) {
+  updateUserDetails(user: any, obj: any, role: string) {
     return new Promise<any>(async (resolve) => {
       let db_obj = {
         last_name: obj['last_name'],
         first_name: obj['first_name'],
-        role: 'student',
+        role: role,
         user_id: user.uid,
         email: user.email,
         emailVerified: user.emailVerified,
@@ -105,7 +105,5 @@ export class AuthService {
     this.nav.navigateFromRoot('authentication');
   }
 
-  sendResendPassEmail() {
-    
-  }
+  sendResendPassEmail() {}
 }

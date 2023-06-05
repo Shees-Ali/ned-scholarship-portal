@@ -36,12 +36,12 @@
       </div>
     </mat-grid-tile>
 
-    <mat-grid-tile>
+    <mat-grid-tile *ngIf="!isDonor">
       <div class="signup-card">
         <p class="signup-title">Sign Up</p>
         <p class="signup-subtitle">NED University’s Scholarship Portal</p>
         <form class="form" [formGroup]="signUpForm">
-          <mat-grid-list cols="2" rowHeight="85px" [gutterSize]="'8px'">
+          <mat-grid-list cols="2" rowHeight="100px" [gutterSize]="'8px'">
             <mat-grid-tile>
               <mat-form-field appearance="outline">
                 <mat-label>First Name</mat-label>
@@ -92,7 +92,8 @@
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input formControlName="email" matInput placeholder="Enter Email" />
-            <mat-hint *ngIf="!signUpForm.controls['email'].touched"
+            <mat-hint
+              *ngIf="!signUpForm.controls['email'].touched && signUpForm.controls['email'].value === ''"
               >Enter your Cloud Email address</mat-hint
             >
             <mat-hint
@@ -110,7 +111,8 @@
               matInput
               placeholder="Enter Password"
             />
-            <mat-hint *ngIf="!signUpForm.controls['password'].touched"
+            <mat-hint
+              *ngIf="!signUpForm.controls['password'].touched && signUpForm.controls['password'].value == ''"
               >Enter Password</mat-hint
             >
             <mat-hint
@@ -126,11 +128,12 @@
               type="password"
               placeholder="Confirm Password"
             />
-            <mat-hint *ngIf="!signUpForm.controls['password'].touched"
+            <mat-hint
+              *ngIf="!signUpForm.controls['confirm_password'].touched && signUpForm.controls['confirm_password'].value == ''"
               >Enter Password again to continue</mat-hint
             >
             <mat-hint
-              *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)"
+              *ngIf="signUpForm.controls['confirm_password'].invalid && (signUpForm.controls['confirm_password'].dirty || signUpForm.controls['confirm_password'].touched)"
             >
               Confirm Password should be similar too Password
             </mat-hint>
@@ -140,7 +143,120 @@
           Submit
         </button>
         <caption class="ineed-help">
-          Are you a donor?<button mat-flat-button>Go to donor form</button>
+          Are you a donor?<button (click)="switchToDonor()" mat-flat-button>
+            Go to donor form
+          </button>
+        </caption>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile *ngIf="isDonor">
+      <div class="signup-card">
+        <p class="signup-title">Sign Up As A Donor</p>
+        <p class="signup-subtitle">NED University’s Scholarship Portal</p>
+        <form class="form" [formGroup]="donorSignUpForm">
+          <mat-grid-list cols="2" rowHeight="100px" [gutterSize]="'8px'">
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input
+                  formControlName="first_name"
+                  matInput
+                  placeholder="Enter First Name"
+                  maxlength="25"
+                />
+                <mat-hint
+                  *ngIf="!donorSignUpForm.controls['first_name'].touched"
+                  >Enter First Name</mat-hint
+                >
+                <mat-hint
+                  *ngIf="donorSignUpForm.controls['first_name'].invalid &&
+                  (donorSignUpForm.controls['first_name'].dirty ||
+                  donorSignUpForm.controls['first_name'].touched)"
+                >
+                  Invalid First Name
+                </mat-hint>
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input
+                  formControlName="last_name"
+                  matInput
+                  placeholder="Enter Last Name"
+                  maxlength="25"
+                />
+                <mat-hint *ngIf="!donorSignUpForm.controls['last_name'].touched"
+                  >Enter Last Name</mat-hint
+                >
+                <mat-hint
+                  *ngIf="donorSignUpForm.controls['last_name'].invalid &&
+                (donorSignUpForm.controls['last_name'].dirty ||
+                donorSignUpForm.controls['last_name'].touched)"
+                >
+                  Invalid Last Name
+                </mat-hint>
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Enter Email" />
+            <mat-hint
+              *ngIf="!donorSignUpForm.controls['email'].touched && donorSignUpForm.controls['email'].value === ''"
+              >Enter your Email address</mat-hint
+            >
+            <mat-hint
+              *ngIf="donorSignUpForm.controls['email'].invalid &&
+          (donorSignUpForm.controls['email'].dirty ||
+          donorSignUpForm.controls['email'].touched)"
+              >Email should be in format xyx@xyz.com</mat-hint
+            >
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              formControlName="password"
+              type="password"
+              matInput
+              placeholder="Enter Password"
+            />
+            <mat-hint
+              *ngIf="!donorSignUpForm.controls['password'].touched && donorSignUpForm.controls['password'].value == ''"
+              >Enter Password</mat-hint
+            >
+            <mat-hint
+              *ngIf="donorSignUpForm.controls['password'].invalid && (donorSignUpForm.controls['password'].dirty || donorSignUpForm.controls['password'].touched)"
+              >Password be at least 8 digits</mat-hint
+            >
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              formControlName="confirm_password"
+              matInput
+              type="password"
+              placeholder="Confirm Password"
+            />
+            <mat-hint
+              *ngIf="!donorSignUpForm.controls['confirm_password'].touched && donorSignUpForm.controls['confirm_password'].value == ''"
+              >Enter Password again to continue</mat-hint
+            >
+            <mat-hint
+              *ngIf="donorSignUpForm.controls['confirm_password'].invalid && (donorSignUpForm.controls['confirm_password'].dirty || donorSignUpForm.controls['confirm_password'].touched)"
+            >
+              Confirm Password should be similar too Password
+            </mat-hint>
+          </mat-form-field>
+        </form>
+        <button (click)="signUp()" class="signup-btn" mat-raised-button>
+          Submit
+        </button>
+        <caption class="ineed-help">
+          Are you a donor?<button (click)="switchToDonor()" mat-flat-button>
+            Go to donor form
+          </button>
         </caption>
       </div>
     </mat-grid-tile>
@@ -221,7 +337,7 @@
         <p class="m-signup-title">Sign Up</p>
         <p class="m-signup-subtitle">NED University’s Scholarship Portal</p>
         <form class="form" [formGroup]="signUpForm">
-          <mat-grid-list cols="2" rowHeight="85px" [gutterSize]="'8px'">
+          <mat-grid-list cols="2" rowHeight="100px" [gutterSize]="'8px'">
             <mat-grid-tile>
               <mat-form-field appearance="outline">
                 <mat-label>First Name</mat-label>

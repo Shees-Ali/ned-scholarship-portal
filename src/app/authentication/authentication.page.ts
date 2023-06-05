@@ -13,6 +13,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./authentication.page.scss'],
 })
 export class AuthenticationPage extends BasePage implements OnInit {
+  isDonor: boolean = false;
   isSignUp: boolean = false;
   signInForm: FormGroup<any>;
   signUpForm: FormGroup<any>;
@@ -149,25 +150,47 @@ export class AuthenticationPage extends BasePage implements OnInit {
   }
 
   signUp() {
-    if (this.signUpForm.invalid) {
-      this.utiltiy.hideLoader();
-      return this.openSnackBar('Sign Up Form InValid !', 'Okay');
-    }
-
-    this.authService
-      .signUp(this.signUpForm.value)
-      .then((res) => {
-        if (res) {
-          this.openSnackBar('Account Creation Success', 'Okay !', 'success');
-          this.nav.navigateTo('student');
-        }
-      })
-      .catch((err) => {
-        if (err.code == 'auth/email-already-in-use') {
-          this.utiltiy.openSnackBar('Email Already In Use', 'OK');
-        }
+    if (!this.isDonor) {
+      if (this.signUpForm.invalid) {
         this.utiltiy.hideLoader();
-      });
+        return this.openSnackBar('Sign Up Form InValid !', 'Okay');
+      }
+
+      this.authService
+        .signUp(this.signUpForm.value)
+        .then((res) => {
+          if (res) {
+            this.openSnackBar('Account Creation Success', 'Okay !', 'success');
+            this.nav.navigateTo('student');
+          }
+        })
+        .catch((err) => {
+          if (err.code == 'auth/email-already-in-use') {
+            this.utiltiy.openSnackBar('Email Already In Use', 'OK');
+          }
+          this.utiltiy.hideLoader();
+        });
+    } else if (this.isDonor) {
+      if (this.donorSignUpForm.invalid) {
+        this.utiltiy.hideLoader();
+        return this.openSnackBar('Sign Up Form InValid !', 'Okay');
+      }
+
+      this.authService
+        .signUp(this.donorSignUpForm.value, 'donor')
+        .then((res) => {
+          if (res) {
+            this.openSnackBar('Account Creation Success', 'Okay !', 'success');
+            this.nav.navigateTo('donor');
+          }
+        })
+        .catch((err) => {
+          if (err.code == 'auth/email-already-in-use') {
+            this.utiltiy.openSnackBar('Email Already In Use', 'OK');
+          }
+          this.utiltiy.hideLoader();
+        });
+    }
   }
 
   openSnackBar(message: string, action: string, className: string = 'error') {
@@ -176,5 +199,9 @@ export class AuthenticationPage extends BasePage implements OnInit {
 
   forgotPassword() {
     console.log('Forgot password');
+  }
+
+  switchToDonor() {
+    this.isDonor = !this.isDonor;
   }
 }
