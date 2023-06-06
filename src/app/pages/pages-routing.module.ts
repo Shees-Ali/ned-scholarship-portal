@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../guards/admin.guard';
 import { StudentGuard } from '../guards/student.guard';
-import { DonorGuard } from '../guards/donor.guard';
+// import { DonorGuard } from '../guards/donor.guard';
 
 const routes: Routes = [
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'donor',
     loadChildren: () =>
       import('./donor/donor.module').then((m) => m.DonorModule),
-    canActivate: [DonorGuard],
+    // canActivate: [DonorGuard],
   },
 ];
 

@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DonorPage } from './donor.page';
 import { DonorRoutingModule } from './donor-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    DonorPage
   ],
   imports: [
     CommonModule,
-    DonorRoutingModule
+    DonorRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class DonorModule { }
