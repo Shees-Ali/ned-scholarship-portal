@@ -1,0 +1,38 @@
+<div class="content">
+  <div class="top-heading">
+    <div class="back-btn">
+      <button mat-icon-button (click)="goBack()">
+        <mat-icon>keyboard_backspace</mat-icon>
+      </button>
+    </div>
+
+    <p class="heading">{{student?.first_name + ' ' + student?.last_name}}</p>
+
+    <div class="status-div">
+      <p class="status-heading">Scholarship Status :</p>
+      <p class="status">
+        {{ student?.has_granted ? 'Received' : student?.has_applied ? 'Applied' :
+        'Not Applied'}}
+      </p>
+    </div>
+  </div>
+
+  <div class="all-applications-list">
+    <ng-container *ngIf="!isLoading"> </ng-container>
+
+    <div class="spinner" *ngIf="isLoading">
+      <mat-progress-spinner
+        color="primary"
+        mode="indeterminate"
+      ></mat-progress-spinner>
+    </div>
+  </div>
+
+  <div class="student-details">
+    <app-verify
+      [isAdmin]="true"
+      [isComponent]="true"
+      [student_id]="student_id"
+    ></app-verify>
+  </div>
+</div>

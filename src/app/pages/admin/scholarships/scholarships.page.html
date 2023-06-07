@@ -31,7 +31,18 @@
       <mat-radio-button value="national">Nation</mat-radio-button>
     </mat-radio-group>
     <button mat-button (click)="clearFilter()">Clear</button>
+  </p>
 
+  <p>
+    <span class="filters-text"> Sort By </span>
+    <mat-radio-group
+      color="primary"
+      (change)="filterChanged()"
+      [(ngModel)]="filter"
+    >
+      <mat-radio-button value="no_of_applications">No Of Applications</mat-radio-button>
+    </mat-radio-group>
+    <button mat-button (click)="clearFilter()">Clear</button>
   </p>
 </div>
 

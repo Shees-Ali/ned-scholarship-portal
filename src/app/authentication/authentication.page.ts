@@ -136,6 +136,8 @@ export class AuthenticationPage extends BasePage implements OnInit {
             this.nav.navigateTo('student');
           } else if (user.role == 'admin') {
             this.nav.navigateTo('admin');
+          } else if (user.role == 'donor') {
+            this.nav.navigateTo('donor');
           }
         }
       })
@@ -203,5 +205,28 @@ export class AuthenticationPage extends BasePage implements OnInit {
 
   switchToDonor() {
     this.isDonor = !this.isDonor;
+  }
+
+  switchSignIn() {
+    this.switchToDonor();
+    if (this.isDonor) {
+      this.signInForm
+        .get('email')
+        ?.setValidators([
+          Validators.required,
+          Validators.pattern(
+            "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+          ),
+        ]);
+      this.signInForm?.get('email')?.setValue('');
+    } else {
+      this.signInForm
+        .get('email')
+        ?.setValidators([
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@cloud.neduet.edu.pk'),
+        ]);
+      this.signInForm?.get('email')?.setValue('');
+    }
   }
 }

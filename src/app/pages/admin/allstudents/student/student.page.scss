@@ -1,0 +1,33 @@
+.top-heading {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  align-items: baseline;
+  margin-bottom: 16px;
+
+  .status-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .status-heading {
+      font-size: 24px;
+    }
+
+    .status {
+      font-size: 16px;
+    }
+  }
+
+  .heading {
+    font-size: 32px;
+    margin-bottom: 0px;
+  }
+}
+
+.all-applications-list {
+  background: #fff;
+  padding: 24px;
+  margin-bottom: 16px;
+}

@@ -1,8 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 interface AllStudentsList {
   roll_no?: string;
@@ -29,21 +29,22 @@ export class AllstudentsPage extends BasePage implements OnInit {
   constructor(injector: Injector, breakpointObserver: BreakpointObserver) {
     super(injector);
     breakpointObserver
-    .observe([
-      Breakpoints.XSmall,
-      Breakpoints.Small,
-      Breakpoints.Medium,
-      Breakpoints.Large,
-      Breakpoints.XLarge,
-    ])
-    .pipe(takeUntil(this.destroyed))
-    .subscribe(result => {
-      for (const query of Object.keys(result.breakpoints)) {
-        if (result.breakpoints[query]) {
-          this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+      .observe([
+        Breakpoints.XSmall,
+        Breakpoints.Small,
+        Breakpoints.Medium,
+        Breakpoints.Large,
+        Breakpoints.XLarge,
+      ])
+      .pipe(takeUntil(this.destroyed))
+      .subscribe((result) => {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            this.currentScreenSize =
+              this.displayNameMap.get(query) ?? 'Unknown';
+          }
         }
-      }
-    });
+      });
   }
   ngOnDestroy() {
     this.destroyed.next();
@@ -59,7 +60,7 @@ export class AllstudentsPage extends BasePage implements OnInit {
 
   async getData() {
     this.utiltiy.showLoader();
-    this.all_students_list = await this.studentService.getStudentsList(10);
+    this.all_students_list = await this.studentService.getStudentsList(1000);
     for (let index = 0; index < this.all_students_list.length; index++) {
       const element = this.all_students_list[index];
       if (element.isProfileComplete) {
@@ -67,11 +68,14 @@ export class AllstudentsPage extends BasePage implements OnInit {
           await this.studentService.getStudentParticulars(element.user_id);
       }
     }
-    console.log(this.all_students_list);
     this.utiltiy.hideLoader();
   }
 
   studentDetails(student: any) {
-    console.log(student);
+    this.nav.navigateTo('admin/allstudents/student', {
+      queryParams: {
+        student_id: student.user_id,
+      },
+    });
   }
 }

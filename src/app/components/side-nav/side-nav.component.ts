@@ -50,8 +50,20 @@ export class SideNavComponent extends BasePage {
       icon: 'school',
     },
     {
+      link: 'allstudents',
+      name: 'Students List',
+      icon: 'people'
+    },
+    {
       link: 'logout',
       name: 'Log out',
+      icon: 'exit_to_app',
+    },
+  ];
+  public routeLinksDonor = [
+    {
+      link: 'logout',
+      name: 'Log Out',
       icon: 'exit_to_app',
     },
   ];
