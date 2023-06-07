@@ -1,8 +1,14 @@
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import { Component, Injector, Input } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import {
+  Component,
+  EventEmitter,
+  Injector,
+  Input,
+  Output,
+} from '@angular/core';
 import { BasePage } from 'src/app/base/base.page';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'side-nav',
@@ -11,14 +17,8 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class SideNavComponent extends BasePage {
   @Input() isExpanded?: boolean;
-  destroyed = new Subject<void>();
-  currentScreenSize: string = '';
-
-  displayNameMap = new Map([
-    [Breakpoints.XSmall, 'Small'],
-    [Breakpoints.Small, 'Small'],
-  ]);
-
+  @Input() isMobile?: boolean = false;
+  @Output() navigated: EventEmitter<any> = new EventEmitter<any>();
   public routeLinks = [
     { link: 'dashboard', name: 'Dashboard', icon: 'dashboard' },
     {
@@ -56,32 +56,12 @@ export class SideNavComponent extends BasePage {
     },
   ];
   user: any;
-  constructor(injector: Injector, breakpointObserver: BreakpointObserver) {
+  constructor(injector: Injector) {
     super(injector);
     this.userService.userUpdated.subscribe(() => {
       this.setUser();
     });
     this.setUser();
-    breakpointObserver
-      .observe([
-        Breakpoints.XSmall,
-        Breakpoints.Small,
-        Breakpoints.Medium,
-        Breakpoints.Large,
-        Breakpoints.XLarge,
-      ])
-      .pipe(takeUntil(this.destroyed))
-      .subscribe(result => {
-        for (const query of Object.keys(result.breakpoints)) {
-          if (result.breakpoints[query]) {
-            this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
-          }
-        }
-      });
-  }
-  ngOnDestroy() {
-    this.destroyed.next();
-    this.destroyed.complete();
   }
 
   async ngOnInit() {}
@@ -98,6 +78,7 @@ export class SideNavComponent extends BasePage {
   }
 
   goTo(link: string) {
+    this.navigated.emit();
     if (link == 'logout') {
       this.authService.logOut();
       return (this.isExpanded = false);

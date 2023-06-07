@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AllstudentsPage } from './allstudents.page';
 import { AllstudentsRoutingModule } from './allstudents-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -13,7 +14,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
   imports: [
     CommonModule,
     AllstudentsRoutingModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule
   ]
 })
 export class AllstudentsModule { }

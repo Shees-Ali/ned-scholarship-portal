@@ -1,26 +1,42 @@
 <screen-loader *ngIf="isLoading"></screen-loader>
 <ng-container *ngIf="isPages">
-  <toolbar (menuBtnClicked)="toggleMenu()"></toolbar>
-  <side-nav class="mobile-nav" [isExpanded]="isExpanded"></side-nav>
-  <mat-sidenav-container autosize>
-    <mat-sidenav
-      class="box-shadow margin-top-150"
-      (mouseenter)="toggleMenu()"
-      (mouseleave)="toggleMenu()"
-      #sidenav
-      mode="side"
-      opened="true"
-    >
-      <side-nav class="desktop-nav" [isExpanded]="isExpanded"></side-nav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content-container margin-top-150">
-        <router-outlet>
-          <screen-loader *ngIf="isLoading"></screen-loader>
-        </router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <ng-container *ngIf="currentScreenSize == 'Small'">
+    <toolbar (menuBtnClicked)="drawer.toggle()"></toolbar>
+    <mat-drawer-container class="example-container" [hasBackdrop]="true">
+      <mat-drawer #drawer>
+        <side-nav (navigated)="drawer.toggle()" [isMobile]="true"></side-nav>
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="content-container margin-top-150">
+          <router-outlet>
+            <screen-loader *ngIf="isLoading"></screen-loader>
+          </router-outlet>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </ng-container>
+  <ng-container *ngIf="currentScreenSize !== 'Small'">
+    <toolbar></toolbar>
+    <mat-sidenav-container autosize>
+      <mat-sidenav
+        class="box-shadow margin-top-150"
+        (mouseenter)="toggleMenu()"
+        (mouseleave)="toggleMenu()"
+        #sidenav
+        mode="side"
+        opened="true"
+      >
+        <side-nav class="desktop-nav" [isExpanded]="isExpanded"></side-nav>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="content-container margin-top-150">
+          <router-outlet>
+            <screen-loader *ngIf="isLoading"></screen-loader>
+          </router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </ng-container>
 </ng-container>
 
 <ng-container *ngIf="isHome">

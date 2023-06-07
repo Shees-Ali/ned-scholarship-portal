@@ -6,15 +6,26 @@
   color: #0b45bb !important;
 }
 
-section{
+section {
   height: 100vh;
   position: fixed;
   background-color: rgba(#fff, 0.95);
 }
 
-@media only screen and (max-width: 1000px) {    
-  section{
-    width: 200px;
-    z-index: 100000;
+@media only screen and (max-width: 1000px) {
+  section {
+    margin-top: 150px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  section {
+    margin-top: 125px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  section {
+    margin-top: 100px;
   }
 }

@@ -70,4 +70,8 @@ export class AllstudentsPage extends BasePage implements OnInit {
     console.log(this.all_students_list);
     this.utiltiy.hideLoader();
   }
+
+  studentDetails(student: any) {
+    console.log(student);
+  }
 }
