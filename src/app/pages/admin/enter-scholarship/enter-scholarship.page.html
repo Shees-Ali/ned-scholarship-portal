@@ -3,7 +3,11 @@
   <p class="upload-img-text">Upload Banner/Promotion Image:</p>
   <input type="file" (change)="onBannerImg($event)" hidden id="bannerfile" />
   <form [formGroup]="scholarshipDetailsFormGroup">
-    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+    <mat-grid-list
+      [cols]="breakpoint"
+      rowHeight="100px"
+      (window:resize)="onResize($event)"
+    >
       <mat-grid-tile [colspan]="span3" [rowspan]="4" class="banner-icon">
         <button class="pic-btn-width" (click)="changePicture()" mat-button>
           <img
@@ -19,7 +23,7 @@
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-form-field style="width: 100%;" appearance="fill">
+        <mat-form-field style="width: 100%" appearance="fill">
           <mat-label>Scholarship Type(Merit or Need)</mat-label>
           <mat-select formControlName="type" name="type">
             <mat-option value="merit_based">Merit Based</mat-option>
@@ -69,12 +73,53 @@
         [config]="editorConfig"
       ></angular-editor>
     </div>
-    
-
-    <div class="extra-feilds-div">
-      
-    </div>
   </form>
+  <div class="extra-feilds-div">
+    <div class="checkbox">
+      <mat-checkbox [(ngModel)]="haveExtraFields"
+        >Do you want to add Extra Fields?</mat-checkbox
+      >
+    </div>
+
+    <ng-container *ngIf="haveExtraFields">
+      <div class="extra-item" *ngFor="let item of extraFields; let i = index">
+        <p class="index">{{i + 1}}.</p>
+
+        <p *ngIf="!item.isEdit">{{item.name}}</p>
+        <mat-form-field *ngIf="item.isEdit">
+          <input matInput [(ngModel)]="item.name" />
+        </mat-form-field>
+
+        <div class="buttons-div">
+          <button
+            [disabled]="item.name == ''"
+            mat-icon-button
+            (click)="item.isEdit = !item.isEdit"
+          >
+            <mat-icon>create_outline</mat-icon>
+          </button>
+          <button
+            *ngIf="extraFields.length > 1"
+            mat-icon-button
+            (click)="removeExtraField(i)"
+          >
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
+
+        <ng-container *ngIf="i == 0">
+          <button
+            (click)="addExtraField()"
+            *ngIf="extraFields[extraFields.length - 1].name !== ''"
+            mat-icon-button
+          >
+            <mat-icon>add_outline</mat-icon>
+          </button>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+
   <div class="submit-btn">
     <button (click)="submit()" class="green-btn" mat-button>
       Save and Post

@@ -55,7 +55,14 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
   scholarshipId: any;
   bannerImg: string = '';
   breakpoint: number = 3;
-  span3:number = 3;
+  span3: number = 3;
+  haveExtraFields: boolean = false;
+  extraFields: any[] = [
+    {
+      name: '',
+      isEdit: true,
+    },
+  ];
 
   constructor(injector: Injector) {
     super(injector);
@@ -81,12 +88,12 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
       delete formData['banner_img'];
       this.scholarshipDetailsFormGroup.setValue(formData);
     }
-    this.breakpoint = (window.innerWidth <= 900) ? 1 : 3;
-    this.span3 = (window.innerWidth <= 900) ? 1 : 3;
+    this.breakpoint = window.innerWidth <= 900 ? 1 : 3;
+    this.span3 = window.innerWidth <= 900 ? 1 : 3;
   }
-  onResize(event:any) {
-    this.breakpoint = (event.target.innerWidth <= 900) ? 1 : 3;
-    this.span3 = (window.innerWidth <= 900) ? 1 : 3;
+  onResize(event: any) {
+    this.breakpoint = event.target.innerWidth <= 900 ? 1 : 3;
+    this.span3 = window.innerWidth <= 900 ? 1 : 3;
   }
 
   onBannerImg($event: any) {
@@ -136,5 +143,16 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
         }
       });
     }
+  }
+
+  removeExtraField(index: number): void {
+    this.extraFields.splice(index, 1);
+  }
+
+  addExtraField(): void {
+    this.extraFields.push({
+      name: '',
+      isEdit: true,
+    });
   }
 }
