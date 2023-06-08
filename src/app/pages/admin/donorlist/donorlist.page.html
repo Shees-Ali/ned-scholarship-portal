@@ -19,8 +19,8 @@
           <p>Approve</p>
         </div>
       </div>
-      <div class="content-row">
-        <ng-container *ngFor="let item of donorsList; let i = index">
+      <ng-container *ngFor="let item of donorsList; let i = index">
+        <div class="content-row">
           <div class="content-col">
             <p>{{item.name}}</p>
           </div>
@@ -42,8 +42,8 @@
               Approve
             </button>
           </div>
-        </ng-container>
-      </div>
+        </div>
+      </ng-container>
     </div>
     <!-- For Mobile -->
     <div *ngIf="currentScreenSize == 'Small'">
