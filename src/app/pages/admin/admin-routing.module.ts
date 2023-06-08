@@ -39,6 +39,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./application/application.module').then((m) => m.ApplicationModule),
   },
+  {
+    path: 'donor-list',
+    loadChildren: () =>
+      import('./donorlist/donorlist.module').then((m) => m.DonorlistModule),
+  },
 ];
 
 @NgModule({

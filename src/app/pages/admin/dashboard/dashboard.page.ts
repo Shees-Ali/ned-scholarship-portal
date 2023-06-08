@@ -26,4 +26,7 @@ export class DashboardPage extends BasePage implements OnInit {
   to_view_students(){
     this.nav.navigateTo('admin/allstudents');
   }
+  to_donors_list(){
+    this.nav.navigateTo('admin/donor-list');
+  }
 }
