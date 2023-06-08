@@ -67,14 +67,21 @@ export class DashboardPage extends BasePage implements OnInit {
     this.user = await this.userService.getCurrentUser();
     console.log(this.user);
     const data = await this.donorService.getDonorData(this.user.user_id);
-    if (data) {
-      return this.nav.navigateTo('donor/student-list');
-    }
+    // if (data) {
+    //   return this.nav.navigateTo('donor/student-list');
+    // }
+    console.log(data);
     if (data.status === 'not-allowed') {
       this.approved = false;
     } else if (data.status === 'approved') {
       this.approved = true;
-      console.log(data);
+      let formdata = data;
+      formdata['amount'] = '';
+      formdata['sponsorship_name'] = '';
+      formdata['num_receiver'] = '';
+      delete formdata['status'];
+      this.donorForm.setValue(formdata);
+
     }
   }
 

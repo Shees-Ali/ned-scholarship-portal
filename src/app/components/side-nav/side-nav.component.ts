@@ -66,6 +66,7 @@ export class SideNavComponent extends BasePage {
     },
   ];
   public routeLinksDonor = [
+    { link: 'dashboard', name: 'Dashboard', icon: 'dashboard' },
     {
       link: 'student-list',
       name: 'Students List',
