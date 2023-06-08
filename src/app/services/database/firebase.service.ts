@@ -154,6 +154,27 @@ export class FirebaseService {
     });
   }
 
+  listSponsorsByUserID(user_id: string, limit: number) {
+    return new Promise<any>((resolve) => {
+      let array: any[] = [];
+      let listQuery = query(
+        ref(this.database, 'sponsorships'),
+        limitToFirst(limit),
+        orderByChild('student_id'),
+        equalTo(user_id)
+      );
+      off(listQuery);
+      onValue(listQuery, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          childData['key'] = childSnapshot.key;
+          array.push(childData);
+        });
+        resolve(array);
+      });
+    });
+  }
+
   checkApplication(student_id: string, scholarship_id: string) {
     return new Promise<boolean>((resolve) => {
       let listQuery = query(

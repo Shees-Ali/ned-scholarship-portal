@@ -67,6 +67,9 @@ export class DashboardPage extends BasePage implements OnInit {
     this.user = await this.userService.getCurrentUser();
     console.log(this.user);
     const data = await this.donorService.getDonorData(this.user.user_id);
+    if (data) {
+      return this.nav.navigateTo('donor/student-list');
+    }
     if (data.status === 'not-allowed') {
       this.approved = false;
     } else if (data.status === 'approved') {
@@ -97,7 +100,7 @@ export class DashboardPage extends BasePage implements OnInit {
       .then((res: any) => {
         this.utiltiy.hideLoader();
         if (res) {
-          this.nav.navigateTo('donor/studentslist');
+          this.nav.navigateTo('donor/student-list');
         }
       });
     // this.approved = !this.approved;

@@ -23,6 +23,10 @@ export class SponsorshipService {
     return this.firebase.getDataOnValue('sponsorships/' + donor_id);
   }
 
+  getSponsorsByUserID(user_id: string, limit: number) {
+    return this.firebase.listSponsorsByUserID(user_id, limit);
+  }
+
   getSponsorshipsList(
     limit: number,
     last_item = undefined,

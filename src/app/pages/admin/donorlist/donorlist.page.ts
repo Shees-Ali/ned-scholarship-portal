@@ -48,8 +48,13 @@ export class DonorlistPage  extends BasePage implements OnInit {
     console.log(this.donorsList);
   }
 
-  toview(){
-
+  toview(donor: any){
+    console.log(donor);
+    this.nav.navigateTo('admin/donor-list/donor', {
+      queryParams: {
+        donor_id: donor.key,
+      },
+    }); 
   }
   
   approve(item: any){

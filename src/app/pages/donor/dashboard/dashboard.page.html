@@ -117,7 +117,7 @@
         <mat-form-field>
           <mat-label> Association </mat-label>
           <mat-select [(value)]="alumni">
-            <mat-option selected> None </mat-option>
+            <mat-option [value]="false" selected> None </mat-option>
             <mat-option [value]="true"> Alumni </mat-option>
             <mat-option [value]="false"> Faculty </mat-option>
           </mat-select>

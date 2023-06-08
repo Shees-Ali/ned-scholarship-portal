@@ -20,7 +20,7 @@ export class StudentPage extends BasePage implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.student_id = this.nav.getQueryParams()['student_id'];
-    this.user = await this.userService.getCurrentUser();
+    this.student = await this.userService.getUserData(this.student_id);
   }
 
   goBack() {

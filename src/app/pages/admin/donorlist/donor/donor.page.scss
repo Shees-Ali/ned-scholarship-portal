@@ -1,0 +1,62 @@
+@import "/src/app/pages/student/my-applications/my-applications.page.scss";
+
+.top-heading {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  align-items: baseline;
+  margin-bottom: 16px;
+  background-color: #1bb55e;
+  border-radius: 6px;
+  
+  .status-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .status-heading {
+      color: white;
+      font-size: 24px;
+    }
+
+    .status {
+      color: #1bb55e;
+      font-size: 16px;
+      background-color: white ;
+      padding: 10px 20px;
+      border-radius: 16px;
+      margin-left: 6px;
+    }
+  }
+
+  .heading {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 0px;
+  }
+  .back-btn{
+    mat-icon{
+      color: white;
+    }
+  }
+}
+
+.all-applications-list {
+  background: #fff;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+@media only screen and (max-width: 440px) {
+  .top-heading > .status-div > .status-heading {
+    font-size: 18px;
+  }
+  .top-heading > .status-div > .status {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .top-heading > .heading {
+    font-size: 26px;
+  }
+}
