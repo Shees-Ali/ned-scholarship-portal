@@ -50,17 +50,11 @@
               <div class="header-col">
                 <p>Studying, Class/Job</p>
               </div>
-              <div class="header-col">
-                <p>Occupation</p>
-              </div>
             </div>
             <div
             *ngFor="let item of guardian_info?.dependents; let i = index"
             class="content-row"
                     >
-            <div class="content-col">
-              <p>{{ i + 1 }}</p>
-            </div>
             <div class="content-col">
               <p>{{ item.name }}</p>
             </div>
@@ -71,7 +65,7 @@
               <p>{{ item.age }}</p>
             </div>
             <div class="content-col">
-              <p>{{ item.occupation }}</p>
+              <p>{{ item.occupation ?? '---' }}</p>
             </div>
             </div>
           </div>
@@ -94,14 +88,8 @@
                 <div class="m-header-row">
                   <p>Studying, Class/Job</p>
                 </div>
-                <div class="m-header-row">
-                  <p>Occupation</p>
-                </div>
               </div>
               <div class="m-content-col">
-                <div class="m-content-row">
-                  <p>{{ i + 1 }}</p>
-                </div>
                 <div class="m-content-row">
                   <p>{{ item.name }}</p>
                 </div>
@@ -112,7 +100,7 @@
                   <p>{{ item.age }}</p>
                 </div>
                 <div class="m-content-row">
-                  <p>{{ item.occupation }}</p>
+                  <p>{{ item.occupation ?? '---' }}</p>
               </div>
               </div>
             </div>

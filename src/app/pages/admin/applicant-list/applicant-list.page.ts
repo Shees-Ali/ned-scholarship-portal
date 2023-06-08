@@ -112,10 +112,10 @@ export class ApplicantListComponent extends BasePage implements OnInit {
         break;
       case 'gpa':
         this.applicants_list = this.applicants_list.sort( (a, b) => {
-          if (a.marks_gpa < b.marks_gpa) {
+          if (a.marks_gpa > b.marks_gpa) {
             return -1;
           }
-          if (a.marks_gpa > b.marks_gpa) {
+          if (a.marks_gpa < b.marks_gpa) {
             return 1;
           }
           return 0;
