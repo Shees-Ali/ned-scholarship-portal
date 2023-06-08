@@ -6,6 +6,8 @@ import { ProfileCompletionModule } from 'src/app/pages/student/profile-completio
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MyApplicationsRoutingModule } from 'src/app/pages/student/my-applications/my-applications-routing.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 
@@ -19,7 +21,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    ProfileCompletionModule
+    ProfileCompletionModule,
+    MyApplicationsRoutingModule,
+    ComponentsModule
   ]
 })
 export class StudentModule { }

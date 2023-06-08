@@ -2,14 +2,14 @@
   <div class="top-heading">
     <div class="back-btn">
       <button mat-icon-button (click)="goBack()">
-        <mat-icon>keyboard_backspace</mat-icon>
+        <mat-icon >keyboard_backspace</mat-icon>
       </button>
     </div>
 
-    <p class="heading">{{student?.first_name + ' ' + student?.last_name}}</p>
+    <p class="heading">{{student?.first_name + ' ' + student?.last_name + "'s Profile"}}</p>
 
     <div class="status-div">
-      <p class="status-heading">Scholarship Status :</p>
+      <p class="status-heading">Scholarship Status: </p>
       <p class="status">
         {{ student?.has_granted ? 'Received' : student?.has_applied ? 'Applied' :
         'Not Applied'}}
@@ -18,7 +18,12 @@
   </div>
 
   <div class="all-applications-list">
-    <ng-container *ngIf="!isLoading"> </ng-container>
+    <ng-container *ngIf="!isLoading">
+      <p class="mat-headline-4">Applications</p>
+      <my-applications-list
+      [application_list]="applicationsList"
+    ></my-applications-list>
+    </ng-container>
 
     <div class="spinner" *ngIf="isLoading">
       <mat-progress-spinner
@@ -30,6 +35,7 @@
 
   <div class="student-details">
     <app-verify
+    
       [isAdmin]="true"
       [isComponent]="true"
       [student_id]="student_id"

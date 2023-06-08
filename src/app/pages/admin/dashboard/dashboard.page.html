@@ -2,12 +2,20 @@
   <div class="margin-bottom-20">
     <top-banner></top-banner>
   </div>
-  <div class="card margin-bottom-20">
-    <p class="card-title">Admin Controls</p>
-    <div class="dashboard-controls">
-      <button mat-button (click)="to_enter_scholarship()">Enter New Scholarship </button>
-      <button mat-button (click)="to_view_students()">View Students </button>
-      <button mat-button (click)="to_view_scholarships()">View/Edit Scholarship </button>
+  <div class="main-box">
+    <div class="card margin-bottom-20">
+      <p class="card-title">Admin Controls</p>
+      <div class="dashboard-controls">
+        <button mat-button (click)="to_enter_scholarship()">Enter New Scholarship </button>
+        <button mat-button (click)="to_view_students()">View Students </button>
+        <button mat-button (click)="to_view_scholarships()">View/Edit Scholarship </button>
+      </div>
+    </div>
+    <div class="notis-card">
+      <p class="notis-title">Current Statistics</p>
+      <p class="notis-text">Total Users: </p>
+      <p class="notis-text">Total Scholarships: </p>
+      <p class="notis-text">Scholarships awarded: </p>
     </div>
   </div>
 </div>

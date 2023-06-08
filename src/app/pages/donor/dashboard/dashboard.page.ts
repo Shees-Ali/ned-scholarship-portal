@@ -14,6 +14,8 @@ export class DashboardPage extends BasePage implements OnInit {
   span2:number = 2;
   span15:number = 1.5;
   span3:number = 3;
+  alumni: boolean = false;
+  approved: boolean = false;
   constructor(injector: Injector) {
     super(injector);
     this.utiltiy.isPages.next(true);
@@ -50,6 +52,14 @@ export class DashboardPage extends BasePage implements OnInit {
       amount: ['', Validators.required],
       num_receiver: ['', Validators.required],
       alumni: ['', Validators.required],
+      batch: [
+        null,
+        [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.minLength(10),
+        ],
+      ],
     })
   }
   
@@ -67,5 +77,8 @@ export class DashboardPage extends BasePage implements OnInit {
     this.span2 = (window.innerWidth <= 900) ? 1 : 2;
     this.span15 = (window.innerWidth <= 900) ? 1 : 1.5;
     this.span3 = (window.innerWidth <= 900) ? 1 : 3;
+  }
+  submit(){
+    this.approved = !this.approved
   }
 }

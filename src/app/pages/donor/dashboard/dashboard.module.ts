@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -23,7 +24,9 @@ import { MatOptionModule } from '@angular/material/core';
     MatButtonModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatOptionModule
+    MatOptionModule,
+    MatSelectModule,
+    MatButtonModule
   ]
 })
 export class DashboardModule { }

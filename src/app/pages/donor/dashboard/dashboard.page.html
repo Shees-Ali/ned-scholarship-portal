@@ -1,5 +1,6 @@
 <div class="form-content">
   <p class="form-heading">Sponsorship Form</p>
+  
   <form [formGroup]="donorForm" >
     <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
       <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -11,7 +12,11 @@
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>CNIC Number</mat-label>
-          <input matInput formControlName="cnic" required />
+          <input 
+          maxlength="13"
+          minlength="13"
+          matInput 
+          formControlName="cnic" required />
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -69,7 +74,7 @@
           </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+      <mat-grid-list [cols]="breakpoint2" rowHeight="100px" (window:resize)="onResize($event)">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-field">
             <mat-label>Amount</mat-label>
@@ -82,19 +87,32 @@
             <input matInput formControlName="num_receiver" required />
           </mat-form-field>
         </mat-grid-tile>
-        <!-- <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Alumni</mat-label>
-            <mat-select formControlName="alumni" required>
-              <mat-option>None</mat-option>
-              <mat-option value="true"> Yes </mat-option>
-              <mat-option value="false"> No </mat-option>
-            </mat-select>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-form-field>
+              <mat-label> Association </mat-label>
+              <mat-select [(value)]="alumni">
+                <mat-option selected> None </mat-option>
+                <mat-option [value]= "true" > Alumni </mat-option>
+                <mat-option [value]= "false"> Faculty </mat-option>
+              </mat-select>
           </mat-form-field>
-        </mat-grid-tile> -->
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="alumni">
+            <mat-form-field class="form-field">
+              <mat-label>Batch</mat-label>
+              <input 
+                matInput
+                maxlength="4"
+                minlength="4"
+                formControlName="batch" required />
+            </mat-form-field>
+      </mat-grid-tile>
       </mat-grid-list>
-    <div class="next-btn">
+    <div class="next-btn" *ngIf="!approved">
       <button class="green-btn" mat-button>Submit</button>
+    </div>
+    <div class="next-btn" *ngIf="approved">
+      <button class="green-btn std-btn" mat-button>View students</button>
     </div>
   </form>
 </div>
