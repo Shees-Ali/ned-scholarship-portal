@@ -129,6 +129,11 @@ export class AuthenticationPage extends BasePage implements OnInit {
       .then(async (res) => {
         const user = await this.userService.getUserData(res?.uid);
         if (res && user) {
+          if (this.isDonor && user.role == 'student') {
+            this.authService.logOut();
+            this.utiltiy.hideLoader();
+            return this.utiltiy.openSnackBar('Please Login From Student Form !', "OK");
+          }
           this.storage.set('user_obj', JSON.stringify(user));
           this.userService.userUpdated.next();
           this.utiltiy.hideLoader();

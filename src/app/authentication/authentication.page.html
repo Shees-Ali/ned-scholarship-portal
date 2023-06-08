@@ -5,7 +5,7 @@
   <mat-grid-list cols="2" rowHeight="580px">
     <mat-grid-tile>
       <div class="login-card">
-        <p class="login-title">Sign In</p>
+        <p class="login-title">Sign In {{isDonor ? ' As A Donor' : ''}}</p>
         <p class="login-subtitle">ScholarLink Scholarship Portal</p>
         <form class="form" [formGroup]="signInForm">
           <mat-form-field appearance="outline">

@@ -75,6 +75,14 @@
         </mat-grid-tile>
       </mat-grid-list>
       <mat-grid-list [cols]="breakpoint2" rowHeight="100px" (window:resize)="onResize($event)">
+        <mat-grid-tile [colspan]="span2" [rowspan]="1">
+          <mat-form-field class="form-field">
+            <mat-label>Sponsorship Name</mat-label>
+            <input matInput formControlName="sponsorship_name" required />
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list [cols]="breakpoint2" rowHeight="100px" (window:resize)="onResize($event)">
         <mat-grid-tile [colspan]="1" [rowspan]="1">
           <mat-form-field class="form-field">
             <mat-label>Amount</mat-label>

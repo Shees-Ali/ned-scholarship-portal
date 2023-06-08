@@ -11,6 +11,7 @@ import { FirebaseService } from '../services/database/firebase.service';
 import { StudentService } from '../services/database/student.service';
 import { ScholarshipService } from '../services/database/scholarship.service';
 import { ApplicationsService } from '../services/database/applications.service';
+import { DonorService } from '../services/database/donor.service';
 
 export abstract class BasePage {
   public formBuilder: FormBuilder;
@@ -24,6 +25,7 @@ export abstract class BasePage {
   public studentService: StudentService;
   public scholarshipService: ScholarshipService;
   public applicationService: ApplicationsService;
+  public donorService: DonorService;
   public firebase: FirebaseService;
 
   constructor(injector: Injector) {
@@ -38,6 +40,7 @@ export abstract class BasePage {
     this.studentService = injector.get(StudentService);
     this.scholarshipService = injector.get(ScholarshipService);
     this.applicationService = injector.get(ApplicationsService);
+    this.donorService = injector.get(DonorService);
     this.firebase = injector.get(FirebaseService);
   }
 }

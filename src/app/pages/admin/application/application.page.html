@@ -4,6 +4,14 @@
     <p class="content-heading">Cover Letter</p>
     <div [innerHTML]="application.cover_letter"></div>
   </div>
+
+  <ng-container *ngIf="extraFields.length > 0">
+    <div *ngFor="let item of extraFields" class="cover-letter">
+      <p class="content-heading">{{ item.name }}</p>
+      <div [innerHTML]="item.value"></div>
+    </div>
+  </ng-container>
+  
   <div class="verify">
     <app-verify
       [isAdmin]="true"

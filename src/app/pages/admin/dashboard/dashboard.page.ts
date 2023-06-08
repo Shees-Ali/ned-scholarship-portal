@@ -7,12 +7,18 @@ import { BasePage } from 'src/app/base/base.page';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage extends BasePage implements OnInit {
+  student_count: number = 0;
+  users_count: number = 0;
+  scholarship_count: number = 0;
   constructor(injector: Injector,) {
     super(injector);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.utiltiy.isPages.next(true);
+    this.student_count = await this.studentService.countStudents();
+    this.users_count = await this.userService.countUsers();
+    this.scholarship_count = await this.scholarshipService.getScholarShipCount();
   }
 
   to_enter_scholarship(){

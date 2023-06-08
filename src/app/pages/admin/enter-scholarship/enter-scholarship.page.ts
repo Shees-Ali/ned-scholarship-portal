@@ -85,6 +85,17 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
       );
       formData['due_date'] = new Date(formData['due_date']);
       this.bannerImg = formData['banner_img'];
+      this.haveExtraFields = formData['have_extra'];
+      if (formData['extra_feilds'] && formData['extra_feilds'].length > 0) {
+        this.extraFields = formData['extra_feilds'].map((x: any) => {
+          return {
+            name: x.name,
+            isEdit: false,
+          };
+        });
+      }
+      delete formData['extra_feilds'];
+      delete formData['have_extra'];
       delete formData['banner_img'];
       this.scholarshipDetailsFormGroup.setValue(formData);
     }
@@ -122,12 +133,23 @@ export class EnterScholarshipComponent extends BasePage implements OnInit {
       return this.utiltiy.openSnackBar('Please Fill All the Fields !', 'OK');
     }
     if (!this.bannerImg) {
-      return this.utiltiy.openSnackBar('Please Select a Banner Image', 'OK');
+      return this.utiltiy.openSnackBar('Please Select a Banner Image !', 'OK');
+    }
+    if (this.haveExtraFields && this.extraFields[0].name === '') {
+      return this.utiltiy.openSnackBar('Please Enter Extra Field Name !', 'OK');
     }
     this.utiltiy.showLoader();
     const formValue = this.scholarshipDetailsFormGroup.value;
     formValue['banner_img'] = this.bannerImg;
     formValue['due_date'] = formValue['due_date'].toLocaleDateString();
+    formValue['have_extra'] = this.haveExtraFields;
+    if (this.haveExtraFields) {
+      formValue['extra_feilds'] = this.extraFields.map((x) => {
+        return {
+          name: x.name,
+        };
+      });
+    }
     if (this.scholarshipId) {
       this.scholarshipService
         .updateScholarship(this.scholarshipId, formValue)

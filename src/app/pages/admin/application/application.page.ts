@@ -9,6 +9,10 @@ import { BasePage } from 'src/app/base/base.page';
 export class ApplicationPage extends BasePage implements OnInit {
   application: any;
   isStudent: boolean = false;
+  extraFields: Array<{
+    name: string;
+    value: string;
+  }> = [];
   constructor(injector: Injector) {
     super(injector);
   }
@@ -19,7 +23,12 @@ export class ApplicationPage extends BasePage implements OnInit {
       this.isStudent = this.nav.getQueryParams()['isStudent'];
     }
     this.application = JSON.parse(string);
-    console.log(this.application);
+    if (
+      this.application.extra_feilds &&
+      this.application.extra_feilds.length > 0
+    ) {
+      this.extraFields = this.application.extra_feilds;
+    }
   }
 
   approve() {

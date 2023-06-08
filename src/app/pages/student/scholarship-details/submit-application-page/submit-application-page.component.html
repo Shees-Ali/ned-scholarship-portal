@@ -8,6 +8,17 @@
       [config]="editorConfig"
     ></angular-editor>
   </div>
+
+  <ng-container *ngIf="scholarship?.have_extra">
+    <div *ngFor="let item of extrafeilds" class="form-field">
+      <p class="input-label">{{item.name}}</p>
+      <angular-editor
+        [(ngModel)]="item.value"
+        [config]="editorConfig"
+      ></angular-editor>
+    </div>
+  </ng-container>
+
   <p class="heading-name">Verify Info</p>
 
   <app-verify [isComponent]="true"></app-verify>

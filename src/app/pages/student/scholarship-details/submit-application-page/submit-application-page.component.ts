@@ -51,6 +51,10 @@ export class SubmitApplicationPageComponent extends BasePage {
   cover_letter: any = '';
   canApply: boolean = true;
   user: any;
+  extrafeilds = [{
+    name: '',
+    value: ''
+  }];
   constructor(injector: Injector, public dialog: MatDialog) {
     super(injector);
     this.userService.getCurrentUser().then(async (res: any) => {
@@ -60,6 +64,22 @@ export class SubmitApplicationPageComponent extends BasePage {
         this.scholarship.key
       );
     });
+  }
+
+  ngOnInit() {
+    this.setExtraFeild();
+  }
+
+  setExtraFeild() {
+    console.log(this.scholarship);
+    if (this.scholarship.have_extra) {
+      this.extrafeilds = this.scholarship.extra_feilds.map((x: any) => {
+        return {
+          name: x.name,
+          value: '',
+        };
+      });
+    }
   }
 
   async submit() {
@@ -103,6 +123,7 @@ export class SubmitApplicationPageComponent extends BasePage {
       cover_letter: this.cover_letter,
       submitted_date: date.toLocaleDateString(),
       status: 'under-review',
+      extra_feilds: this.scholarship.have_extra ? this.extrafeilds : []
     };
     this.applicationService.setApplicationsData(application).then((res) => {
       if (!user.has_applied) {

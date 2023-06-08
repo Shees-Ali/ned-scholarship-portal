@@ -11,6 +11,7 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class MyApplicationsListComponent extends BasePage implements OnInit {
   @Input('application_list') application_list?: Array<any>;
+  @Input('isAdmin') isAdmin?: boolean = false;
   destroyed = new Subject<void>();
   currentScreenSize: string = '';
 
@@ -46,11 +47,20 @@ export class MyApplicationsListComponent extends BasePage implements OnInit {
   ngOnInit() {}
 
   toApplication(application: any) {
-    this.nav.navigateTo('student/application', {
-      queryParams: {
-        application: JSON.stringify(application),
-        isStudent: true,
-      },
-    });
+    if (!this.isAdmin) {
+      this.nav.navigateTo('student/application', {
+        queryParams: {
+          application: JSON.stringify(application),
+          isStudent: true,
+        },
+      });
+    } else {
+      this.nav.navigateTo('admin/application', {
+        queryParams: {
+          application: JSON.stringify(application),
+        },
+      });
+    }
+
   }
 }

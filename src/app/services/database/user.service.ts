@@ -34,4 +34,8 @@ export class UserService {
       resolve(user);
     });
   }
+
+  countUsers() {
+    return this.firebase.countData('users');
+  }
 }

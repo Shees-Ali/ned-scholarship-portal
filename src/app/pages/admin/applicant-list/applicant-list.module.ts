@@ -4,6 +4,8 @@ import { ApplicantListComponent } from './applicant-list.page';
 import { ApplicantListRoutingRoutingModule } from './applicant-list-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -14,8 +16,10 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     ApplicantListRoutingRoutingModule,
+    FormsModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule
   ]
 })
 export class ApplicantListModule { }
