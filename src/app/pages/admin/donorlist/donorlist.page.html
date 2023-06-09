@@ -20,21 +20,27 @@
         </div>
       </div>
       <div class="content-row">
-        <ng-container>
+        <ng-container *ngFor="let item of donorsList; let i = index">
           <div class="content-col">
-            <p>Ahmed</p>
+            <p>{{item.name}}</p>
           </div>
           <div class="content-col">
-            <p>421023712881</p>
+            <p>{{item.cnic}}</p>
           </div>
           <div class="content-col">
-            <p>+92-336-1696969</p>
+            <p>{{'+92'+ item.phone_number}}</p>
           </div>
           <div class="content-col">
             <button mat-button (click)="toview()">View</button>
           </div>
           <div class="content-col">
-            <button mat-button (click)="approve()">Approve</button>
+            <button
+              [disabled]="item.status == 'approved'"
+              mat-button
+              (click)="approve(item)"
+            >
+              Approve
+            </button>
           </div>
         </ng-container>
       </div>
@@ -60,25 +66,35 @@
             <p>Approve</p>
           </div>
         </div>
-        <div class="m-content-col">
+        <div
+          *ngFor="let item of donorsList; let i = index"
+          class="m-content-col"
+        >
           <div class="m-content-row">
-            <p>Ahmed</p>
+            <p>{{item.name}}</p>
           </div>
           <div class="m-content-row">
-            <p>421023712881</p>
+            <p>{{item.cnic}}</p>
           </div>
           <div class="m-content-row">
-            <p>+92-336-1696969</p>
+            <p>{{'+92'+ item.phone_number}}</p>
           </div>
           <div class="m-content-row">
-            <button color="secondary" mat-button (click)="toview()">View</button>
+            <button color="secondary" mat-button (click)="toview()">
+              View
+            </button>
           </div>
           <div class="m-content-row">
-            <button mat-button (click)="approve()">Approve</button>
+            <button
+              [disabled]="item.status == 'approved'"
+              mat-button
+              (click)="approve(item)"
+            >
+              Approve
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>
-</div>
-

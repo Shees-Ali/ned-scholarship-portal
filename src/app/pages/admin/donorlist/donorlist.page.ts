@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
 export class DonorlistPage  extends BasePage implements OnInit {
   destroyed = new Subject<void>();
   currentScreenSize: string = '';
-
+  donorsList: any[] = [];
   displayNameMap = new Map([
     [Breakpoints.XSmall, 'Small'],
     [Breakpoints.Small, 'Small'],
@@ -42,13 +42,19 @@ export class DonorlistPage  extends BasePage implements OnInit {
     this.destroyed.complete();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.utiltiy.isPages.next(true);
+    this.donorsList = await this.donorService.getDonorsList(1000);
+    console.log(this.donorsList);
   }
+
   toview(){
 
   }
-  approve(){
-    
+  
+  approve(item: any){
+    this.donorService.updateDonor(item.key, {
+      status: 'approved',
+    });
   }
 }

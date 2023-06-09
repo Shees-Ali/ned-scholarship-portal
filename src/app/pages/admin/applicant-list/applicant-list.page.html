@@ -8,7 +8,7 @@
       [(ngModel)]="sort"
     >
       <mat-radio-button value="a_z">A-Z</mat-radio-button>
-      <mat-radio-button value="gpa">Sort By GPA</mat-radio-button>
+      <mat-radio-button value="gpa">Sort By Merit</mat-radio-button>
       <mat-radio-button value="need">Sort By Need</mat-radio-button>
     </mat-radio-group>
     <button mat-button (click)="clearSort()">Clear</button>
@@ -31,7 +31,7 @@
           <p>Status</p>
         </div>
         <div class="header-col">
-          <p>Marks / GPA</p>
+          <p>Percentage</p>
         </div>
         <div class="header-col">
           <p>Last Academic Result</p>
@@ -58,7 +58,7 @@
             <p>{{ item.status }}</p>
           </div>
           <div class="content-col">
-            <p>{{ item.marks_gpa }}</p>
+            <p>{{ item.percentage }}</p>
           </div>
           <div class="content-col">
             <p>{{ item.last_acadmic_result }}</p>

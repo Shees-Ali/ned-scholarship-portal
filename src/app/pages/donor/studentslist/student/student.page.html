@@ -1,0 +1,42 @@
+<div class="content">
+  <div class="top-heading">
+    <div class="back-btn">
+      <button mat-icon-button (click)="goBack()">
+        <mat-icon>keyboard_backspace</mat-icon>
+      </button>
+    </div>
+
+    <p class="heading">
+      {{student?.first_name + ' ' + student?.last_name + "'s Profile"}}
+    </p>
+
+    <div class="status-div">
+      <p class="status-heading">Scholarship Status:</p>
+      <p class="status">
+        {{ student?.has_granted ? 'Received' : student?.has_applied ? 'Applied'
+        : 'Not Applied'}}
+      </p>
+    </div>
+  </div>
+
+  <div class="student-details">
+    <app-verify
+      [isAdmin]="true"
+      [isComponent]="true"
+      [student_id]="student_id"
+    ></app-verify>
+  </div>
+
+  <div>
+    <mat-checkbox [(ngModel)]="asssitForSemester" [labelPosition]="'after'"
+      >Do you want to assist this Student for a semester or
+      Course?</mat-checkbox
+    >
+
+    <div *ngIf="asssitForSemester">
+      <button (click)="requestforSemesterAssist()" mat-button>Submit Request</button>
+    </div>
+
+
+  </div>
+</div>

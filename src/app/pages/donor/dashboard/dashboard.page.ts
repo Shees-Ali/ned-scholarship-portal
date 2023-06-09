@@ -51,18 +51,10 @@ export class DashboardPage extends BasePage implements OnInit {
       email: ['', Validators.required],
       home_address: ['', Validators.required],
       sponsorship_name: [''],
-      permanent_address: ['', Validators.required],
       amount: ['', Validators.required],
       num_receiver: ['', Validators.required],
       alumni: ['', Validators.required],
-      batch: [
-        null,
-        [
-          Validators.required,
-          Validators.maxLength(10),
-          Validators.minLength(10),
-        ],
-      ],
+      batch: [null, [Validators.maxLength(4), Validators.minLength(4)]],
     });
   }
 
@@ -74,6 +66,13 @@ export class DashboardPage extends BasePage implements OnInit {
     this.span3 = window.innerWidth <= 900 ? 1 : 3;
     this.user = await this.userService.getCurrentUser();
     console.log(this.user);
+    const data = await this.donorService.getDonorData(this.user.user_id);
+    if (data.status === 'not-allowed') {
+      this.approved = false;
+    } else if (data.status === 'approved') {
+      this.approved = true;
+      console.log(data);
+    }
   }
 
   onResize(event: any) {
@@ -84,11 +83,15 @@ export class DashboardPage extends BasePage implements OnInit {
     this.span3 = window.innerWidth <= 900 ? 1 : 3;
   }
   submit() {
+    console.log(this.donorForm);
+    console.log(this.alumni);
+    this.donorForm.controls['alumni'].setValue(this.alumni ? 'Yes' : 'No');
     if (!this.donorForm.valid) {
       return this.utiltiy.openSnackBar('Please Fill All the Fields !', 'OK');
     }
     this.utiltiy.showLoader();
     const formValue = this.donorForm.value;
+    formValue['status'] = 'not-allowed';
     this.donorService
       .setDonorData(this.user.user_id, formValue)
       .then((res: any) => {
@@ -97,6 +100,10 @@ export class DashboardPage extends BasePage implements OnInit {
           this.nav.navigateTo('donor/studentslist');
         }
       });
-    this.approved = !this.approved;
+    // this.approved = !this.approved;
+  }
+
+  showStudents() {
+    this.nav.navigateTo('donor/studentslist');
   }
 }

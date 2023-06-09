@@ -1,8 +1,12 @@
 <div class="form-content">
   <p class="form-heading">Sponsorship Form</p>
-  
-  <form [formGroup]="donorForm" >
-    <mat-grid-list [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+
+  <form [formGroup]="donorForm">
+    <mat-grid-list
+      [cols]="breakpoint"
+      rowHeight="100px"
+      (window:resize)="onResize($event)"
+    >
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>Name</mat-label>
@@ -12,11 +16,13 @@
       <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-form-field class="form-field">
           <mat-label>CNIC Number</mat-label>
-          <input 
-          maxlength="13"
-          minlength="13"
-          matInput 
-          formControlName="cnic" required />
+          <input
+            maxlength="13"
+            minlength="13"
+            matInput
+            formControlName="cnic"
+            required
+          />
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -32,95 +38,103 @@
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Phone Number</mat-label>
-            <span matPrefix class="ml-16">+92 &nbsp;</span>
-            <input
-              type="tel"
-              matInput
-              placeholder="123-456-7891"
-              formControlName="phone_number"
-              maxlength="10"
-              minlength="10"
-            />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Alt Phone Number</mat-label>
-            <span matPrefix class="ml-16">+92 &nbsp;</span>
-            <input
-              type="tel"
-              matInput
-              placeholder="123-456-7891"
-              formControlName="alt_phone_number"
-              maxlength="10"
-              minlength="10"
-            />
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list [cols]="breakpoint2" rowHeight="100px" (window:resize)="onResize($event)">
-        <mat-grid-tile [colspan]="span2" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Email Address</mat-label>
-            <input matInput formControlName="email" required />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="span2" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Home Address</mat-label>
-            <input matInput formControlName="home_address" required />
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list [cols]="breakpoint2" rowHeight="100px" (window:resize)="onResize($event)">
-        <mat-grid-tile [colspan]="span2" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Sponsorship Name</mat-label>
-            <input matInput formControlName="sponsorship_name" required />
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list [cols]="breakpoint2" rowHeight="100px" (window:resize)="onResize($event)">
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Amount</mat-label>
-            <input matInput formControlName="amount" required />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-          <mat-form-field class="form-field">
-            <mat-label>Number of Receivers</mat-label>
-            <input matInput formControlName="num_receiver" required />
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">
-            <mat-form-field>
-              <mat-label> Association </mat-label>
-              <mat-select [(value)]="alumni">
-                <mat-option selected> None </mat-option>
-                <mat-option [value]= "true" > Alumni </mat-option>
-                <mat-option [value]= "false"> Faculty </mat-option>
-              </mat-select>
-          </mat-form-field>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="alumni">
-            <mat-form-field class="form-field">
-              <mat-label>Batch</mat-label>
-              <input 
-                matInput
-                maxlength="4"
-                minlength="4"
-                formControlName="batch" required />
-            </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Phone Number</mat-label>
+          <span matPrefix class="ml-16">+92 &nbsp;</span>
+          <input
+            type="tel"
+            matInput
+            placeholder="123-456-7891"
+            formControlName="phone_number"
+            maxlength="10"
+            minlength="10"
+          />
+        </mat-form-field>
       </mat-grid-tile>
-      </mat-grid-list>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Alt Phone Number</mat-label>
+          <span matPrefix class="ml-16">+92 &nbsp;</span>
+          <input
+            type="tel"
+            matInput
+            placeholder="123-456-7891"
+            formControlName="alt_phone_number"
+            maxlength="10"
+            minlength="10"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list
+      [cols]="breakpoint2"
+      rowHeight="100px"
+      (window:resize)="onResize($event)"
+    >
+      <mat-grid-tile [colspan]="span2" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="span2" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Home Address</mat-label>
+          <input matInput formControlName="home_address" required />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list
+      [cols]="breakpoint2"
+      rowHeight="100px"
+      (window:resize)="onResize($event)"
+    >
+      <mat-grid-tile [colspan]="span2" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Sponsorship Name</mat-label>
+          <input matInput formControlName="sponsorship_name" />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list
+      [cols]="breakpoint2"
+      rowHeight="100px"
+      (window:resize)="onResize($event)"
+    >
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="amount" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field class="form-field">
+          <mat-label>Number of Receivers</mat-label>
+          <input matInput formControlName="num_receiver" required />
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-form-field>
+          <mat-label> Association </mat-label>
+          <mat-select [(value)]="alumni">
+            <mat-option selected> None </mat-option>
+            <mat-option [value]="true"> Alumni </mat-option>
+            <mat-option [value]="false"> Faculty </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="alumni">
+        <mat-form-field class="form-field">
+          <mat-label>Batch</mat-label>
+          <input matInput maxlength="4" minlength="4" formControlName="batch" />
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
     <div class="next-btn" *ngIf="!approved">
-      <button class="green-btn" mat-button>Submit</button>
+      <button class="green-btn" (click)="submit()" mat-button>Submit</button>
     </div>
     <div class="next-btn" *ngIf="approved">
-      <button class="green-btn std-btn" mat-button>View students</button>
+      <button class="green-btn std-btn" (click)="showStudents()" mat-button>View students</button>
     </div>
   </form>
 </div>

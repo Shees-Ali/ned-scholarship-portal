@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentslistPage } from './studentslist.page';
 import { StudentslistRoutingModule } from './studentslist-routing.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -11,6 +12,7 @@ import { StudentslistRoutingModule } from './studentslist-routing.module';
   ],
   imports: [
     CommonModule,
+    MatButtonModule,
     StudentslistRoutingModule
   ]
 })

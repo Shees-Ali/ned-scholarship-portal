@@ -52,7 +52,12 @@ export class SideNavComponent extends BasePage {
     {
       link: 'allstudents',
       name: 'Students List',
-      icon: 'people'
+      icon: 'people',
+    },
+    {
+      link: 'donor-list',
+      name: 'Donors List',
+      icon: 'public',
     },
     {
       link: 'logout',
@@ -61,6 +66,11 @@ export class SideNavComponent extends BasePage {
     },
   ];
   public routeLinksDonor = [
+    {
+      link: 'student-list',
+      name: 'Students List',
+      icon: 'people',
+    },
     {
       link: 'logout',
       name: 'Log Out',

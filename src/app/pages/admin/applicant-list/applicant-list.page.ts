@@ -70,9 +70,16 @@ export class ApplicantListComponent extends BasePage implements OnInit {
       const student = await this.studentService.getStudentData(
         element.student_id
       );
-      console.log(student);
       element['marks_gpa'] =
         student.academic_records[student.academic_records.length - 1].marks_gpa;
+      element['total_marks_gpa'] =
+        student.academic_records[
+          student.academic_records.length - 1
+        ].totalmarks_cgpa;
+      element['percentage'] =
+        student.academic_records[
+          student.academic_records.length - 1
+        ].percentage;
       element['net_worth'] =
         student.guardian_info.total_income /
         student.guardian_info.number_of_earners;
@@ -81,7 +88,6 @@ export class ApplicantListComponent extends BasePage implements OnInit {
           student.academic_records.length - 1
         ].class_year;
     }
-    console.log(this.applicants_list);
   }
 
   edit() {
@@ -93,13 +99,9 @@ export class ApplicantListComponent extends BasePage implements OnInit {
   }
 
   sortChanged() {
-    console.log(this.sort);
     switch (this.sort) {
       case 'a_z':
-        console.log("here");
-        console.log(this.applicants_list);
-        this.applicants_list = this.applicants_list.sort( (a, b) => {
-          console.log(a, b);
+        this.applicants_list = this.applicants_list.sort((a, b) => {
           if (a.student_name < b.student_name) {
             return -1;
           }
@@ -108,21 +110,20 @@ export class ApplicantListComponent extends BasePage implements OnInit {
           }
           return 0;
         });
-        console.log(this.applicants_list);
         break;
       case 'gpa':
-        this.applicants_list = this.applicants_list.sort( (a, b) => {
-          if (a.marks_gpa > b.marks_gpa) {
+        this.applicants_list = this.applicants_list.sort((a, b) => {
+          if (a.percentage > b.percentage) {
             return -1;
           }
-          if (a.marks_gpa < b.marks_gpa) {
+          if (a.percentage < b.percentage) {
             return 1;
           }
           return 0;
         });
         break;
       case 'need':
-        this.applicants_list = this.applicants_list.sort( (a, b) => {
+        this.applicants_list = this.applicants_list.sort((a, b) => {
           if (a.net_worth < b.net_worth) {
             return -1;
           }

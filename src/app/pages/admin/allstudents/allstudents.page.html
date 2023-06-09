@@ -51,7 +51,13 @@
             </p>
           </div> -->
         <div class="content-col">
-          <button mat-button (click)="studentDetails(item)">View</button>
+          <button
+            [disabled]="!item.isProfileComplete"
+            mat-button
+            (click)="studentDetails(item)"
+          >
+            View
+          </button>
         </div>
       </ng-container>
     </div>
@@ -104,7 +110,13 @@
           </p>
         </div> -->
         <div class="m-content-row">
-          <button mat-button (click)="studentDetails(item)">View</button>
+          <button
+            [disabled]="!item.isProfileComplete"
+            mat-button
+            (click)="studentDetails(item)"
+          >
+            View
+          </button>
         </div>
       </div>
     </div>
